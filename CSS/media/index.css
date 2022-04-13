@@ -1,3 +1,7 @@
+:root {
+    --color-box: rgb(226, 248, 175);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +15,7 @@
 }
 
 [class^="col-"] {
-    background-color: rgb(226, 248, 175);
+    background-color: var(--color-box);
     border: 1px solid rgba(53, 47, 47, 0.322);
 }
 
