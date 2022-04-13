@@ -1,0 +1,42 @@
+:root {
+    --box-width: 200px;
+    --bix-height: 200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Irish Grover", cursive;
+}
+
+.box1 {
+    font-size: 3rem;
+
+    position: fixed;
+
+    margin-left: 150px;
+
+    width: var(--box-width);
+    height: var(--bix-height);
+    background-color: bisque;
+}
+.box2 {
+    font-size: 3rem;
+    position: absolute;
+    top: 0;
+
+    width: 150px;
+    height: 150px;
+    background-color: rgb(173, 221, 83);
+}
+
+.box3 {
+    position: relative;
+
+    z-index: -11;
+
+    width: var(--box-width);
+    height: var(--bix-height);
+    background-color: rgb(72, 167, 221);
+}
