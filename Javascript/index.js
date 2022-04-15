@@ -114,39 +114,7 @@
 
 // // oop: Object Oriented Programming
 // encapsulation
-class Person {
-    #name;
-    #age;
-    get name() {
-        console.log('do something for getter');
-        return this.#name;
-    }
-    set name(newName) {
-        this.#name = newName;
-        console.log('rerender page');
-    }
 
-    constructor(name, age) {
-        this.#name = name;
-        this.#age = age;
-    }
-
-    showage() {
-        console.log(this.name + ' is ' + this.age);
-        console.log(this.name, 'is', this.age);
-        console.log(`${this.name} is ${this.age}`);
-    }
-    static print(num) {
-        console.log(num);
-    }
-}
-// function Person(name, age) {
-//     this.name = name;
-//     this.age = age;
-// }
-// Person.prototype.showage = function() {
-//     console.log(`${this.name} is ${this.age}`);
-// }
 // Person.print(3);
 
 // function foo() {}
@@ -165,7 +133,6 @@ class Person {
 // jojo.name // get
 // jojo.name = 'Dio'; // set
 
-
 // jojo.showage();
 
 // console.log(dio);
@@ -176,5 +143,307 @@ class Person {
 // console.log(obj);
 
 // inheritance
+// class Person {
+//     #name;
+//     #age;
+//     get age() {
+//         // console.log('do something for getter');
+//         return this.#age;
+//     }
+//     set age(newAge) {
+//         this.#age = newAge;
+//         // console.log('rerender page');
+//     }
+//     get name() {
+//         // console.log('do something for getter');
+//         return this.#name;
+//     }
+//     set name(newName) {
+//         this.#name = newName;
 
-// polymorphism
+//         console.log('rerender page');
+//     }
+
+//     constructor(name, age) {
+//         this.#name = name;
+//         this.#age = age;
+//     }
+
+//     showage() {
+//         // // console.log(this.name + ' is ' + this.age);
+//         // // console.log(this.name, 'is', this.age);
+//         // console.log(`${this.#name} is ${this.#age}`);
+//         console.log('this in the person class');
+//     }
+//     static print(num) {
+//         console.log(num);
+//     }
+// }
+
+// const p = new Person()
+// p.name = 
+// console.log(Person);
+
+// class Employee extends Person {
+
+//     constructor(name, age, company) {
+//         super(name, age);
+//         this.company = company;
+//     }
+
+//     showage(company) {
+//         console.log(`${this.name} is ${this.age} form ${company}`);
+//     }
+// }
+
+// function Person(name, age) {
+//     this.name = name;
+//     this.age = age;
+// }
+// Person.prototype.showage = function() {
+//     console.log(`${this.name} is ${this.age}`);
+// }
+// function Employee(name, age, company) {
+//     Person.call(this, name, age);
+//     this.company = company;
+// }
+// Employee.prototype = Person.prototype;
+
+// const employee = new Employee('Jojo', 18, 'Jump');
+// // employee.name = 'Dio'
+// // console.log(employee);
+// employee.showage();
+// employee.showage('Jump');
+
+// poly-morph-ism // Many Forms
+// class Animal {
+//     constructor(name) {
+//         this.name = name;
+//     }
+//     move() {
+//         console.log('move');
+//     }
+
+//     walk() {}
+// }
+// const a = new Animal('FF');
+// a.name
+// class Fash extends Animal {
+//     constructor(name) {
+//         super(name);
+//     }
+//     move() {
+//         return console.log(this.name + ' can swim');
+//     }
+// }
+// class Bird extends Animal {
+//     constructor(name) {
+//         super(name);
+//     }
+//     move() {
+//         return console.log(this.name + ' can fly');
+//     }
+// }
+// class Monkey extends Animal {
+//     constructor(name) {
+//         super(name);
+//     }
+// }
+// const fish = new Fash('fish');
+// const bird = new Bird('bird');
+// const monkey = new Monkey('monkey');
+// fish.move();
+// bird.move();
+// monkey.move();
+
+// // loop in Js
+
+// const arr = [
+//     { name: "TT", age: 12 },
+//     { name: "DD", age: 12 },
+//     { name: "RR", age: 81 },
+// ];
+
+// for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === 2) {
+//         break;
+//     }
+//     console.log(arr[i]);
+// }
+// const arr = [1, 2, 3];
+// for (const i in arr) {  // '0'
+//     if (arr[i] === 2) {
+//         continue;
+//     }
+//     // console.log(typeof i);
+//     console.log(arr[i]);
+// }
+// for (let ele of arr) {
+//     // '0'
+//     // console.log(typeof i);
+//     console.log(ele);
+// }
+
+// function foo(num) {
+//     if (num === 2) {
+//         continue;
+//     }
+//     console.log(num + 1);
+// }
+
+// const arr = [1, 2, 3];
+
+// arr.forEach((num, i, array) => {
+//     array[i] = num + 5;
+// });
+
+// Array.prototype.myForEach = function (cb) {
+//     for (let i = 0; i < this.length; i++) {
+//         cb(this[i], i, this);
+//     }
+// };
+
+// console.log('foreach', arr.myForEach((num, i, array) => {
+//     array[i] = num + 5;
+// }));
+
+// Array.prototype.myMap = function (cb) {
+//     let tempArr = [];
+//     for (let i = 0; i < this.length; i++) {
+//         tempArr.push(cb(this[i], i, this));
+//     }
+//     return tempArr;
+// }
+
+// Array.prototype.myFilter = function (cb) {
+//     let tempArr = [];
+//     for (let i = 0; i < this.length; i++) {
+//         if (cb(this[i], i, this)) {
+//             tempArr.push(this[i]);
+//         }
+//     }
+//     return tempArr;
+// }
+
+// console.log(arr.myFilter((cur, i, array) => {
+//     return num > 1;
+// }));
+
+// forEach, map, filter, reduce
+
+// '' + a + a = aa + b + b = aabb + c + c = aabbcc
+
+// const arr = [1, 2, 3];
+// console.log(arr.reduce((acc, cur) => acc + cur, 0)); // 'aabbcc'
+
+// const arr = [
+//     { name: "TT", age: 12 },
+//     { name: "DD", age: 12 },
+//     { name: "RR", age: 81 },
+// ];
+
+// Array.prototype.myReduce = function (...args) {
+//     let [acc, index] = args.length > 1
+//         ? [args[1], 0]
+//         : [this[0], 1];
+
+//     for (let i = index; i < this.length; i++) {
+//         acc = args[0](acc, this[i]);
+//     }
+//     return acc;
+// };
+// const str = 'abc'; // [a, b, c]
+// console.log(str.split('').myReduce((acc, cur) => acc + cur + cur, '')); // 'aabbcc'
+
+// function foo(arr) {
+//     // const obj = {};
+//     // arr.forEach(ele => {
+//     //     obj[ele.name] = ele.age;
+//     // });
+//     // return obj;  // mutable
+
+//     // return arr.myReduce((acc, cur) => {
+//     //     acc[cur.name] = cur.age;
+//     //     return acc;
+//     // }, {});  // mutable
+
+//     return arr.reduce((acc, cur) => ({...acc, [cur.name]: cur.age}), {}); // immutable
+// } // mutable & immutable
+
+// console.log(foo(arr)); //{ TT: 12, DD: 12, RR: 81 }
+
+// const numbers = [175, 50, 25];
+// const res = numbers.myReduce(myFunc); 
+// console.log(res);
+
+// function myFunc(acc, cur) {
+//     return acc - cur;
+// }
+
+// console.log(arr);
+
+// const obj = {
+//     name: 'Jojo',
+//     age: 18
+// }
+
+// for (const key in arr) {  // '0'
+//     console.log(typeof key);
+//     console.log(arr[key]);
+// }
+
+// // rest parameter vs. spread operator
+
+// function foo(...args) {
+//     console.log(args);
+
+// }
+// foo(1, 2, 3);
+
+// const arr = [1, 2, 3];
+// const arr1 = [4, ...arr, 78];
+// const charArr = [...'abc'];
+
+// function target(num, str) {
+//     console.log(num, str);
+// } 
+
+// function retra(target) {
+//     return function(...args) {  // take
+//         target(...args)  // drop
+//     }
+// }
+// const test = retra(target);
+
+// // target(3, 'str');
+// test(3, 'str'); // 3, 'str'
+
+// const str = 'test';
+// console.log([...new Set([...str])].join(''));
+
+// let obj1 = {};
+
+// obj1 = {
+//     ...obj1,
+//     age: 19
+// }
+// obj1 = {
+//     ...obj1,
+//     name: 'world'
+// } // immutabel
+
+// const obj = {
+//     name: 'Hello',
+//     age: 'test',
+// }
+
+// console.log(obj);
+
+const a = {name: 'Hello'};
+const b = {name: 'Hello'};
+const c = {name: 'efg'};
+
+c[b] = 456;
+
+console.log(c);
+
