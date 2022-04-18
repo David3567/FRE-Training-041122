@@ -439,11 +439,26 @@
 
 // console.log(obj);
 
-const a = {name: 'Hello'};
-const b = {name: 'Hello'};
-const c = {name: 'efg'};
+// const a = {name: 'Hello'};
+// const b = {name: 'Hello'};
+// const c = {name: 'efg'};
 
-c[b] = 456;
+// c[b] = 456;
 
-console.log(c);
+// // destructure;
 
+// // object copy;
+
+// // iife
+
+// // curring
+
+// // closure
+
+// // this
+
+// // event loop
+
+// // call back and call back hell
+
+// // 
