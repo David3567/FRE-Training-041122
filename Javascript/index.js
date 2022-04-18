@@ -1,4 +1,5 @@
 "use strict";
+console.clear();
 // ES6: ECMAscript
 // Javascript:  ES + Web.api;
 // Nodejs: ES + Node.api;
