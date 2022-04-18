@@ -182,7 +182,7 @@ console.clear();
 // }
 
 // const p = new Person()
-// p.name = 
+// p.name =
 // console.log(Person);
 
 // class Employee extends Person {
@@ -374,7 +374,7 @@ console.clear();
 // console.log(foo(arr)); //{ TT: 12, DD: 12, RR: 81 }
 
 // const numbers = [175, 50, 25];
-// const res = numbers.myReduce(myFunc); 
+// const res = numbers.myReduce(myFunc);
 // console.log(res);
 
 // function myFunc(acc, cur) {
@@ -407,7 +407,7 @@ console.clear();
 
 // function target(num, str) {
 //     console.log(num, str);
-// } 
+// }
 
 // function retra(target) {
 //     return function(...args) {  // take
@@ -448,7 +448,116 @@ console.clear();
 
 // // destructure;
 
+// let a = 0;
+// let b = 1;
+// const arr = [0, 1, 3, 4];
+// let [a, b, _, c] = arr;
+
+// let {name, abc} = {name: 'Jojo', age: 12, company: 'Jump', abc: 123}
+
+// const obj = {
+//     id: 1,
+//     name: 'David Dong',
+//     links: [
+//         { name: 'wechat',       link: 'wechat.com'      },
+//         { name: 'apple',        link: 'apple.com'       },
+//         { name: 'cnn',          link: 'cnn.com'         },
+//         { name: 'fox',          link: 'fox.com'         },
+//         { name: 'hbo',          link: 'hsdfsdfsdbo.com' },
+//     ]
+// }
+// const {links} = obj;
+// console.log(links.find(({ name }) => name === 'hbo').link);
+
+// const obj = {name: 'Jojo', age: 18};
+// for (const key in obj) {
+//     console.log(obj[key]);
+// }
+// console.log(Object.keys(obj));
+
+// Object.keys(obj).forEach((cur) => console.log(cur));
+// Object.entries(obj).forEach((cur) => console.log(cur));
+
+// // ~~~~~~interview question~~~~~~~~~~~~
+// const first = [
+//     { userid: 2, name: 'Velen' },
+//     { userid: 56, name: 'Illidan' },
+//     { userid: 23, name: 'Muradin' },
+//     { userid: 12, name: 'Sylvanas' },
+//     { userid: 44, name: 'Cenarius' },
+//     { userid: 4, name: 'Gul\'Dan' }
+// ];
+// const second = [
+//     { userid: 2, role: 'Mage' },
+//     { userid: 4, role: 'Worlock' },
+//     { userid: 56, role: 'Demon Hunter' },
+//     { userid: 66, role: 'Druid' },
+//     { userid: 87, role: 'Shaman' },
+//     { userid: 12, role: 'Hunter' },
+// ];
+
+// function mergeArr(first, second) {
+//     const arr = [...first, ...second];
+//     const map = {};
+
+//     arr.forEach(ele => {
+//         map[ele.userid] = {
+//             ...{ userid: null, name: null, role: null },
+//             ...map[ele.userid],
+//             ...ele,
+//         }
+//     })
+
+//     return Object.values(map);
+// }
+
+// const map = {
+//     2: {
+//         ...{ userid: null, name: null, role: null },
+//         ...{ userid: 2, name: 'Velen'},
+//     },
+//     // 2: {userid: 2, name: 'Velen', role: null}
+// }
+
+// console.log(mergeArr(first, second));
+// [
+//     { userid: 2, name: 'Velen', role: 'Mage'},
+//     { userid: 56, name: 'Illidan', role: 'Demon Hunter' },
+//     { userid: 23, name: 'Muradin', role: null },
+//     ...
+//     { userid: 87, name: null, role: 'Shaman' },
+//     ...
+// ]
+
 // // object copy;
+// shallow copy, deep copy & clone
+
+// const obj = { name: "Dio" };
+// const obj1 = obj;
+
+// obj1.age = 188;
+// console.log(obj);
+
+// const links = [
+//     { name: "wechat", link: "wechat.com" },
+//     { name: "apple", link: "apple.com" },
+//     { name: "cnn", link: "cnn.com" },
+//     { name: "fox", link: "fox.com" },
+//     { name: "hbo", link: "hsdfsdfsdbo.com" },
+// ];
+// const info = links.find(({name}) => name === 'cnn');
+
+// console.log(links.includes({ name: "cnn", link: "cnn.com" }));
+
+const obj = { 
+    name: "Dio",
+    child: {name: "Tom"}
+ };
+const obj1 = {...obj};
+
+obj.child.name = 'Jack';
+
+console.log(obj1);
 
 // // iife
 
@@ -462,4 +571,4 @@ console.clear();
 
 // // call back and call back hell
 
-// // 
+// //
