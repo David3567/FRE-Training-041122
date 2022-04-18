@@ -549,21 +549,112 @@ console.clear();
 
 // console.log(links.includes({ name: "cnn", link: "cnn.com" }));
 
-const obj = { 
-    name: "Dio",
-    child: {name: "Tom"}
- };
-const obj1 = {...obj};
+// const obj = {
+//     name: "Dio",
+//     child: { name: "Tom" },
+//     date: new Date(),
+//     foo: function() {}
+// };
+// console.log(obj);
+// console.log(JSON.stringify(obj));
 
-obj.child.name = 'Jack';
+// obj.child.name = 'Jack';
+// console.log(obj);
+// console.log(obj1);
 
-console.log(obj1);
+// lodash cloneDeep()
 
 // // iife
+// (function (num) {
+//     console.log(num);
+// }(123));
+// ((ele, ele1) => console.log(ele + ele1))(456, 1000);
 
-// // curring
+// function foo() {
+//     console.log(123);
+// }
+// foo();
 
-// // closure
+// // curring + highorder function
+// function foo(a) {
+// // // closure
+
+// const machine = (function () {
+
+//     function print(val) {
+//         console.log(val);
+//     }
+
+//     return { print };
+// })();
+
+// const {print} = machine;
+
+// print('something');
+
+//     return function(b) {
+//         return a + b;
+//     }
+// }
+// const bar = foo(4);
+// console.log(bar(5)); // 9
+
+//~~~~~~~~~~~ interview ~~~~~~~~~~~~~
+
+// const target = function (a, b) {
+//     console.log(a + b);
+// };
+// // const target1 = function (num1, num2, num3) {
+// //     console.log(num1 + num2 + num3);
+// // };
+
+// const fn = limitedFunction(2, target);
+// const fnextends = limitedFunction(4, target);
+
+// function limitedFunction(num, callback) {
+//     return function (...args) {
+//         if (num === 0) {
+//             console.log("over limited!");
+//         } else if (num >  0) {
+//             num--;
+//             callback(...args);
+//         }
+//     };
+// }
+
+// fnextends(1, 2); // 7;      fn: counter === 2
+// fnextends(5, 4); // 9;      fn: counter === 1
+// fnextends(3, 1); //         fn: counter === 0
+// fnextends(6, 4); //
+// fnextends(3, 9); //
+// fnextends(0, 4); // over limited!
+// fnextends(2, 4); // over limited!
+
+// function foo(name) {
+//     const a = 0;
+//     return name;
+// }
+// const abc = foo('hello'); //
+// class Person {
+//     #age = 0;
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+// const p = new Person('Jojo');
+
+//~~~~~~~~~~~ interview ~~~~~~~~~~~~~
+const callback1 = (a) => a + 2; // 7
+const callback2 = (b) => b * 2; // 14
+const callback3 = (c) => c - 2; // 12
+
+console.log(runAll(callback1, callback2, callback3)(4)); // 12
+
+function runAll(...cbs) {
+    return function(num) {
+        return cbs.reduce((acc, cur) => cur(acc), num);
+    }
+}
 
 // // this
 
