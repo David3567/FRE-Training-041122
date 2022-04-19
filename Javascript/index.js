@@ -1,5 +1,7 @@
 "use strict";
 console.clear();
+
+// ~~~~~~~~~~~~~~~~~~~~ Day 1 ~~~~~~~~~~~~~~~~~~~~
 // ES6: ECMAscript
 // Javascript:  ES + Web.api;
 // Nodejs: ES + Node.api;
@@ -142,6 +144,8 @@ console.clear();
 // const obj = {};
 // obj.name = 'Jojo';
 // console.log(obj);
+
+// ~~~~~~~~~~~~~~~~~~~~ Day 2 ~~~~~~~~~~~~~~~~~~~~
 
 // inheritance
 // class Person {
@@ -309,12 +313,16 @@ console.clear();
 // }));
 
 // Array.prototype.myMap = function (cb) {
+//     // console.log(this);
 //     let tempArr = [];
 //     for (let i = 0; i < this.length; i++) {
 //         tempArr.push(cb(this[i], i, this));
 //     }
 //     return tempArr;
-// }
+// };
+// const arr = [1, 2, 3];
+
+// console.log(arr.myMap((ele) => ele));
 
 // Array.prototype.myFilter = function (cb) {
 //     let tempArr = [];
@@ -445,6 +453,8 @@ console.clear();
 // const c = {name: 'efg'};
 
 // c[b] = 456;
+
+// ~~~~~~~~~~~~~~~~~~~~ Day 3 ~~~~~~~~~~~~~~~~~~~~
 
 // // destructure;
 
@@ -643,18 +653,20 @@ console.clear();
 // }
 // const p = new Person('Jojo');
 
-//~~~~~~~~~~~ interview ~~~~~~~~~~~~~
-const callback1 = (a) => a + 2; // 7
-const callback2 = (b) => b * 2; // 14
-const callback3 = (c) => c - 2; // 12
+// //~~~~~~~~~~~ interview ~~~~~~~~~~~~~
+// const callback1 = (a) => a + 2; // 7
+// const callback2 = (b) => b * 2; // 14
+// const callback3 = (c) => c - 2; // 12
 
-console.log(runAll(callback1, callback2, callback3)(4)); // 12
+// console.log(runAll(callback1, callback2, callback3)(4)); // 12
 
-function runAll(...cbs) {
-    return function(num) {
-        return cbs.reduce((acc, cur) => cur(acc), num);
-    }
-}
+// function runAll(...cbs) {
+//     return function(num) {
+//         return cbs.reduce((acc, cur) => cur(acc), num);
+//     }
+// }
+
+// ~~~~~~~~~~~~~~~~~~~~ Day 4 ~~~~~~~~~~~~~~~~~~~~
 
 // // this
 
