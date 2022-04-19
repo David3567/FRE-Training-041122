@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 console.clear();
 
 // ~~~~~~~~~~~~~~~~~~~~ Day 1 ~~~~~~~~~~~~~~~~~~~~
@@ -209,7 +209,7 @@ console.clear();
 //     console.log(`${this.name} is ${this.age}`);
 // }
 // function Employee(name, age, company) {
-//     Person.call(this, name, age);
+//     Person.apply(this, [name, age]);
 //     this.company = company;
 // }
 // Employee.prototype = Person.prototype;
@@ -668,10 +668,165 @@ console.clear();
 
 // ~~~~~~~~~~~~~~~~~~~~ Day 4 ~~~~~~~~~~~~~~~~~~~~
 
-// // this
+// Array.prototype.myMap = function (cb) {
+//     const arr = [];
+//     for (let i = 0; i < this.length; i++) {
+//         arr.push(cb(this[i], i, this));
+//     }
+//     return arr;
+// }
+
+// const arr = [1, 2, 3];
+// console.log(arr.map(
+//     function (num) {
+//         console.log(this.limit);
+//         return num + this.limit;
+//     },
+//     {limit: 5}
+// ));
+
+// console.log(arr.map(target(6)));
+
+// function target(n) {
+//     return function (num) {
+//         return num + n;
+//     }
+// }
+
+// // this ---> object
+
+// try {
+//     console.log(a);
+// } catch (error) {
+//     console.log(error);
+// }
+
+// // globel
+// console.log(this);
+// this in an object;
+// const obj = {
+//     name: 'Jojo',
+//     showname: function () {
+//         console.log('this for showname: ', this); // <---------console this;
+
+//         // function foo() {   // foo ----> showname ----> obj
+//         //     console.log('this for foo: ', this); // console this;
+//         // }
+//         const foo = () => {   // foo ----> showname ----> obj
+//             console.log('this for foo: ', this); // console this;
+//         }
+//         foo();
+//         // foo.apply(this);
+//         // const bar = foo.bind(this); // <-------------
+//         // bar();
+//     },
+// }
+// obj.showname();
+
+// // this in a class
+// class Person {
+
+//     name = 'Dio';
+
+//     constructor(name, age) {
+//         this.name = name;
+//         this.age = age;
+//     }
+
+//     hello() {
+//         console.log(this.name);
+//     }
+// }
+
+// const person = new Person('Jojo', 18);
+// // const person1 = new Person('Tom', 18);
+// // // console.log(person);
+// person.hello();
+
+// // control this;
+
+// const obj = {
+//     num: 12345,
+//     printnum() {
+//         console.log(this.num);
+//     }
+// }
+
+// obj.printnum();
+// /**
+//  * printnumoutside: talk about this
+//  * @param {String} name
+//  * @param {Number} age
+//  */
+
+// // bind, call, apply
+
+// function printnumoutside(name, age) {  // <------- 100
+//     console.log(this.num);
+//     console.log('name: ', name);
+//     console.log('age: ', age);
+// }
+// // running in a eager way
+// printnumoutside.call(obj, 'Dio', 190) // <-------- 1 + 100
+// printnumoutside.apply(obj, ['Dio', 190]) // <-------- 2 : obj + [].length -> 100
+
+// /**
+//  * newprint: talk about this
+//  * @param {String} name
+//  * @param {Number} age
+//  */
+// const newprint = printnumoutside.bind(obj);  // running in a lazy way
+// newprint('Dio', 18);
+
+// // arrow function
+// function foo() {
+//     console.log('foo: ', arguments); // this
+//     return {name: 'Tom'};
+// }
+// const bar = () => {
+//     console.log('bar: ', arguments);
+//     return {name: 'Tom'};
+// };
+// foo();
+// bar();
 
 // // event loop
+
+// scope
+
+// var i = 0;
+
+for (let i = 0; i < 5; i++) {
+    setTimeout(() => console.log(i), (5 - i) * 1000);
+
+    // (function (v) {
+    //     setTimeout(() => console.log(v), v * 1000);
+    // })(i);
+}
+console.log("this is i"); // 5
+
+/**
+ * call stack:
+ * [for, set]
+ *
+ * web api (async api):
+ * () => console.log(i) ---> 5   // i = 0
+ * ...
+ *
+ * tasks queue (message queue);
+ * [() => console.log(i) // i = 4, () => console.log(i) // i = 3, () => console.log(i) // i = 2]
+ */
+
+
+
+// | 0,
+// | 1s -> 1,
+// | 2s -----> 2,
+// ...
+// 0, 1, 2, 3, 4
 
 // // call back and call back hell
 
 // //
+
+// setTimeout(() => console.log('hello world'), 10 * 1000);
