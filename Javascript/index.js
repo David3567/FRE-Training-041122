@@ -796,14 +796,14 @@ console.clear();
 
 // var i = 0;
 
-for (let i = 0; i < 5; i++) {
-    setTimeout(() => console.log(i), (5 - i) * 1000);
+// for (let i = 0; i < 5; i++) {
+//     setTimeout(() => console.log(i), (5 - i) * 1000);
 
-    // (function (v) {
-    //     setTimeout(() => console.log(v), v * 1000);
-    // })(i);
-}
-console.log("this is i"); // 5
+//     // (function (v) {
+//     //     setTimeout(() => console.log(v), v * 1000);
+//     // })(i);
+// }
+// console.log("this is i"); // 5
 
 /**
  * call stack:
@@ -817,8 +817,6 @@ console.log("this is i"); // 5
  * [() => console.log(i) // i = 4, () => console.log(i) // i = 3, () => console.log(i) // i = 2]
  */
 
-
-
 // | 0,
 // | 1s -> 1,
 // | 2s -----> 2,
@@ -827,6 +825,8 @@ console.log("this is i"); // 5
 
 // // call back and call back hell
 
-// //
+// // XHR
 
-// setTimeout(() => console.log('hello world'), 10 * 1000);
+// // Promise
+
+// // fetch
