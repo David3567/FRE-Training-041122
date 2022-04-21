@@ -8,29 +8,43 @@
         <!-- <script async src="./index.js"></script> -->
     </head>
     <body>
-        <button onclick="addli()">add li</button>
+        <!-- <button onclick="addli()">add li</button>
         <ul>
             <li></li>
             <li></li>
             <li></li>
-        </ul>
+        </ul> -->
+
+        <div class="grandfather" onclick="getClassName()">
+            <div class="parent">
+                <div
+                    style="height: 20px; width: 20px; background-color: red"
+                    class="child"
+                    id="check_1234"
+                ></div>
+            </div>
+        </div>
 
         <script>
-            const liHtmlCollection = document.getElementsByTagName("li");
-            const liNodeList = document.querySelectorAll("li");
+            const getClassName = () => {
+                console.log(event.target.id);
+            };
 
-            // console.log(liHtmlCollection);
-            // console.log(liNodeList);
+            // const liHtmlCollection = document.getElementsByTagName("li");
+            // const liNodeList = document.querySelectorAll("li");
 
-            const ulHtmlCollection = document.getElementsByTagName("ul")[0];
+            // // console.log(liHtmlCollection);
+            // // console.log(liNodeList);
 
-            function addli() {
-                const newli = document.createElement("li");
-                ulHtmlCollection.appendChild(newli);
+            // const ulHtmlCollection = document.getElementsByTagName("ul")[0];
 
-                console.log("htmlcollection: ", liHtmlCollection.length);
-                console.log("linodelist: ", liNodeList.length);
-            }
+            // function addli() {
+            //     const newli = document.createElement("li");
+            //     ulHtmlCollection.appendChild(newli);
+
+            //     console.log("htmlcollection: ", liHtmlCollection.length);
+            //     console.log("linodelist: ", liNodeList.length);
+            // }
         </script>
     </body>
 </html>

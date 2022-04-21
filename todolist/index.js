@@ -11,59 +11,134 @@ const Api = (() => {
             response.json()
         );
 
+    const deleteTodo = (id) =>
+        fetch([baseUrl, path, id].join("/"), {
+            method: "DELETE",
+        });
+
+    const addTodo = (newtodo) =>
+        fetch([baseUrl, path].join("/"), {
+            method: "POST",
+            body: JSON.stringify(newtodo),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+        })
+            .then((response) => response.json());
+
     return {
         getTodos,
         getTodo,
+        deleteTodo,
+        addTodo
     };
 })();
 // ~~~~~~~~~~~~ View ~~~~~~~~~~~~
 const View = (() => {
     const domstr = {
-        todolist: '#todolist__container'
-    }
+        todolist: "#todolist__container",
+        deletebutton: ".dlebtn",
+        inputbox: ".todolist__input",
+    };
     const render = (ele, tmp) => {
         ele.innerHTML = tmp;
-    }
+    };
     const createTmp = (arr) => {
-        let tmp = '';
-        arr.forEach(todo => {
+        let tmp = "";
+        arr.forEach((todo) => {
             tmp += `
                 <li>
-                    <span>${todo.title}</span>
-                    <button>X</button>
+                    <span>${todo.id}-${todo.title}</span>
+                    <button class="dlebtn ${todo.id}">X</button>
                 </li>
             `;
         });
         return tmp;
-    }
+    };
     return {
         domstr,
         render,
-        createTmp
+        createTmp,
     };
 })();
 // ~~~~~~~~~~~~ Model ~~~~~~~~~~~~
-const Model = ((api) => {
-
-    const getTodos = api.getTodos;
-
-    return {
-        getTodos
-    };
-})(Api);
-// ~~~~~~~~~~~~ Controller ~~~~~~~~~~~~
-const Controller = ((model, view) => {
-
-    const init = () => {
-        const todolistEle = document.querySelector(view.domstr.todolist);
-        
-        model.getTodos().then(todolist => {
-            const tmp = view.createTmp(todolist);
-            view.render(todolistEle, tmp);
-        });
+const Model = ((api, view) => {
+    class Todo {
+        constructor(title) {
+            this.userId = 3;
+            this.title = title;
+            this.completed = false;
+        }
     }
 
-    return {init};
+    class State {
+        #todolist = [];
+
+        get todolist() {
+            return this.#todolist;
+        }
+        set todolist(newtodolist) {
+            this.#todolist = [...newtodolist];
+
+            const todolistEle = document.querySelector(view.domstr.todolist);
+
+            const tmp = view.createTmp(this.todolist);
+            view.render(todolistEle, tmp);
+        }
+    }
+
+    const getTodos = api.getTodos;
+    const deleteTodo = api.deleteTodo;
+    const addTodo = api.addTodo;
+
+    return {
+        getTodos,
+        deleteTodo,
+        addTodo,
+        State,
+        Todo,
+    };
+})(Api, View);
+// ~~~~~~~~~~~~ Controller ~~~~~~~~~~~~
+const Controller = ((model, view) => {
+    const state = new model.State();
+
+    const addTodo = () => {
+        const inputbox = document.querySelector(view.domstr.inputbox);
+        inputbox.addEventListener("keyup", (event) => {
+            if (event.key === "Enter") {
+                const newtodo = new model.Todo(event.target.value);
+
+                model.addTodo(newtodo).then(todo => {
+                    state.todolist = [todo, ...state.todolist];
+                });
+                event.target.value = "";
+            }
+        });
+    };
+
+    const deleteTodo = () => {
+        const todolistEle = document.querySelector(view.domstr.todolist);
+        todolistEle.addEventListener("click", (event) => {
+            const [className, id] = event.target.className.split(" ");
+            state.todolist = state.todolist.filter((todo) => +todo.id !== +id);
+            model.deleteTodo(id);
+        });
+    };
+
+    const init = () => {
+        model.getTodos().then((todolist) => {
+            state.todolist = todolist.reverse();
+        });
+    };
+
+    const bootstrap = () => {
+        init();
+        deleteTodo();
+        addTodo();
+    };
+
+    return { bootstrap };
 })(Model, View);
 
-Controller.init();
+Controller.bootstrap();
