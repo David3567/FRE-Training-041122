@@ -5,20 +5,32 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <script async src="./index.js"></script>
+        <!-- <script async src="./index.js"></script> -->
     </head>
     <body>
-        <!-- <select id="key">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
-        </select>
-        <select id="val">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
-        </select> -->
+        <button onclick="addli()">add li</button>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <script>
+            const liHtmlCollection = document.getElementsByTagName("li");
+            const liNodeList = document.querySelectorAll("li");
+
+            // console.log(liHtmlCollection);
+            // console.log(liNodeList);
+
+            const ulHtmlCollection = document.getElementsByTagName("ul")[0];
+
+            function addli() {
+                const newli = document.createElement("li");
+                ulHtmlCollection.appendChild(newli);
+
+                console.log("htmlcollection: ", liHtmlCollection.length);
+                console.log("linodelist: ", liNodeList.length);
+            }
+        </script>
     </body>
 </html>
