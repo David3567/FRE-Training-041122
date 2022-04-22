@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"
+        ></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <button class="continue">Hello</button>
+
+        <script>
+            // $("button.continue").html("Next Step...");
+
+            function $$(selector) {
+                const ele = document.querySelector(selector);
+
+                const html = (str) => {
+                    ele.innerHTML = str;
+                };
+
+                return {
+                    html,
+                };
+            }
+            $$.ajax = function (options) {
+                fetch(options.url, options.bady).then((data) => {
+                    option.success(data);
+                });
+            };
+
+            //1
+            $$("button.continue").html("Next Step...");
+            //2
+            $$.ajax({
+                url: "/api/getWeather",
+                data: {
+                    zipcode: 97201,
+                },
+                success: function (result) {
+                    $("#weather-temp").html(
+                        "<strong>" + result + "</strong> degrees"
+                    );
+                },
+            });
+        </script>
+    </body>
+</html>
