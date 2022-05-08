@@ -2,15 +2,22 @@
     margin: 0
     padding: 0
 
-$backgroundColor: white
-$backgroundSignIn: #1B2532
+$backgroundColor: #2E0C57
+$backgroundSignIn: #34383D
+$width: 100vm
+$height: 100vm
 html
     overflow: hidden
-    height: 100vm
+    width: $width
+    padding: 0 !important
+    margin: 0 !important
+    height: $height
+    background-color: $backgroundColor
 
 body
     overflow: auto
-    height: 100vm
+    width: $width
+    height: $height
     background-color: $backgroundColor
 
 .signIn-wrapper
@@ -22,6 +29,7 @@ body
     line-height: 2.5rem
     border-radius: 24px
     box-shadow: 44px 38px 35px 1px rgba(0,0,0,0.58)
+    margin-bottom: 200px
 
 #signIn
     display: flex
@@ -39,25 +47,23 @@ form
     text-align: center
     input
         height: 50px
-        width: 260px
+        width: 280px
         border: 1px solid #000
         border-radius: 24px
         perspective: 1px
         text-align: center
         border: 2px solid #3498db
-    #userName-wrapper
+    #passwordInput
         &:hover
             border: 2px solid #3498db
             transform: scale(1.2)
             border-color: #2ecc71
-    #password-wrapper
+    #userName
         &:hover
+            border: 2px solid #3498db
             transform: scale(1.2)
             border-color: #2ecc71
-    #signIn-internal-wrapper
-        &:hover
-            transform: scale(1.2)
-            border-color: #2ecc71
+
     .alrt-danger
         background-color: #f44336
 
@@ -72,10 +78,14 @@ button
     text-align: center
     margin-left: 15%
 
-    &-internal-wrapper
-        color: white
-        background-color: #CE4F4B
-        font-weight: 700
+#signIn-internal-wrapper
+    color: white
+    background-color: #CE4F4B
+    font-weight: 700
+    &:hover
+        border: 2px solid #3498db
+        transform: scale(1.2)
+        border-color: #2ecc71s
 
 ul
     text-decoration: none
@@ -93,7 +103,7 @@ ul
     justify-content: space-around
     text-align: center
     height: 50px
-    width: 260px
+    width: 280px
     color: white
     font-weight: 700
     padding-top: 5%

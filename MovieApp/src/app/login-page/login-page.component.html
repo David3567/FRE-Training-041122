@@ -12,12 +12,13 @@
       <h1 id="signIn">Sign in</h1>
       <form (ngSubmit)="signUser()" #myForm="ngForm">
         <input
-          id="userName-wrapper"
+          id="userName"
           #name="ngModel"
           required
           type="text"
           placeholder="User Name "
           [(ngModel)]="data.username"
+          [ngModelOptions]="{ standalone: true }"
         />
         <div class="alert alert-danger" *ngIf="name.errors?.['required']">
           <p>Enter the user name</p>
@@ -25,12 +26,13 @@
         <pre></pre>
         <br />
         <input
-          id="password-wrapper"
+          id="passwordInput"
           #password="ngModel"
           required
           type="password"
           placeholder="Password "
           [(ngModel)]="data.password"
+          [ngModelOptions]="{ standalone: true }"
         />
         <div class="alert alert-danger" *ngIf="password.errors?.['required']">
           Enter the password
