@@ -1,0 +1,141 @@
+$main-bg-color: rgb(0, 12, 39);
+$main-bg-contrast:  rgba(0, 168, 173, 0.5);
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: whitesmoke;
+}
+
+header {
+    background: linear-gradient(to bottom, $main-bg-contrast 85%,
+    $main-bg-color);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerInteractive {
+    padding-right: 50px;
+    background-color: transparent;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+img {
+    height: 70%;
+    background-color: transparent;
+    padding: 0 50px;
+    margin-bottom: 10px;
+}
+
+option {
+    background-color: transparent;
+    color: black;
+}
+
+.language {
+    background-color: transparent;
+    height: 40%;
+    width: 120px;
+    border: 1px rgb(92, 92, 92) solid;
+}
+
+.signIn {
+    background-color: #2196f3;
+    height: 40%;
+    width: 120px;
+    transition: 0.3s;
+    border: none;
+}
+
+.signIn:hover {
+    background-color: #2196f3;    
+    border: #2196f3;
+    box-shadow: 0 0 5px #2196f3, 0 0 10px #2196f3, 0 0 15px #2196f3 ;
+}
+
+.signIn:active {
+    color: #255784;
+}
+
+
+
+.headContainer {
+    height: 500px;
+    background: linear-gradient(to right, rgba(255,255,255,0) 40%,
+              $main-bg-color), 
+              linear-gradient(to left, rgba(255,255,255,0) 40%,
+              $main-bg-color), 
+              linear-gradient(to top, rgba(255,255,255,0) 40%,
+              $main-bg-color), 
+              linear-gradient(to bottom, rgba(255,255,255,0) 40%,
+              $main-bg-color), 
+              url(../../assets/MoviesBanner.jpg);
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headText {
+    height: 60%;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.headText h1, h2, h3, h4 {
+    width: 80%;
+    
+}
+
+.signupElements {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+}
+
+.EmailInput {
+    background-color: white;
+    color: black;
+    width: 80%;
+    height: 30px;
+    border: none;
+    border-radius: 15px;
+    text-indent: 10px;
+}
+
+.signUp {
+    border-radius: 15px;
+    background-color: red;
+    height: 100%;
+    width: 120px;
+    transition: 0.3s;
+    border: none;
+}
+
+
+.signUp:hover {
+    background-color: red;    
+    border: red;
+    box-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red ;
+}
+
+.signUp:active {
+    color: #255784;
+}
+
