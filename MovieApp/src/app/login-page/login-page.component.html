@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./login-page.component.scss"></script>
+  </head>
+  <body>
+    <div class="signIn-wrapper">
+      <h1 id="signIn">Sign in</h1>
+      <form (ngSubmit)="signUser()" #myForm="ngForm">
+        <input
+          id="userName-wrapper"
+          #name="ngModel"
+          required
+          type="text"
+          placeholder="User Name "
+          [(ngModel)]="data.username"
+        />
+        <div class="alert alert-danger" *ngIf="name.errors?.['required']">
+          <p>Enter the user name</p>
+        </div>
+        <pre></pre>
+        <br />
+        <input
+          id="password-wrapper"
+          #password="ngModel"
+          required
+          type="password"
+          placeholder="Password "
+          [(ngModel)]="data.password"
+        />
+        <div class="alert alert-danger" *ngIf="password.errors?.['required']">
+          Enter the password
+        </div>
+        <pre></pre>
+        <br />
+        <input
+          (click)="handleClear()"
+          id="signIn-internal-wrapper"
+          type="submit"
+          value="submit"
+        />
+      </form>
+      <pre></pre>
+
+      <ul>
+        <span></span>
+        <li id="first-list-wrapper">
+          <input (click)="saveValues()" type="checkbox" />
+          <span> Remember me</span>
+        </li>
+        <li id="second-list-wrapper">Need help?</li>
+      </ul>
+      <button id="signUp-wrapper" type="submit">
+        <a href="#"> Sign Up</a>
+      </button>
+    </div>
+  </body>
+</html>
