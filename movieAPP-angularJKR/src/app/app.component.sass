@@ -1,0 +1,126 @@
+@import ../styles
+// Global style & classes - Homepage
+hr
+    background-color: $color-gray
+    height: 5px
+    border: none
+.center-content
+    width: 90vw
+    margin: 0 auto
+.btn
+    background-color: $color-red
+
+// Header
+header
+    display: flex
+    justify-content: space-between
+    padding: 50px 0 0 0
+    a
+        z-index: 100
+        .logo
+            height: 70px
+    .btn-container
+        display: flex
+        align-items: center
+
+
+// Home - Splash screen section
+.home__container
+    position: relative
+    z-index: 1
+    .home__bg-container
+        position: absolute
+        top: 0
+        width: 100%
+        height: 100%
+        .home__bg-overlay
+            position: absolute
+            top: 0
+            aspect-ratio: 125/63
+            width: 100%
+            height: auto
+            box-shadow: inset 0em -2em 5em 3em black
+            z-index: -25
+        .hero-home
+            position: absolute
+            top: 0
+            width: 100%
+            z-index: -50
+            opacity: 0.15
+.home__splash
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-bottom: 200px
+    .home__splash-text
+        width: 70%
+        margin: 0 auto
+        padding-top: calc(50vh/2)
+        text-align: center
+        h2 
+            font-size: 3.5rem
+            font-weight: 00
+            line-height: 1.2
+        .btn-started
+            margin: 20px 0 0 0
+            padding: 8px 12px
+            font-size: 1.5rem
+
+// Home - Download section 
+.home__download
+    padding: 100px 0
+    .home__download-text
+        text-align: center
+        h2
+            font-size: 2.5rem
+            line-height: 1.1
+    .home__download-image
+        height: auto
+        border: 0
+        position: relative
+        .dl-icon
+            height: 50%
+        .mobile-img
+            width: 100%
+        .download-image__overlay
+            width: 60%
+            min-width: 200px
+            height: 80px
+            border-radius: 8px
+            background-color: #000
+            border: 1px solid rgb(83, 83, 83)
+            display: flex
+            justify-content: space-between
+            align-items: center
+            padding: 10px
+            position: absolute
+            bottom: 0%
+            left: 50%
+            transform: translateX(-50%)
+            .left-grp
+                display: flex
+                align-items: center
+                gap: 20px
+                height: 100%
+                img 
+                    max-height: 100%
+                .download-image__description
+                    h4
+                        font-size: 1.1rem
+@media screen and (min-width: 1000px)
+    .home__download
+        width: 70%
+        display: flex
+        flex-wrap: wrap
+        flex-direction: row-reverse
+        justify-content: center
+        align-items: center
+        margin: 0 auto
+        .home__download-text
+            width: 60%
+            text-align: inherit
+        .home__download-image
+            width: 40%
+            .dl-icon
+            height: 50%
+
