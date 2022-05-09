@@ -6,11 +6,11 @@ $imgpath: url("../../assets/register.jpg")
     background: transparent url(#{$imgpath}) $repeat $position
 
 html 
-  $topBarDark: rgb(0, 12, 39)
-  $topBarLight: rgb(14, 38, 60)
+  $topBarDark: black
+  $topBarLight: gray
 
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $topBarDark), color-stop(100%, $topBarLight))
-  background-image: -moz-linear-gradient(bottom, $topBarLight 0%, $topBarDark 100%)
+  background-image: -moz-linear-gradient(left, $topBarLight 0%, $topBarDark 100%)
 
 body
   @include backgroundShorthand('../../assets/register.jpg')
