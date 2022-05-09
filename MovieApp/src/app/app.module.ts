@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
 import {LoginPageComponent} from './login-page/login-page.component'
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './register-page/register-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
