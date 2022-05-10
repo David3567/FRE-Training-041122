@@ -1,0 +1,5 @@
+<article>
+  <h2>{{article.title}}</h2>
+  <p>{{article.text}}</p>
+  <button type="button" [ngStyle]="{'backgroundColor': article.color}" (click)="handleClick()">Set {{article.color}}</button>
+</article>

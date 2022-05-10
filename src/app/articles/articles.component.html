@@ -1,0 +1,12 @@
+<main>
+  <h1 [ngStyle]="{'color': currentSelection }" >All Articles</h1>
+  <div class="articles__container">
+    <app-single-article
+      *ngFor="let article of articles"
+      [single-article]="article"
+      (buttonClicked) = "handleButtonClicked($event)"
+      [ngStyle]="article.color===currentSelection ? {'box-shadow': '0.2rem 0.2rem 0.3rem '+currentSelection, 'border-radius':'5px' } : null" 
+      >{{ article }}</app-single-article
+    >
+  </div>
+</main>
