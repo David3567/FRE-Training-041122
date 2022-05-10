@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Antra Assignment 1</title>
+  </head>
+  <body>
+    <div class="headerContainer" [ngStyle]="{ color: fontColor }">
+      <h1>
+        More than 900 mayo clinic staff members diagnosed with Covid-19 in
+        midwest over two weeks
+      </h1>
+    </div>
+    <div class="bodyContainer">
+      <app-cards (setColor)="setColor($event)"></app-cards>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<div class="cardContainer">
+  <mat-card
+    class="mat-elevation-z10"
+    *ngFor="let card of cards"
+    [ngStyle]="{
+      'border-color': card.title === cardTitle ? cardColor : 'black',
+      'box-shadow':
+        card.title === cardTitle ? '10px 10px 10px ' + cardColor : 'None'
+    }"
+  >
+    <mat-card-title>{{ card.title }}</mat-card-title>
+    <mat-card-content>{{ card.content }}</mat-card-content>
+    <mat-card-footer>
+      <button (click)="changeColor(card.color, card.title)">
+        {{ card.button }}
+      </button>
+    </mat-card-footer>
+  </mat-card>
+</div>
