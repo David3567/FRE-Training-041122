@@ -10,6 +10,7 @@ import { TodolistService } from '../services/todolist.service';
 })
 export class TodolistComponent implements OnInit {
   todolist: Todo[] = [];
+  title = '';
   todo: Todo = {
     title: '',
     completed: false,
