@@ -1,0 +1,41 @@
+<section class="register-body">
+    <div class="logo">
+        <img src="../../assets/images/logo.png" alt="" class="logo-img">
+    </div>
+    <mat-card class="register-card">
+        <h2>Register</h2>
+        <form class="register-form">
+            <mat-form-field class="register-full-width" appearance="fill">
+                <mat-label>Username</mat-label>
+                <input matInput class="register-input">
+            </mat-form-field>
+            <mat-form-field class="register-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type='email' class="register-input">
+            </mat-form-field>
+            <mat-form-field class="register-full-width" type="password" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput class="register-input">
+            </mat-form-field>
+            <mat-form-field class="register-full-width" type="password" appearance="fill">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput class="register-input">
+            </mat-form-field>
+            <button mat-button disabled class="register-role" [matMenuTriggerFor]="menu">
+                Select Role . . .
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Item 1</button>
+                <button mat-menu-item>Item 2</button>
+            </mat-menu>
+
+            <mat-form-field class="register-full-width" appearance="fill">
+                <mat-label>API Key</mat-label>
+                <input matInput class="register-input">
+            </mat-form-field>
+            <div>
+                <button mat-raised-button class="register-full-width btn" color="success">Register</button>
+            </div>
+        </form>
+    </mat-card>
+</section>

@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Color Palette */
+$color-red: #DB202C;
+$color-gray: #564d4d;
+$color-white: #fff;
+
+
+html, body { width: 100%; height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+body {
+    background-color: #000;
+    color: $color-white;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn {
+  background-color: $color-red;
+}

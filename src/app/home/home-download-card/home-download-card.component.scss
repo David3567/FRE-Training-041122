@@ -1,0 +1,74 @@
+@import "../../../styles.scss";
+
+.home__download {
+  padding: 100px 0;
+  .home__download-text {
+    text-align: center;
+    h2 {
+      font-size: 2.5rem;
+      line-height: 1.1;
+    }
+  }
+  .home__download-image {
+    height: auto;
+    border: 0;
+    position: relative;
+    .dl-icon {
+      height: 50%;
+    }
+    .mobile-img {
+      width: 100%;
+    }
+    .download-image__overlay {
+      width: 60%;
+      min-width: 200px;
+      height: 80px;
+      border-radius: 8px;
+      background-color: #000;
+      border: 1px solid rgb(83, 83, 83);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      position: absolute;
+      bottom: 0%;
+      left: 50%;
+      transform: translateX(-50%);
+      .left-grp {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        height: 100%;
+        img {
+          max-height: 100%;
+        }
+        .download-image__description {
+          h4 {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1000px) {
+  .home__download {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    .home__download-text {
+      width: 60%;
+      text-align: inherit;
+    }
+    .home__download-image {
+      width: 40%;
+      .dl-icon {
+        height: 50%;
+      }
+    }
+  }
+}

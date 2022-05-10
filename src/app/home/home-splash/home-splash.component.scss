@@ -1,0 +1,24 @@
+@import "../../../styles.scss";
+
+.home__splash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 300px;
+  .home__splash-text {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: calc(50vh / 2);
+    text-align: center;
+    h2 {
+      font-size: 3.5rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+    .btn-started {
+      margin: 20px 0 0 0;
+      padding: 8px 12px;
+      font-size: 1.5rem;
+    }
+  }
+}
