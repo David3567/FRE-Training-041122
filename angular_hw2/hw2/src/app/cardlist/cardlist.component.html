@@ -1,0 +1,12 @@
+<section class="cardlist">
+  <header>Card List</header>
+  <div class="card title" >
+    <p>cardlist works!</p>
+    <ul id="cardlist_container">
+        <app-card
+        ngClass = ""
+        [item] = "card"
+        (changeColors)="changeList($event)"></app-card>
+    </ul>
+  </div>  
+</section>
