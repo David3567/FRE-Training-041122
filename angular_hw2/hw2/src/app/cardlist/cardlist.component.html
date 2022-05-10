@@ -1,12 +1,14 @@
 <section class="cardlist">
-  <header>Card List</header>
+  <header class="header">List of Cards</header>
   <div class="card title" >
-    <p>cardlist works!</p>
+
     <ul id="cardlist_container">
         <app-card
-        ngClass = ""
-        [item] = "card"
-        (changeColors)="changeList($event)"></app-card>
+        *ngFor="let i of card"
+        [item] = "i"
+        (changeColors)="changeList($event)"
+        ></app-card>
     </ul>
   </div>  
 </section>
+<!-- [style.header.color]="{'color': 'red'}" -->

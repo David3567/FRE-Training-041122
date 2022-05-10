@@ -15,6 +15,6 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {}
 
   changeColor(){
-    this.changeColors.emit(this.card?.btncolor);
+    this.changeColors.emit(this.card.btncolor);
   }
 }
