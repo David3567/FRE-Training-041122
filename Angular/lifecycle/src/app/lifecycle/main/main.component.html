@@ -1,0 +1,30 @@
+<h1>Angular Life Cycle Hooks</h1>
+Reference : {{ name }}
+
+<h1 style="color: red">Root Component</h1>
+
+<br />
+<div>
+  input message to child component:
+  <input type="text" name="message" [(ngModel)]="message" autocomplete="off" />
+</div>
+
+<br />
+<input type="text" name="content" [(ngModel)]="content" autocomplete="off" />
+
+<br />
+hide child :
+<input
+  type="checkbox"
+  name="hideChild"
+  [(ngModel)]="hideChild"
+  autocomplete="off"
+/>
+
+<br />
+<br />
+
+<app-child [message]="message" *ngIf="!hideChild">
+  Injected Content
+  <b> {{ content }} </b>
+</app-child>
