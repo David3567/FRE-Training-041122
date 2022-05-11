@@ -9,6 +9,8 @@ export class TodolistService {
   private readonly baseUrl = 'https://jsonplaceholder.typicode.com';
   private readonly path = 'todos';
 
+  counter: number = 123;
+
   constructor(private readonly http: HttpClient) {}
 
   getTodos() {
