@@ -1,0 +1,24 @@
+<div
+  id="login-dialog"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="1rem"
+>
+  <h1>Sign In</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <!-- <input matInput placeholder="pat@example.com" [formControl]="email" required> -->
+    <input matInput placeholder="pat@example.com" required type="email" />
+    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <!-- <input matInput placeholder="pat@example.com" [formControl]="email" required> -->
+    <input matInput required type="password" />
+    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="button">Sign In</button>
+  <span>No account? <a href="#">Register Now</a></span>
+</div>
