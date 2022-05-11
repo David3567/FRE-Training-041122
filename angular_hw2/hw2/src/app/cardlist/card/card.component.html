@@ -1,5 +1,8 @@
 <li>
-  <h3>{{ card.title }}</h3>
-  <p>{{ card.description }}</p>
-  <button (click)="changeColor()">Click Me</button>
+  <div [ngStyle]="{'border': ('2px solid '+selected), 'box-shadow': ('5px 5px 2px '+selected)}">
+  <h3>{{ title }}</h3>
+  <p>{{ description }}</p>
+  <button (click)="changeColor()">{{ btncolor }}</button>
+  </div>
 </li>
+<br />
