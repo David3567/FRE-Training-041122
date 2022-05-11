@@ -1,4 +1,6 @@
- .register-body {
+@import "../../styles.scss";
+
+.register-body {
         position: absolute;
         top: 0;
         left: 0;
@@ -21,14 +23,9 @@
 
     .logo {
         position: relative;
-        height: 90px;
         margin-top: 20px;
         margin-left: 25px;
         z-index: 2;
-    }
-
-    img {
-        width: 170px;
     }
 
     .register-card {
@@ -45,10 +42,7 @@
     }
 
     .btn {
-        display: block;
         padding: 0.7rem 0;
-        background-color: #de0913;
-        color: #fff;
     }
 
     .register-form {
@@ -59,7 +53,7 @@
 
     .register-role {
         color: #fff;
-        border: 1px solid #de0913;
+        border: 1px solid $color-red;
         margin-bottom: 1rem;
     }
 
