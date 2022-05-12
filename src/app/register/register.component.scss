@@ -1,8 +1,8 @@
 @import "../../styles.scss";
 
 .register-body {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 120px;
   left: 0;
   min-width: 100%;
   min-height: 100%;
@@ -63,5 +63,5 @@ mat-label {
 }
 
 .mat-card {
-    margin-top: 200px;
+    margin-top: 80px;
 }

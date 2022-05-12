@@ -5,6 +5,13 @@ $color-red: #db202c;
 $color-gray: #564d4d;
 $color-white: #fff;
 
+/* Reset */
+*, *::after, *::before{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Global Style */
 html,
 body {

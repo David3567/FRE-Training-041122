@@ -5,6 +5,7 @@ hr {
   background-color: $color-gray;
   height: 5px;
   border: none;
+  margin-top:40vh;
 }
 h3 {
   font-size: 2rem;
@@ -38,10 +39,8 @@ h3 {
       opacity: 0.15;
     }
   }
-  .home-content{
+  .home-content {
     position: relative;
-    z-index: 9999999;
+    z-index: 999;
   }
 }
-
-

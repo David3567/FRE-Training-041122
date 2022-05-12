@@ -10,3 +10,21 @@ header {
   }
 }
 
+.right-grp{
+  display: flex;
+  align-items: center;
+}
+
+.nav-items {
+  margin-left: 80px;
+  display: flex;
+  gap: 25px;
+  a {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: $color-white;
+  }
+  a:hover {
+    color: $color-gray;
+  }
+}
