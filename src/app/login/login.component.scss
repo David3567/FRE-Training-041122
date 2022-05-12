@@ -1,11 +1,9 @@
+@import "../../styles.scss";
+
 #login-dialog{
-    padding: 16px;
-    height:100%;
+    padding-top: 200px;
 }
 #login-dialog > * {
     width: auto;
     height: auto;
-}
-.mat-raised-button{
-   background-color: #de0913; 
 }
