@@ -39,6 +39,7 @@ export class CardlistComponent implements OnInit {
   }
 
   changeList(color: string): void {
+    this.selected="";
     this.cardlist = this.card.filter(card => card.btncolor === color);
     this.selected = this.cardlist[0].btncolor;
   }
