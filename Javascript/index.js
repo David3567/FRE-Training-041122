@@ -904,26 +904,36 @@ console.clear();
 // fn.next();
 
 // 7, 3, 5, 1, 2, 4 ...
-// getData(7)
-//     .then(data => {
-//         print(data);
-//         return getData(3);
-//     })
-//     .then(data => {
-//         print(data);
-//         return getData(5);
-//     })
-//     .then(data => {
-//         print(data);
-//         return getData(1);
-//     })
-//     .then(data => {
-//         print(data);
-//         return getData(2);
-//     })
-//     .then(data => {
-//         print(data);
-//     });
+// (async () => {
+//     await getData(7); 4s
+//     await getData(5); 2s
+//     await getData(1); 1s 
+//     await getData(2); 2s
+// })();  
+// // 4s
+
+// Promise.all([]).then([])
+
+getData(7)
+    .then(data => {
+        print(data);
+        return getData(3);
+    })
+    .then(data => {
+        print(data);
+        return getData(5);
+    })
+    .then(data => {
+        print(data);
+        return getData(1);
+    })
+    .then(data => {
+        print(data);
+        return getData(2);
+    })
+    .then(data => {
+        print(data);
+    });
 
 // const getTheCompanyName = (data) => {
 //     const name = data.company.name;

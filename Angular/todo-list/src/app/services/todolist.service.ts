@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { Todo } from '../interfaces/todo.interface';
 
 @Injectable({
@@ -14,7 +15,11 @@ export class TodolistService {
   constructor(private readonly http: HttpClient) {}
 
   getTodos() {
-    return this.http.get<Todo[]>([this.baseUrl, this.path].join('/'));
+    return this.http.get<Todo[]>([this.baseUrl, this.path].join('/')).pipe(
+      map((todolist) => {
+        return todolist.reverse();
+      })
+    );
   }
   addTodo(todo: Todo) {
     return this.http.post<Todo>([this.baseUrl, this.path].join('/'), todo);

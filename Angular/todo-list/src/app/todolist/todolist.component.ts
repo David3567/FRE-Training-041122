@@ -11,7 +11,10 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./todolist.component.scss'],
 })
 export class TodolistComponent implements OnInit {
-  todolist: Todo[] = [];
+  //   todolist: Todo[] = [];
+
+  todolist$!: Observable<Todo[]>;
+
   title = '';
   todo: Todo = {
     title: '',
@@ -24,21 +27,23 @@ export class TodolistComponent implements OnInit {
   constructor(private readonly todoListService: TodolistService) {}
 
   ngOnInit(): void {
-    this.todoListService.getTodos().subscribe((todolist: Todo[]) => {
-      this.todolist = todolist.reverse();
-    });
+    this.todolist$ = this.todoListService.getTodos();
 
-    this.inputbox$ = fromEvent(this.inputTodo.nativeElement, 'keyup').pipe(
-      tap((evt) => {
-        if (evt.code === 'Enter') {
-          this.todoListService.addTodo(this.todo).subscribe((todo: Todo) => {
-            this.todolist = [todo, ...this.todolist];
-          });
-          this.todo.title = '';
-        }
-      })
-    );
-    this.inputbox$.subscribe();
+    // this.todoListService.getTodos().subscribe((todolist: Todo[]) => {
+    //   this.todolist = todolist;
+    // });
+
+    // this.inputbox$ = fromEvent(this.inputTodo.nativeElement, 'keyup').pipe(
+    //   tap((evt) => {
+    //     if (evt.code === 'Enter') {
+    //       this.todoListService.addTodo(this.todo).subscribe((todo: Todo) => {
+    //         this.todolist = [todo, ...this.todolist];
+    //       });
+    //       this.todo.title = '';
+    //     }
+    //   })
+    // );
+    // this.inputbox$.subscribe();
   }
 
   //   addTodo() {
@@ -48,8 +53,8 @@ export class TodolistComponent implements OnInit {
   //     this.todo.title = '';
   //   }
 
-  deleteTodo(id: string) {
-    this.todolist = this.todolist.filter((todo: any) => +todo.id !== +id);
-    this.todoListService.deleteTodo(+id).subscribe();
-  }
+  //   deleteTodo(id: string) {
+  //     this.todolist = this.todolist.filter((todo: any) => +todo.id !== +id);
+  //     this.todoListService.deleteTodo(+id).subscribe();
+  //   }
 }
