@@ -5,6 +5,7 @@ $color-red: #db202c;
 $color-gray: #564d4d;
 $color-white: #fff;
 
+/* Global Style */
 html,
 body {
   width: 100%;
@@ -13,37 +14,28 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-body {
   background-color: #000;
   color: $color-white;
 }
-html,
-body {
-  height: 100%;
+li {
+  list-style: none;
 }
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+a {
+  color: $color-red;
+  transition: 0.2s all ease-in-out;
+}
+a:hover {
+  color: $color-gray;
 }
 
+/* Global Classes */
 .center-content {
   width: 90vw;
   margin: 0 auto;
 }
-
 .mat-raised-button {
   background-color: $color-red;
 }
-
 .logo {
   height: 50px;
-}
-a{
-  color: $color-red;
-  transition: 0.2s all ease-in-out;
-}
-a:hover{
-  color: $color-gray;
 }

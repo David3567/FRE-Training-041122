@@ -1,8 +1,21 @@
 <header class="center-content">
-  <a routerLink=""
-    ><img src="../assets/images/logo.png" alt="Antraflix Logo" class="logo"
-  /></a>
+  <div class="right-grp">
+    <a routerLink=""
+      ><img src="../assets/images/logo.png" alt="Antraflix Logo" class="logo"
+    /></a>
+
+    <nav *ngIf="isLogged === true">
+      <ul class="nav-items">
+        <li class="nav-item" *ngFor="let navItem of navItems">
+          <a [routerLink]="[navItem.path]">{{ navItem.text }}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
   <div class="btn-container">
-    <button mat-raised-button routerLink="/login">Sign In</button>
+    <button *ngIf="isLogged === false" mat-raised-button routerLink="/login">
+      Sign In
+    </button>
   </div>
 </header>

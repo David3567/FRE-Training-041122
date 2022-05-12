@@ -1,13 +1,12 @@
-//@import "../../styles.scss";
+@import "../../styles.scss";
+
 header {
   display: flex;
   justify-content: space-between;
   padding: 50px 0 0 0;
-  a {
-    z-index: 100;
-  }
   .btn-container {
     display: flex;
     align-items: center;
   }
 }
+
