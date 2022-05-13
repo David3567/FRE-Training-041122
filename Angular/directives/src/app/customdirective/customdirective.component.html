@@ -7,11 +7,13 @@
 
 <hr />
 
-<p [appMydirective]="color">Highlight me!</p>
+<p mydirective [highlightColor]="color">Highlight me!</p>
 
-<p [appMydirective]="color" defaultColor="violet">Highlight me too!</p>
+<p mydirective [highlightColor]="color" defaultColor="violet">
+  Highlight me too!
+</p>
 
 <hr />
 
-<input type="text" [name]="" [appMydirective]="color" />
+<input type="text" [name]="" mydirective [highlightColor]="color" />
 {{ name }}

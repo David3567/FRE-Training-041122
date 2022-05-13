@@ -9,7 +9,7 @@
     <div class="row">
       <p>
         Fahrenheit : <input type="text" [(ngModel)]="Fahrenheit" /> Celsius :
-        {{ Fahrenheit | tempConverter: "C" }}
+        {{ Fahrenheit | tempConverter: "C" | tempConverter: "F" }}
       </p>
     </div>
 

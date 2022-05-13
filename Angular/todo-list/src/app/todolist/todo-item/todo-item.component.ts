@@ -17,10 +17,4 @@ export class TodoItemComponent implements OnInit {
   handleDelete() {
     this.triggerDelete.emit(this.todo?.id);
   }
-
-  //   card = {
-  //       header: 'sdfsafadf',
-  //       description: 'sdfasdfasdfads',
-  //       btncolor: 'red'
-  //   }
 }

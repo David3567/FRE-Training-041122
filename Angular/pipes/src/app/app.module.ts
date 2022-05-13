@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustompipeComponent } from './custompipe/custompipe.component';
 import { MyPipePipe } from './custompipe/my-pipe.pipe';
+import { NPipe } from './n.pipe';
 
 @NgModule({
-  declarations: [AppComponent, CustompipeComponent, MyPipePipe],
+  declarations: [AppComponent, CustompipeComponent, MyPipePipe, NPipe],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

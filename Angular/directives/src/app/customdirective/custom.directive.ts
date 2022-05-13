@@ -8,11 +8,11 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[appMydirective]',
+  selector: '[mydirective]',
 })
 export class CustomDirective implements OnInit {
   @Input() defaultColor = '';
-  @Input('appMydirective') highlightColor = '';
+  @Input() highlightColor = '';
 
   @HostBinding('name') name = '';
 
