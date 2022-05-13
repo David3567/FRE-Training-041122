@@ -1,0 +1,79 @@
+<form class="bookForm">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Book Search</mat-label>
+    <input
+      matInput
+      #inputBox
+      placeholder="Enter the name of a book..."
+      (keydown.enter)="$event.preventDefault()"
+    />
+  </mat-form-field>
+</form>
+
+<div class="container">
+  <div class="searchResults">
+    <mat-card class="example-card" *ngFor="let book of bookList">
+      <img
+        mat-card-xl-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+      />
+      <div class="cardData">
+        <mat-card-title-group>
+          <mat-card-title (click)="add2Wishlist(book.id)">
+            Book Name:
+            <p>{{ book.bookTitle }}</p>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <strong>Publisher: </strong>
+            <p>Publisher</p>
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            <strong>Publish Date: </strong>
+            <p>Publish Date</p>
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            <strong>Description: </strong>
+          </mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quae at
+          quaerat minus, reprehenderit, a nobis eveniet amet incidunt facere
+          sapiente ratione error provident sunt. Accusantium optio harum quidem
+          illo?
+        </mat-card-content>
+      </div>
+    </mat-card>
+    <!-- <mat-card class="example-card">
+      <img
+        mat-card-xl-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+      />
+      <div class="cardData">
+        <mat-card-title-group>
+          <mat-card-title>
+            Book Name:
+            <p>Book Name</p>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <strong>Publisher: </strong>
+            <p>Publisher</p>
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            <strong>Publish Date: </strong>
+            <p>Publish Date</p>
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            <strong>Description: </strong>
+          </mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quae at
+          quaerat minus, reprehenderit, a nobis eveniet amet incidunt facere
+          sapiente ratione error provident sunt. Accusantium optio harum quidem
+          illo?
+        </mat-card-content>
+      </div>
+    </mat-card> -->
+  </div>
+  <app-wishlist class="wishlistContainer"></app-wishlist>
+</div>
