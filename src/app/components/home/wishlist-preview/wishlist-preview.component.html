@@ -1,0 +1,13 @@
+<section class="wishlist-preview">
+  <h2>My Wishlist ({{ wishlist.length }})</h2>
+  <ul>
+    <li *ngFor="let wish of wishlist">
+      <span>{{
+        wish.title.length > 50 ? (wish.title | slice: 0:50) + "..." : wish.title
+      }}</span>
+      <button (click)="deleteFromWishList(wish.id)">
+        <mat-icon aria-hidden="false" aria-label="close button">close</mat-icon>
+      </button>
+    </li>
+  </ul>
+</section>

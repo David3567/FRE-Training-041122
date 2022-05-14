@@ -1,0 +1,22 @@
+@import "../../../styles.scss";
+
+header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $color-blue;
+  h1{
+    cursor: pointer;
+  }
+}
+
+mat-nav-list {
+  display: flex;
+  margin-left: 30px;
+  a:hover {
+    color: $color-link-hover;
+  }
+}
+
+.mat-list-base .mat-list-item {
+  width: inherit;
+}

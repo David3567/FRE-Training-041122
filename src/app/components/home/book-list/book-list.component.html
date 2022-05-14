@@ -1,0 +1,11 @@
+<section class="book-list">
+  <h2>Results: {{ booklist$.length | async }}</h2>
+  <mat-list>
+    <app-book-card
+      *ngFor="let book of booklist$ | async"
+      (click)="addToWish(book.id)"
+      [book]="book"
+      >{{ book }}</app-book-card
+    >
+  </mat-list>
+</section>

@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+$color-blue: #7300c0;
+$color-link-hover: rgb(211, 115, 255);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 3%;
+}
+ul {
+  list-style: none;
+}

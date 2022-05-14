@@ -1,0 +1,27 @@
+@import "../../../../styles.scss";
+
+.wishlist-preview {
+  height: 100%;
+  padding-left: 30px;
+}
+
+h2 {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: $color-blue;
+}
