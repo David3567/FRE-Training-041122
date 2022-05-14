@@ -11,6 +11,7 @@ export class HomePageComponent implements OnInit {
 
   @ViewChild('inputBox', {static: true}) inputBox!: ElementRef;
   bookList: any = []
+  seeMore: boolean = false
 
   constructor(private bookAPI: BookAPIService) { }
 
@@ -37,6 +38,11 @@ export class HomePageComponent implements OnInit {
 
   add2Wishlist(id: string) {
     this.bookAPI.addWish(id)
+  }
+
+  toggleSeeMore() {
+    console.log(this.seeMore)
+    this.seeMore = this.seeMore === false ?  true : false;
   }
 
 }

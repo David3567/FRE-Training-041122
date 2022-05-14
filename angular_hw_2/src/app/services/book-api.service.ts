@@ -25,7 +25,12 @@ export class BookAPIService {
         const tempList: any = bookObj.items.map((bookDetails: any) => {
           return {
             bookTitle: bookDetails.volumeInfo.title,
-            id: bookDetails.id
+            id: bookDetails.id,
+            publishedDate: bookDetails.volumeInfo.publishedDate,
+            publisher: bookDetails.volumeInfo.publisher,
+            thumbnail: bookDetails.volumeInfo.imageLinks.thumbnail,
+            description: bookDetails.volumeInfo.description,
+            authors: bookDetails.volumeInfo.authors,
           }
         })
         return tempList
