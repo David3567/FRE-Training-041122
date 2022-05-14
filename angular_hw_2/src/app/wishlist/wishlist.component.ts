@@ -16,4 +16,8 @@ export class WishlistComponent implements OnInit {
     })
   }
 
+  deleteFromWish(id: string) {
+    this.bookAPI.deleteWish(id)
+  }
+
 }

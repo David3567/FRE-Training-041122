@@ -40,12 +40,14 @@ export class BookAPIService {
   addWish(id: string) {
     const book = this.books.find(book => book.id === id)
     const bookInWL = this.wishes.find(wish => wish.id === id)
-    if (!book || bookInWL) {
-      return
-    }  
-    
+    if (!book || bookInWL) return
     this.wishes.push(book)
-    console.log(book)
+    this.wishesSubject$.next(this.wishes)
+  }
+
+  deleteWish(id: string) {
+    const wishIndex = this.wishes.map((obj) => {return obj.id}).indexOf(id)
+    this.wishes.splice(wishIndex, 1)
     this.wishesSubject$.next(this.wishes)
   }
 }

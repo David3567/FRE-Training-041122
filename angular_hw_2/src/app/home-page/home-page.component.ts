@@ -29,15 +29,13 @@ export class HomePageComponent implements OnInit {
         this.bookAPI.getData(bookName)
       })
     ).subscribe()
-
+      
     this.bookAPI.books$.subscribe( (bookList:any) => {
       this.bookList = [...bookList]
-      console.log(bookList)
     })
   }
 
   add2Wishlist(id: string) {
-    console.log('hi', id)
     this.bookAPI.addWish(id)
   }
 
