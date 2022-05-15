@@ -1,5 +1,9 @@
 $main-bg-color: rgb(0, 12, 39);
-$main-bg-contrast:  rgba(0, 168, 173, 0.5);
+$main-bg-contrast:  #41259e;
+
+// rgb(43,227,252)
+// rgb(194,99,253)
+// rgb(255,107,178)
 
 * {
     padding: 0;
@@ -17,6 +21,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    // opacity: 20%;
 }
 
 .headerInteractive {
@@ -50,7 +55,7 @@ option {
 }
 
 .signIn {
-    background-color: #2196f3;
+    background-color: hotpink;
     height: 40%;
     width: 120px;
     transition: 0.3s;
