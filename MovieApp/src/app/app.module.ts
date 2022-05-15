@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MovieCardComponent } from './movie-list/movie-card/movie-card.component'
 import { MatInputModule } from '@angular/material/input';
+import { TextPipePipe } from './pipes/text-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
     LoginPageComponent,
     MovieListComponent,
     MovieCardComponent,
+    TextPipePipe,
   ],
   imports: [
     BrowserModule,
