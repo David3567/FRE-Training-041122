@@ -1,0 +1,28 @@
+<div class="searchBar">
+  <mat-form-field class="movieForm" appearance="fill">
+    <mat-label>Please enter a movie name...</mat-label>
+    <input #movieNameInput matInput type="text" [(ngModel)]="value" />
+    <button
+      *ngIf="value"
+      class="clearButton"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="value = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<br />
+<div class="navigationTools">
+  <h1><span class="material-icons"> theaters </span>Browse All</h1>
+  <div class="filtering">
+    <h2><span class="material-icons"> filter_list </span>Popularity</h2>
+    <h2><span class="material-icons"> filter_alt </span>Filter</h2>
+  </div>
+</div>
+<div class="separator"></div>
+<div class="container">
+  <app-movie-card [movieName]="movieName"></app-movie-card>
+</div>
