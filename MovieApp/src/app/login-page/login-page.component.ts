@@ -17,8 +17,7 @@ export class LoginPageComponent implements OnInit {
   };
   signUser(){
     if(this.data.username ==="Aaron" && this.data.password ==="1234"){
-
-      console.log("Hello Aaron!")
+      console.log("Hello Aaron!");
     }else{
     console.log("please signup an account");
     }

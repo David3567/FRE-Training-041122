@@ -1,37 +1,39 @@
 $font-stack: Helvetica, sans-serif
 $background-color: rgba(95, 95, 95, 0.5)
-$imgpath: url("../../assets/online-registration-vector.jpg")
+
+$cyan-accent-color: rgb(43,227,252)
+$purple-accent-color: rgb(194,99,253)
+$pink-accent-color: rgb(255,107,178)
+$main-bg-color: rgb(0, 0, 0)
+$imgpath: url("../../assets/register-neon.jpg")
 
 @mixin backgroundShorthand($imgpath,$position: right ,$repeat: no-repeat)
     background: transparent url(#{$imgpath}) $repeat $position
     background-size: 50%
-
-html 
-  $topBarDark: white
-  $topBarLight: white
-
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, $topBarDark), color-stop(50%, $topBarLight))
-  background-image: -moz-linear-gradient(left, $topBarLight 50%, $topBarDark 50%)
-
+    -webkit-filter: grayscale(60%)
+    filter: grayscale(60%)
+ 
 body
-  @include backgroundShorthand('../../assets/online-registration-vector.jpg')
+  @include backgroundShorthand('../../assets/register-neon.jpg')
+
   font: $font-stack
   font-size: 25px
   height: 100vh
   width: 100%
   overflow-x: hidden
 
-div
+.signup
   margin: 140px
   padding: 10px
-  height: 20%
+  height: 30%
   width: 30%
 
-  border-color: white
-  color: $background-color
-  background-color: white
-  box-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px rgb(50, 101, 149)
-  border-radius: 15px
+  border-color: none
+  background-color: black
+  //box-shadow: 0 0 5px $background-color, 0 0 5px $background-color, 0 0 5px rgb(50, 101, 149)
+  border-radius: .25em
+  box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
+
 
 ul 
   padding: 3px
@@ -45,7 +47,7 @@ ul li
   justify-content: center
 
 label
-  color: #c84646
+  color: whitesmoke
 
 button
   float: right
@@ -56,13 +58,16 @@ button
   line-height: 15px
 
   font-size: 18px
-  background-color: #c84646
-  border-radius: 10px
-  border: 2px solid #c84646
+  background-color: $background-color
+  border-radius: .25em
+  border: 1px solid $cyan-accent-color
   
 button:hover 
-  font-size: 1.4rem
-  box-shadow: 0 0 5px #c84646, 0 0 10px #c84646, 0 0 15px #c84646
+  background-color: $cyan-accent-color
+  color: $main-bg-color
+  border: 1px $cyan-accent-color
+  box-shadow: ((inset 0 0 0.3em $cyan-accent-color, 0 0 0.3em $cyan-accent-color), (inset 0 0 0.3em $cyan-accent-color, 0 0 0.3em $cyan-accent-color))
+
 
 input
   height: 30px
@@ -71,8 +76,9 @@ input
   font-size: 18px
   line-height: 15px
   border-radius: 10px
-  border: 1px solid rgb(50, 101, 149)
-  color: rgb(50, 101, 149)
+  border: 1px solid $cyan-accent-color
+  color: whitesmoke
+  background-color: $background-color
 
 input:hover 
   font-size: 1.4rem
@@ -85,8 +91,9 @@ select
   font-size: 18px
   line-height: 15px
   border-radius: 10px
-  border: 1px solid rgb(50, 101, 149)
-  color: rgb(50, 101, 149)
+  border: 1px solid $cyan-accent-color
+  color: whitesmoke
+  background-color: $background-color
 
 select:hover 
   font-size: 1.4rem

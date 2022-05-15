@@ -1,5 +1,12 @@
-<app-home-page></app-home-page>
+<mat-sidenav-container class="nav-container">
+    <mat-sidenav #sidenav mode="side">
+      <app-nav-sidebar></app-nav-sidebar>
+    </mat-sidenav>
 
-<app-login-page></app-login-page>
-
-<app-register-page></app-register-page>
+    <mat-sidenav-content>
+      <app-nav-header-bar (sidenavToggle)="sidenav.toggle()"></app-nav-header-bar>
+      <main>
+        <router-outlet></router-outlet>
+    </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
