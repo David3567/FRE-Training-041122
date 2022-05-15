@@ -1,0 +1,9 @@
+<div class="wishlistContainer">
+  <ul class="wishlist">
+    Wishlist
+    <li *ngFor="let wish of wishList">
+      {{ wish.bookTitle + " - " + wish.id }}
+      <button class="delete" (click)="deleteFromWish(wish.id)">delete</button>
+    </li>
+  </ul>
+</div>
