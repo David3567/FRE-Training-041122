@@ -60,4 +60,4 @@ baseline.json
 # Vscode
 .vscode/
 /node_modules
-environments
+environments/
