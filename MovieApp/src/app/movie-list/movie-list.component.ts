@@ -16,20 +16,24 @@ export class MovieListComponent implements OnInit {
   constructor(private movieAPI: TmdbAPIService) { }
 
   ngOnInit(): void {
+    this.movieAPI.queryMovies(true)
+
     fromEvent(this.movieNameInput.nativeElement, 'keyup').pipe(
       debounceTime(500),
       filter(_ => {
         const movieName = this.movieNameInput.nativeElement.value
-        // if (movieName === '') {
-        //   this.moviesList = []
-        // }
+        console.log(movieName)
+
+        if(movieName === '') {
+          this.movieAPI.queryMovies(true)
+          return false
+        }
         return true
       }),
       tap(_ => {
         const movieName = this.movieNameInput.nativeElement.value
-        this.movieAPI.getMovies(movieName)
+        this.movieAPI.queryMovies(false, movieName)
       })
     ).subscribe()
   }
-
 }

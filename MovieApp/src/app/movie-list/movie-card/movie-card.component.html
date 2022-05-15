@@ -6,14 +6,23 @@
   </mat-card-header>
   <div class="separator"></div>
   <mat-card-content>
-    <p>
-      {{ movie.overview }}
+    <p *ngIf="movie.showDetails">
+      {{ movie.overview | textReduction: movie.showDetails }}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>
-      <span class="material-icons"> favorite </span>LIKE
+    <button mat-button (click)="movie.showDetails = !movie.showDetails">
+      <span class="material-icons" *ngIf="movie.showDetails">
+        expand_less
+      </span>
+      <span class="material-icons" *ngIf="!movie.showDetails">
+        expand_more
+      </span>
+      Description
     </button>
-    <button mat-button><span class="material-icons"> share </span>SHARE</button>
+    <button mat-button *ngIf="movie.showDetails">
+      <span class="material-icons"> help_outline </span>
+      More Info
+    </button>
   </mat-card-actions>
 </mat-card>

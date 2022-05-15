@@ -11,14 +11,18 @@ export class MovieCardComponent implements OnInit {
   moviesList: any = []
   @Input('movieName') movieName!: string
   // @Input('emptyInput') emptyInput!: boolean
-
+  seeMore: boolean = false
   constructor(private movieAPI: TmdbAPIService) { }
 
   ngOnInit(): void {
-    console.log('this.movieName:')
     this.movieAPI.movies$.subscribe((movies: any) => {
       this.moviesList = [...movies]
       console.log(this.moviesList)
     })
+  }
+
+  toggleSeeMore() {
+    console.log(this.seeMore)
+    this.seeMore = this.seeMore === false ?  true : false;
   }
 }

@@ -15,7 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MovieCardComponent } from './movie-list/movie-card/movie-card.component'
 import { MatInputModule } from '@angular/material/input';
-import { TextPipePipe } from './pipes/text-pipe.pipe';
+import { TextReductionPipe } from './pipes/text-reduction.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { TextPipePipe } from './pipes/text-pipe.pipe';
     LoginPageComponent,
     MovieListComponent,
     MovieCardComponent,
-    TextPipePipe,
+    TextReductionPipe,
   ],
   imports: [
     BrowserModule,
