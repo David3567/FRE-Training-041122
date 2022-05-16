@@ -25,6 +25,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { NavHeaderBarComponent } from './nav-header-bar/nav-header-bar.component';
 import { NavSidebarComponent } from './nav-sidebar/nav-sidebar.component';
 import { MatListModule } from '@angular/material/list';
+import { NavLoggedInHeaderComponent } from './nav-logged-in-header/nav-logged-in-header.component';
 
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
@@ -32,6 +33,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'navheader', component: NavHeaderBarComponent},
+  {path: 'movielist', component: MovieListComponent},
+  {path: 'moviecard', component: MovieCardComponent}
 ];
 
 @NgModule({
@@ -42,6 +45,10 @@ const routes: Routes = [
     LoginPageComponent,
     NavHeaderBarComponent,
     NavSidebarComponent,
+    MovieListComponent,
+    MovieCardComponent,
+    TextReductionPipe,
+    NavLoggedInHeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,9 +61,6 @@ const routes: Routes = [
     MatSliderModule,
     MatSlideToggleModule,
     MatListModule,
-    MovieListComponent,
-    MovieCardComponent,
-    TextReductionPipe,
     HttpClientModule,
     MatInputModule,
   ],

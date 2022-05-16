@@ -5,9 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./login-page.component.scss"></script>
   </head>
   <body>
+    <mat-sidenav-container class="nav-container">
+      <mat-sidenav-content>
+        <app-nav-header-bar></app-nav-header-bar>
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+      </mat-sidenav-content>
+  </mat-sidenav-container>
     <div class="signIn-wrapper">
       <h1 id="signIn">Sign in</h1>
       <form (ngSubmit)="signUser()" #myForm="ngForm">
@@ -17,7 +24,8 @@
           required
           type="text"
           placeholder="User Name "
-          [(ngModel)]="data.username"
+          [(ngModel)]="datas.username"
+          [ngModelOptions]="{standalone: true}"
         />
         <div class="alert alert-danger" *ngIf="name.errors?.['required']">
           <p>Enter the user name</p>
@@ -30,7 +38,8 @@
           required
           type="password"
           placeholder="Password "
-          [(ngModel)]="data.password"
+          [(ngModel)]="datas.password"
+          [ngModelOptions]="{standalone: true}"
         />
         <div class="alert alert-danger" *ngIf="password.errors?.['required']">
           Enter the password
@@ -38,10 +47,11 @@
         <pre></pre>
         <br />
         <input
-          (click)="handleClear()"
           id="signIn-internal-wrapper"
           type="submit"
           value="submit"
+          [routerLink]="['/movielist']"
+          (click)="login($event)"
         />
       </form>
       <pre></pre>

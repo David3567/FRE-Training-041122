@@ -1,0 +1,26 @@
+<header class="topBar">
+    <mat-drawer #drawer mode="side" opened>
+      <mat-icon class="menu" (click)="onToggleSidenav()" >menu_open</mat-icon>
+      <hr class="hr" />
+      <div class="side-icons">
+      <mat-icon class="menu">manage_accounts</mat-icon>
+      <mat-icon class="menu">search</mat-icon>
+      <mat-icon class="menu">group</mat-icon>
+      </div>
+    </mat-drawer>
+    <div class="fig">
+      <img src="../../assets/coollogo_com.png" alt="" />
+    </div>
+    <div class="navInteractive">
+      <select class="language">
+        <option selected="selected">EN</option>
+        <option>SPAN</option>
+        <option>日本語</option>
+        <option>中文</option>
+      </select>
+      <mat-icon class="home" >toggle_on</mat-icon>
+      <mat-icon  class="register">manage_accounts</mat-icon>
+      <mat-icon class="signIn">face</mat-icon>
+    </div>
+  </header>
+  <hr class="hr" />

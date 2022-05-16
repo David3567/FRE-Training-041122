@@ -8,22 +8,30 @@
   </head>
   <body>
     <main>
-      <div class="signup">
-        <label>SIGN UP</label>
-        <ul>
-          <li><input type="text" placeholder="UserName*" /></li>
-          <li><input type="text" placeholder="User Email*" /></li>
-          <li><input type="text" placeholder="Password*" /></li>
-          <li><input type="text" placeholder="Confirm Password*" /></li>
-          <li>
-            <select disabled>
-              <option>Role*</option>
-            </select>
-          </li>
-          <li><input type="text" placeholder="Api Key*" /></li>
-          <li><button>Register</button></li>
-        </ul>
-      </div>
-    </main>
+    <mat-sidenav-container class="nav-container">
+      <mat-sidenav-content>
+        <app-nav-header-bar></app-nav-header-bar>
+        <main class="headermain">
+          <router-outlet></router-outlet>
+        </main>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+    <div class="signup">
+      <label>SIGN UP</label>
+      <ul>
+        <li><input type="text" placeholder="UserName*" /></li>
+        <li><input type="text" placeholder="User Email*" /></li>
+        <li><input type="text" placeholder="Password*" /></li>
+        <li><input type="text" placeholder="Confirm Password*" /></li>
+        <li>
+          <select disabled>
+            <option>Role*</option>
+          </select>
+        </li>
+        <li><input type="text" placeholder="Api Key*" /></li>
+        <li><button>Register</button></li>
+      </ul>
+    </div>
+  </main>
   </body>
 </html>

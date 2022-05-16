@@ -7,6 +7,14 @@
     <title>Document</title>
   </head>
   <body>
+    <mat-sidenav-container class="nav-container">
+      <mat-sidenav-content>
+        <app-nav-header-bar></app-nav-header-bar>
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+      </mat-sidenav-content>
+  </mat-sidenav-container>
     <div class="headContainer">
       <div class="headText">
         <h1>Find every movie and series trending at the moment</h1>

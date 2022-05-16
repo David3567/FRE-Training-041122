@@ -13,6 +13,10 @@ $imgpath: url("../../assets/register-neon.jpg")
     -webkit-filter: grayscale(60%)
     filter: grayscale(60%)
  
+*
+  margin: 0
+  padding: 0
+
 body
   @include backgroundShorthand('../../assets/register-neon.jpg')
 
@@ -21,6 +25,16 @@ body
   height: 100vh
   width: 100%
   overflow-x: hidden
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav 
+  height: 100%
+  background-color: black
+
+mat-sidenav 
+  width: 250px
+
+.headermain 
+  padding: 10px
 
 .signup
   margin: 140px
@@ -54,7 +68,7 @@ button
   margin-right: 150px
 
   height: 50px
-  width: 100px
+  width: 70px
   line-height: 15px
 
   font-size: 18px
