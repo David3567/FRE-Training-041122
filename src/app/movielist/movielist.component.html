@@ -1,0 +1,17 @@
+<div
+  id="movies-container"
+  fxLayout="row wrap"
+  fxLayoutGap="1rem"
+  fxLayoutAlign="center center"
+>
+  <div
+    class="movie"
+    *ngFor="let movie of movies"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+  >
+    <img src="{{ movie.imgUrl }}" alt="Movie Image" />
+
+    <h2 class="title">{{ movie.title }}</h2>
+  </div>
+</div>
