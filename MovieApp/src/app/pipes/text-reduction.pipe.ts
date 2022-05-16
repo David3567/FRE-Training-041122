@@ -3,6 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'textReduction'
 })
+
 export class TextReductionPipe implements PipeTransform {
 
   transform(value: string, seeMore: boolean): unknown {

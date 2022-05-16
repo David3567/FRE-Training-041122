@@ -1,22 +1,48 @@
+$cyan-accent-color: rgb(43,227,252)
+$purple-accent-color: rgb(194,99,253)
+$pink-accent-color: rgb(255,107,178)
+$main-bg-color: rgb(0, 0, 0)
+
 *
     margin: 0
     padding: 0
 
-$backgroundColor: white
+$backgroundColor: rgb(0, 0, 0)
 $backgroundSignIn: #1B2532
+
+$imgpath: url("../../assets/login-button-sign.jpg")
+
+@mixin backgroundShorthand($imgpath,$position: right ,$repeat: no-repeat)
+    background: transparent url(#{$imgpath}) $repeat $position
+    background-size: 50%
+    -webkit-filter: grayscale(60%)
+    filter: grayscale(60%)
+
 html
     overflow: hidden
-    height: 100vm
+    height: 150vh
 
 body
+    @include backgroundShorthand('../../assets/login-button-sign.jpg')
     overflow: auto
-    height: 100vm
     background-color: $backgroundColor
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav 
+  height: 100%
+  background-color: black
+
+mat-sidenav 
+  width: 250px
+
+main 
+  padding: 10px
+  background-color: black
 
 .signIn-wrapper
     width: 340px
     height: auto
-    margin: 10% 20% auto 30%
+    margin: 140px
+    padding: 10px
     background-color: $backgroundSignIn
     border: 2px solid #3498db
     line-height: 2.5rem
@@ -45,6 +71,7 @@ form
         perspective: 1px
         text-align: center
         border: 2px solid #3498db
+        color: black
     #userName-wrapper
         &:hover
             border: 2px solid #3498db
@@ -106,3 +133,6 @@ ul
 a
     text-decoration: none
     color: white
+
+#signIn-internal-wrapper
+  background-color: green
