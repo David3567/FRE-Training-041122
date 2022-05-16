@@ -1,0 +1,21 @@
+p {
+    font-size: 15px;
+    display: inline;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 10px;
+    text-align: center;
+}
+
+li {
+    padding: 5px;
+    margin: 10px;
+    height: 40px;
+    border: 1px red solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}

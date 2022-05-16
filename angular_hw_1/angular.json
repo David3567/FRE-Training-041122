@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MovieApp": {
+    "angular_hw_1": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         },
         "@schematics/angular:application": {
           "strict": true
@@ -20,19 +20,19 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/movie-app",
+            "outputPath": "dist/angular_hw_1",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "sass",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.sass"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "MovieApp:build:production"
+              "browserTarget": "angular_hw_1:build:production"
             },
             "development": {
-              "browserTarget": "MovieApp:build:development"
+              "browserTarget": "angular_hw_1:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MovieApp:build"
+            "browserTarget": "angular_hw_1:build"
           }
         },
         "test": {
@@ -94,18 +94,14 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "sass",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-<<<<<<< HEAD
-              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-=======
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
->>>>>>> 1eba0b4c7ba4585764bb5e4e1964f6ef80c0cfb5
-              "src/styles.sass"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -113,5 +109,5 @@
       }
     }
   },
-  "defaultProject": "MovieApp"
+  "defaultProject": "angular_hw_1"
 }
