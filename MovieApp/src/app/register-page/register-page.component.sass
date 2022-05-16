@@ -10,8 +10,8 @@ $imgpath: url("../../assets/register-neon.jpg")
 @mixin backgroundShorthand($imgpath,$position: right ,$repeat: no-repeat)
     background: transparent url(#{$imgpath}) $repeat $position
     background-size: 50%
-    -webkit-filter: grayscale(60%)
-    filter: grayscale(60%)
+    -webkit-filter: grayscale(50%)
+    filter: grayscale(50%)
  
 *
   margin: 0
@@ -43,8 +43,8 @@ mat-sidenav
   width: 30%
 
   border-color: none
+  line-height: 2.5rem
   background-color: black
-  //box-shadow: 0 0 5px $background-color, 0 0 5px $background-color, 0 0 5px rgb(50, 101, 149)
   border-radius: .25em
   box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
 
