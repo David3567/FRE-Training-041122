@@ -4,7 +4,7 @@
   fxLayoutAlign="center center"
   fxLayoutGap="1rem"
 >
-  <h1>Sign In</h1>
+  <h2>Sign In</h2>
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
     <!-- <input matInput placeholder="pat@example.com" [formControl]="email" required> -->
@@ -19,6 +19,6 @@
     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type="button">Sign In</button>
-  <span>No account? <a href="#">Register Now</a></span>
+  <button mat-raised-button type="button">Sign In</button>
+  <span>No account? <a routerLink="/register">Register Now</a></span>
 </div>

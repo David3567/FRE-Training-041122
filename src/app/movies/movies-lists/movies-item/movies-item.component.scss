@@ -1,0 +1,32 @@
+.card {
+  position: relative;
+  width: 400px;
+  background-size: cover;
+  padding: 8rem 0 0;
+  border-radius: 0;
+  transition: transform 300ms;
+  cursor: pointer;
+  .card-content {
+    padding: 0.9rem;
+    visibility: hidden;
+    .icons-div {
+      .icons {
+        margin-right: 1.5rem;
+      }
+    }
+  }
+}
+
+.card:hover {
+  transform: scale(1.2, 1.2);
+  border: 0.1px solid #fff;
+  z-index: 10;
+  .card-content {
+    visibility: visible;
+    cursor: pointer;
+    text-shadow: rgb(0, 0, 0) 0px 0px 10px;
+    .icons:hover {
+      color: red;
+    }
+  }
+}

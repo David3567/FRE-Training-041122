@@ -1,0 +1,42 @@
+.card {
+  position: relative;
+
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .card-content {
+    z-index: 2;
+    padding: 8rem;
+    margin: auto;
+    h1,
+    h3,
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .descriptions {
+      width: 40rem;
+    }
+    .btn-detail {
+      padding: 0 3rem;
+      border: 0.1px solid #fff;
+    }
+    .rating {
+      margin-top: 5rem;
+    }
+  }
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgb(0, 0, 0, 0.5);
+  box-shadow: inset 100px 100px 250px #000000, inset -100px -100px 250px #000000;
+}

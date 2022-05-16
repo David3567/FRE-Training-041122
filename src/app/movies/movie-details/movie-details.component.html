@@ -1,0 +1,14 @@
+<mat-card class="card" [ngStyle]="{'background-image': 'url(' + movieDetail.image + ')'}">
+    <mat-card-content class="card-content">
+        <h1>{{movieDetail.title}}</h1>
+        <br>
+        <p class="descriptions">{{movieDetail.overview}}</p>
+        <h3>{{movieDetail.genres.join(' | ')}}</h3>
+        <h3>Released {{movieDetail.releaseDate}}</h3>
+        <mat-card-actions>
+            <button mat-stroked-button color="" class="btn-detail">LIKE</button>
+            <button mat-stroked-button color="" class="btn-detail">PLAY</button>
+        </mat-card-actions>
+        <h4 class="rating">RATING: {{movieDetail.rating}}</h4>
+    </mat-card-content>
+</mat-card>
