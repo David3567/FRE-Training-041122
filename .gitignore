@@ -40,3 +40,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# flies
+
+.env
+src/app/shared/token.ts
