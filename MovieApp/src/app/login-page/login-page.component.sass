@@ -15,8 +15,8 @@ $imgpath: url("../../assets/login-button-sign.jpg")
 @mixin backgroundShorthand($imgpath,$position: right ,$repeat: no-repeat)
     background: transparent url(#{$imgpath}) $repeat $position
     background-size: 50%
-    -webkit-filter: grayscale(60%)
-    filter: grayscale(60%)
+    -webkit-filter: grayscale(50%)
+    filter: grayscale(50%)
 
 html
     overflow: hidden
@@ -44,10 +44,13 @@ main
     margin: 140px
     padding: 10px
     background-color: $backgroundSignIn
-    border: 2px solid #3498db
     line-height: 2.5rem
-    border-radius: 24px
-    box-shadow: 44px 38px 35px 1px rgba(0,0,0,0.58)
+    border-color: none
+    background-color: black
+    border-radius: .25em
+    box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
+
+
 
 #signIn
     display: flex
@@ -129,6 +132,7 @@ ul
     background-color: #2096F3
     margin-left: 30px
     margin-bottom: 30px
+    
 
 a
     text-decoration: none
