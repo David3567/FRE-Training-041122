@@ -10,9 +10,10 @@ header {
   }
 }
 
-.right-grp{
+.right-grp {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .nav-items {
@@ -26,5 +27,34 @@ header {
   }
   a:hover {
     color: $color-gray;
+  }
+}
+
+nav {
+  width: 100%;
+}
+
+.loggedNav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profil {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  p {
+    margin-bottom: 0;
+    span {
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+  }
+  img {
+    width: 40px;
+    border-radius: 50%;
+
   }
 }

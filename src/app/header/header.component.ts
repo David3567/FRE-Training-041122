@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  // isLogged to be changed manually until authentification implementation
   isLogged: boolean = false;
   navItems: Navigation[] = [
     { text: 'TV Shows', path: 'tvshows' },

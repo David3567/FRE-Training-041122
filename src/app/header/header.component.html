@@ -5,11 +5,17 @@
     /></a>
 
     <nav *ngIf="isLogged === true">
-      <ul class="nav-items">
-        <li class="nav-item" *ngFor="let navItem of navItems">
-          <a [routerLink]="[navItem.path]">{{ navItem.text }}</a>
-        </li>
-      </ul>
+      <div class="loggedNav">
+        <ul class="nav-items">
+          <li class="nav-item" *ngFor="let navItem of navItems">
+            <a [routerLink]="[navItem.path]">{{ navItem.text }}</a>
+          </li>
+        </ul>
+        <div class="profil">
+          <p>Welcome back, <span>Jon</span></p>
+          <img src="../../assets/images/avatar.jpg" alt="pic" />
+        </div>
+      </div>
     </nav>
   </div>
 

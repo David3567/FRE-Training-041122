@@ -3,11 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MoviesComponent } from './movies/movies.component';
+import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'prefix', component: HomeComponent },
-  { path: 'login', pathMatch: 'prefix', component: LoginComponent },
-  { path: 'register', pathMatch: 'prefix', component: RegisterComponent },
+  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'movies', component: MoviesComponent },
+  { path: 'movies/:id', component: MovieDetailsComponent },
 ];
 
 @NgModule({
