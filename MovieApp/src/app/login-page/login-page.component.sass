@@ -10,7 +10,7 @@ $main-bg-color: rgb(0, 0, 0)
 $backgroundColor: rgb(0, 0, 0)
 $backgroundSignIn: #1B2532
 
-$imgpath: url("../../assets/login-button-sign.jpg")
+$imgpath: url("../../assets/welcome-neon.jpg")
 
 @mixin backgroundShorthand($imgpath,$position: right ,$repeat: no-repeat)
     background: transparent url(#{$imgpath}) $repeat $position
@@ -23,7 +23,7 @@ html
     height: 150vh
 
 body
-    @include backgroundShorthand('../../assets/login-button-sign.jpg')
+    @include backgroundShorthand('../../assets/welcome-neon.jpg')
     overflow: auto
     background-color: $backgroundColor
 
