@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule  } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
@@ -29,6 +30,7 @@ import { NavLoggedInHeaderComponent } from './nav-logged-in-header/nav-logged-in
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
 
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
@@ -70,6 +72,8 @@ const routes: Routes = [
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatStepperModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

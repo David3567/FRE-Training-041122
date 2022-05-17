@@ -36,27 +36,101 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
   <!-- // -->
-
-  <div class="mainContainer">
-    <!-- <div class="bodyContainer"> -->
-    <div class="form">
-      <mat-form-field floatLabel="never" appearance="fill">
-        <mat-label>Input</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Select</mat-label>
-        <mat-select>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Textarea</mat-label>
-        <textarea matInput></textarea>
-      </mat-form-field>
-    </div>
-    <img src="../../assets/register-neon.png" alt="" />
-    <!-- </div> -->
+  <div class="formContainer">
+    <!-- <button
+      mat-raised-button
+      (click)="isLinear = !isLinear"
+      id="toggle-linear"
+    ></button> -->
+    <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>
+            <span>Fill out your name</span>
+          </ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              placeholder="Last name, First name"
+              formControlName="firstCtrl"
+              required
+            />
+          </mat-form-field>
+          <div class="buttonContainer">
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>
+            <span>Fill out your name</span>
+          </ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              placeholder="Last name, First name"
+              formControlName="firstCtrl"
+              required
+            />
+          </mat-form-field>
+          <div class="buttonContainer">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template class="test" matStepLabel
+            ><span>Fill out your name</span></ng-template
+          >
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input
+              matInput
+              formControlName="secondCtrl"
+              placeholder="Ex. 1 Main St, New York, NY"
+              required
+            />
+          </mat-form-field>
+          <div class="buttonContainer">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template class="test" matStepLabel
+            ><span>Fill out your name</span></ng-template
+          >
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input
+              matInput
+              formControlName="secondCtrl"
+              placeholder="Ex. 1 Main St, New York, NY"
+              required
+            />
+          </mat-form-field>
+          <div class="buttonContainer">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>Submit register form</p>
+        <br />
+        <div class="buttonContainer">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
   </div>
 </html>
