@@ -1,13 +1,15 @@
 <header class="topBar">
-    <mat-drawer #drawer mode="side" opened>
-      <mat-icon class="menu" (click)="onToggleSidenav()" >menu_open</mat-icon>
-      <hr class="hr" />
+    <!-- <mat-drawer #drawer mode="side" opened>
+      
       <div class="side-icons">
-      <mat-icon class="menu">manage_accounts</mat-icon>
-      <mat-icon class="menu">search</mat-icon>
-      <mat-icon class="menu">group</mat-icon>
+        <mat-icon class="menu">manage_accounts</mat-icon>
+        <mat-icon class="menu">search</mat-icon>
+        <mat-icon class="menu">group</mat-icon>
       </div>
-    </mat-drawer>
+    </mat-drawer> -->
+    <div class="side-menu">
+      <mat-icon class="menu" (click)="onToggleSidenav()" >menu_open</mat-icon>
+    </div>
     <div class="fig">
       <img src="../../assets/coollogo_com.png" alt="" />
     </div>
