@@ -1,48 +1,17 @@
-<<<<<<< HEAD
-$font-stack: Helvetica, sans-serif
-$background-color: rgba(95, 95, 95, 0.5)
-$cyan-accent-color: rgb(43,227,252)
-$purple-accent-color: rgb(194,99,253)
-$pink-accent-color: rgb(255,107,178)
-$main-bg-color: rgb(0, 0, 0)
-$imgpath: url("../../assets/register-neon.jpg")
-
-@mixin backgroundShorthand($imgpath,$position: right ,$repeat: no-repeat)
-    background: transparent url(#{$imgpath}) $repeat $position
-    background-size: 50%
-    -webkit-filter: grayscale(40%)
-    filter: grayscale(40%)
- 
-*
-  margin: 0
-  padding: 0
-
-body
-  @include backgroundShorthand('../../assets/register-neon.jpg')
-
-  font: $font-stack
-  font-size: 25px
-  height: 100vh
-  width: 100%
-  overflow-x: hidden
-
-mat-sidenav-container, mat-sidenav-content, mat-sidenav 
-  height: 100%
-  background-color: black
-
-mat-sidenav 
-  width: 250px
-
-.headermain 
-  padding: 10px
-=======
 @import "../../styles"
 $main-bg-color: rgb(255, 255, 255)
->>>>>>> bf25fa754304768568cefea5a6c3bd79fd3139a0
+
+*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  color: whitesmoke
+  background-color: $main-bg-color
 
 html
   height: 100vh
   width: 100vw
+  background-color: $main-bg-color
 
 .mainContainer
   height: 80%
@@ -55,22 +24,6 @@ html
 .bodyContainer
   height: 60%
   width: 100%
-<<<<<<< HEAD
-  
-  font-size: 18px
-  line-height: 15px
-  border-radius: 10px
-  border: 1px solid $cyan-accent-color
-  color: $background-color
-  background-color: white
-
-input:hover 
-  font-size: 1.4rem
-  box-shadow: 0 0 2px rgb(50, 101, 149), 0 0 2px rgb(50, 101, 149), 0 0 2px rgb(50, 101, 149)
-
-select 
-  height: 30px
-=======
   display: flex
   justify-content: center
   align-items: center
@@ -87,7 +40,6 @@ select
   background-color: transparent
 
 img
->>>>>>> bf25fa754304768568cefea5a6c3bd79fd3139a0
   width: 50%
 
 mat-form-field
