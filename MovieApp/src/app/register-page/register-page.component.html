@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register_Page</title>
-  </head>
-  <body>
-    <main>
+<!-- <body>
+  <main>
     <mat-sidenav-container class="nav-container">
       <mat-sidenav-content>
         <app-nav-header-bar></app-nav-header-bar>
@@ -33,5 +25,38 @@
       </ul>
     </div>
   </main>
-  </body>
+</body> -->
+<html>
+  <mat-sidenav-container class="nav-container">
+    <mat-sidenav-content>
+      <app-nav-header-bar></app-nav-header-bar>
+      <main class="headermain">
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- // -->
+
+  <div class="mainContainer">
+    <!-- <div class="bodyContainer"> -->
+    <div class="form">
+      <mat-form-field floatLabel="never" appearance="fill">
+        <mat-label>Input</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-option value="one">First option</mat-option>
+          <mat-option value="two">Second option</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Textarea</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </div>
+    <img src="../../assets/register-neon.png" alt="" />
+    <!-- </div> -->
+  </div>
 </html>
