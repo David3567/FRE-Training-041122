@@ -27,6 +27,8 @@ import { NavSidebarComponent } from './nav-sidebar/nav-sidebar.component';
 import { MatListModule } from '@angular/material/list';
 import { NavLoggedInHeaderComponent } from './nav-logged-in-header/nav-logged-in-header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
@@ -66,6 +68,8 @@ const routes: Routes = [
     MatListModule,
     HttpClientModule,
     MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

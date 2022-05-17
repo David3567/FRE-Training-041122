@@ -1,7 +1,4 @@
-$cyan-accent-color: rgb(43,227,252)
-$purple-accent-color: rgb(194,99,253)
-$pink-accent-color: rgb(255,107,178)
-$main-bg-color: rgb(0, 0, 0)
+@import "../../styles"
 
 *
     padding: 0
@@ -9,26 +6,30 @@ $main-bg-color: rgb(0, 0, 0)
     box-sizing: border-box
     color: whitesmoke
     background-color: $main-bg-color
+    overflow: hidden
 
 header
     width: 100%
+<<<<<<< HEAD
     height: 70px
     background-color: transparent
+=======
+    height: 100%
+    background-color: $main-bg-color
+>>>>>>> bf25fa754304768568cefea5a6c3bd79fd3139a0
     display: flex
     align-items: center
     justify-content: space-between
-    border-radius: 25em
 
-.navInteractive 
-    padding-right: 50px
+.navInteractive
     background-color: transparent
     height: 100%
+    width: 30%
     display: flex
     align-items: center
-    justify-content: center
-    gap: 10px
-    margin-bottom: 10px
+    justify-content: space-evenly
 
+<<<<<<< HEAD
 mat-drawer
     width: 60px
     height: 100vh
@@ -41,17 +42,21 @@ img
     width: 350px
     
     float: right
+=======
+img
+    height: 4em
+>>>>>>> bf25fa754304768568cefea5a6c3bd79fd3139a0
     background-color: transparent
-    padding: 1px 50px
+    padding-left: 2em
 
 .signIn, .register, .home
     background-color: transparent
     height: 1em
     width: 1em
     transition: 0.3s
-    border: none
     border-radius: .25em
     color: $cyan-accent-color
+    font-size: 2rem
 
 .signIn:hover, .register:hover, .home:hover
     background-color: $cyan-accent-color
@@ -66,37 +71,10 @@ img
     box-shadow: ((inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color), (inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color))
     transition: 0.1s
 
-.menu 
-    margin: 13px
-    background-color: transparent
-    height: 1em
-    width: 1em
-    transition: 0.3s
-    border: none
-    border-radius: .25em
-    color: $cyan-accent-color
-
-.menu:hover
-    background-color: $cyan-accent-color
-    color: $main-bg-color
-    border: 1px $cyan-accent-color
-    box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
-
-.menu:active
-    background-color: $purple-accent-color
-    color: $main-bg-color
-    border: 1px $purple-accent-color solid
-    box-shadow: ((inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color), (inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color))
-    transition: 0.1s
-
-option 
-    background-color: black
-    color: white
-
-.language 
+.language
     background-color: transparent
     height: 40%
-    width: 55px
+    font-size: 1.5em
     border: 1px $cyan-accent-color solid
     border-radius: 5px
     box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
@@ -107,7 +85,7 @@ option
     border: 1px $cyan-accent-color solid
     box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
 
-.language:active
+.language:focus
     background-color: $purple-accent-color
     color: $main-bg-color
     border: 1px $purple-accent-color solid
@@ -115,4 +93,28 @@ option
     transition: 0.1s
 
 .hr
-  border-top: 1px solid $pink-accent-color
+    background-color: $pink-accent-color
+    height: 5px
+
+// .menu
+//     margin: 13px
+//     background-color: transparent
+//     height: 1em
+//     width: 1em
+//     transition: 0.3s
+//     border: none
+//     border-radius: .25em
+//     color: $cyan-accent-color
+
+// .menu:hover
+//     background-color: $cyan-accent-color
+//     color: $main-bg-color
+//     border: 1px $cyan-accent-color
+//     box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
+
+// .menu:active
+//     background-color: $purple-accent-color
+//     color: $main-bg-color
+//     border: 1px $purple-accent-color solid
+//     box-shadow: ((inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color), (inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color))
+//     transition: 0.1s
