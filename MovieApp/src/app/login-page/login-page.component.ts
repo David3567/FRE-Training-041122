@@ -20,7 +20,7 @@ export class LoginPageComponent implements OnInit {
   public card = data;
 
   public selected!: boolean;
-  data: any = {
+  datas = {
     username: 'Aaron',
     password: '1234',
   };
@@ -32,7 +32,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {}
 
   signUser() {
-    if (this.data.username === 'Aaron' && this.data.password === '1234') {
+    if (this.datas.username === 'Aaron' && this.datas.password === '1234') {
       this.selected = true;
     } else {
       this.selected = false;
@@ -40,13 +40,13 @@ export class LoginPageComponent implements OnInit {
   }
 
   handleClear() {
-    this.data.username = ' ';
-    this.data.password = ' ';
+    this.datas.username = ' ';
+    this.datas.password = ' ';
   }
 
   saveValues() {
-    this.data.username = this.data.username;
-    this.data.password = this.data.password;
+    this.datas.username = this.datas.username;
+    this.datas.password = this.datas.password;
   }
 
   login(a: any) {
