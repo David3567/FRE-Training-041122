@@ -7,18 +7,14 @@
     <title>Document</title>
   </head>
   <body>
-    <header class="topBar">
-      <img src="../../assets/MC_Logo_4.png" alt="" />
-      <div class="headerInteractive">
-        <select class="language">
-          <option selected="selected">English</option>
-          <option>Spanish</option>
-          <option>日本語</option>
-          <option>中文</option>
-        </select>
-        <button class="signIn">Sign In</button>
-      </div>
-    </header>
+    <mat-sidenav-container class="nav-container">
+      <mat-sidenav-content>
+        <app-nav-header-bar></app-nav-header-bar>
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+      </mat-sidenav-content>
+  </mat-sidenav-container>
     <div class="headContainer">
       <div class="headText">
         <h1>Find every movie and series trending at the moment</h1>
@@ -30,7 +26,7 @@
             class="EmailInput"
             placeholder="Your Email Address"
           />
-          <button class="signUp">Sign up</button>
+          <button class="signUp" [routerLink]="['/register']">Sign up</button>
         </div>
       </div>
     </div>

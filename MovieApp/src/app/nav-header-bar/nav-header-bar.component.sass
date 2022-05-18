@@ -1,0 +1,118 @@
+$cyan-accent-color: rgb(43,227,252)
+$purple-accent-color: rgb(194,99,253)
+$pink-accent-color: rgb(255,107,178)
+$main-bg-color: rgb(0, 0, 0)
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    color: whitesmoke
+    background-color: $main-bg-color
+
+header
+    width: 100%
+    height: 50px
+    background-color: transparent
+    display: flex
+    align-items: center
+    justify-content: space-between
+    border-radius: 25em
+
+.navInteractive 
+    padding-right: 50px
+    background-color: transparent
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 10px
+    margin-bottom: 10px
+
+mat-drawer
+    width: 60px
+    height: 100vh
+
+.fig
+  margin: 20px
+  
+img 
+    height: 70%
+    width: 300px
+    
+    float: right
+    background-color: transparent
+    padding: 1px 50px
+
+.signIn, .register, .home
+    background-color: transparent
+    height: 1em
+    width: 1em
+    transition: 0.3s
+    border: none
+    border-radius: .25em
+    color: $cyan-accent-color
+
+.signIn:hover, .register:hover, .home:hover
+    background-color: $cyan-accent-color
+    color: $main-bg-color
+    border: 1px $cyan-accent-color
+    box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
+
+.signIn:active, .register:active, home:active
+    background-color: $purple-accent-color
+    color: $main-bg-color
+    border: 1px $purple-accent-color solid
+    box-shadow: ((inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color), (inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color))
+    transition: 0.1s
+
+.menu 
+    margin: 13px
+    background-color: transparent
+    height: 1em
+    width: 1em
+    transition: 0.3s
+    border: none
+    border-radius: .25em
+    color: $cyan-accent-color
+
+.menu:hover
+    background-color: $cyan-accent-color
+    color: $main-bg-color
+    border: 1px $cyan-accent-color
+    box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
+
+.menu:active
+    background-color: $purple-accent-color
+    color: $main-bg-color
+    border: 1px $purple-accent-color solid
+    box-shadow: ((inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color), (inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color))
+    transition: 0.1s
+
+option 
+    background-color: black
+    color: white
+
+.language 
+    background-color: transparent
+    height: 40%
+    width: 55px
+    border: 1px $cyan-accent-color solid
+    border-radius: 5px
+    box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
+
+.language:hover
+    background-color: $cyan-accent-color
+    color: $main-bg-color
+    border: 1px $cyan-accent-color solid
+    box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
+
+.language:active
+    background-color: $purple-accent-color
+    color: $main-bg-color
+    border: 1px $purple-accent-color solid
+    box-shadow: ((inset 0 0 0.1em $purple-accent-color, 0 0 0.1em $purple-accent-color), (inset 0 0 0.1em $purple-accent-color, 0 0 0.1em $purple-accent-color))
+    transition: 0.1s
+
+.hr
+  border-top: 1px solid $pink-accent-color

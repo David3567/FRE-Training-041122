@@ -1,0 +1,104 @@
+@import "../../styles"
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    background-color: $main-bg-color
+
+h1, h2
+    line-height: 1em
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav 
+  height: 100%
+
+mat-sidenav 
+  width: 250px
+
+main 
+  padding: 10px
+  background-color: black
+
+span
+    font-size: 1em
+    float: left
+    vertical-align: bottom
+    background-color: transparent
+    color: inherit
+
+.navigationTools
+    width: 100%
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: top
+    padding: 0px 70px
+
+.filtering
+    display: flex
+    flex-direction: row
+    gap: 50px
+
+.container
+    height: 100vh
+    width: 100%
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+
+.submit
+    margin: 5px
+
+app-movie-card 
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    gap: 20px
+
+.searchBar
+    width: 100%
+    height: 5rem
+    display: flex
+    justify-content: center
+    align-items: center
+
+mat-label
+    font-size: 1.5rem
+
+.movieForm
+    margin-top: 20px
+    width: 50%
+    height: 100%
+    border-radius: 1.5em
+    border: 1px $purple-accent-color solid
+    box-shadow: inset 0 0 0.5em $purple-accent-color, 0 0 0.25em $purple-accent-color
+
+.movieForm::ng-deep .mat-form-field-underline
+    display: none
+
+.mat-form-field-underline, .mat-form-field-underline.mat-focused
+    background-color: #FAFAFA
+
+input
+    height: 2rem
+    padding-top: 0.5rem
+    font-size: 1.5rem
+    line-height: 80%
+    vertical-align: middle
+
+input:focus
+    height: 2rem
+    padding-top: 0.5rem
+    font-size: 1.5rem
+    line-height: 80%
+    vertical-align: middle
+    border-bottom: 1px $pink-accent-color solid
+    box-shadow: inset 0 0 0.5em -0.5em $pink-accent-color, 0 0 0.25em -0.25em $pink-accent-color
+
+.separator
+    background-color: $purple-accent-color
+    width: 100%
+    height: 0.2em
+    margin: 5px 0

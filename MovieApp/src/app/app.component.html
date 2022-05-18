@@ -1,7 +1,23 @@
 <!-- <app-login-page></app-login-page>
 
+    <mat-sidenav-content>
+      <app-nav-logged-in-header (sidenavToggle)="sidenav.toggle()"></app-nav-logged-in-header>
+      <main>
+        
+    </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+</div>
 
-<app-register></app-register>
+<div *ngIf="!shouldLogin">
 
-<app-home-page></app-home-page> -->
-<app-list-item></app-list-item>
+  <mat-sidenav-container class="nav-container">
+    <mat-sidenav-content>
+      <app-nav-header-bar></app-nav-header-bar>
+      <main>
+        
+      </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+</div>
+ -->

@@ -1,36 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from '../interfaces/user.interface';
+
+const data: User[] = [
+  {
+    username: 'Aaron',
+    password: '1234',
+  },
+];
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.sass']
+  styleUrls: ['./login-page.component.sass'],
 })
 export class LoginPageComponent implements OnInit {
+  datalist: User[] = [];
 
-  constructor() { }
+  public defaultTheme = 'false';
+  public card = data;
 
-  ngOnInit(): void {
-  }
-  data = {
-    username:"Aaron",
-    password:"1234"
+  public selected!: boolean;
+  data: any = {
+    username: 'Aaron',
+    password: '1234',
   };
-  signUser(){
-    if(this.data.username ==="Aaron" && this.data.password ==="1234"){
 
-      console.log("Hello Aaron!")
-    }else{
-    console.log("please signup an account");
+  @Output() logIn = new EventEmitter();
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  signUser() {
+    if (this.data.username === 'Aaron' && this.data.password === '1234') {
+      this.selected = true;
+    } else {
+      this.selected = false;
     }
-   
-    
   }
-  handleClear(){
-    this.data.username = ' '; 
+
+  handleClear() {
+    this.data.username = ' ';
     this.data.password = ' ';
-   }
-   saveValues(){
-    this.data.username = this.data.username; 
-    this.data.password =  this.data.password;
-   }
+  }
+
+  saveValues() {
+    this.data.username = this.data.username;
+    this.data.password = this.data.password;
+  }
+
+  login(a: any) {
+    this.logIn.emit();
+  }
 }
