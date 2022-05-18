@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule  } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
@@ -26,6 +27,10 @@ import { NavHeaderBarComponent } from './nav-header-bar/nav-header-bar.component
 import { NavSidebarComponent } from './nav-sidebar/nav-sidebar.component';
 import { MatListModule } from '@angular/material/list';
 import { NavLoggedInHeaderComponent } from './nav-logged-in-header/nav-logged-in-header.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
 
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
@@ -34,7 +39,8 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'navheader', component: NavHeaderBarComponent},
   {path: 'movielist', component: MovieListComponent},
-  {path: 'moviecard', component: MovieCardComponent}
+  {path: 'moviecard', component: MovieCardComponent},
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
@@ -49,6 +55,7 @@ const routes: Routes = [
     MovieCardComponent,
     TextReductionPipe,
     NavLoggedInHeaderComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +70,10 @@ const routes: Routes = [
     MatListModule,
     HttpClientModule,
     MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatStepperModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

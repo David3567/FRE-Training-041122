@@ -1,0 +1,64 @@
+@import '../../styles'
+
+@mixin webp-backgroundGradient($img)
+    background-size: cover
+    background-repeat: no-repeat
+    background-image: linear-gradient(to bottom,rgba(black, 0.5) 10%,rgba(black, 1) 70%), url("#{$img}")
+
+body
+    height: 100vh
+    @include webp-backgroundGradient("../../assets/MoviesBanner.jpg")
+    width: 100%
+    align-items: center
+    background-color: $main-bg-color
+
+.headContainer
+    height: 70%
+    background-repeat: no-repeat
+    display: flex
+    align-items: center
+    justify-content: center
+
+.headText
+    height: 20%
+    width: 50%
+    text-align: center
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-evenly
+
+    & h1, h2, h3, h4
+        width: 80%
+        text-align: center
+
+.signupElements
+    width: 100%
+    display: flex
+    gap: 5px
+
+.EmailInput
+    background-color: white
+    color: black
+    width: 80%
+    height: 30px
+    border: none
+    border-radius: 15px
+    text-indent: 10px
+
+.signUp
+    border-radius: 15px
+    background-color: red
+    height: 100%
+    width: 120px
+    transition: 0.3s
+    border: none
+    text-align: center
+
+    &:hover
+        background-color: red
+        border: red
+        box-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red
+
+    &:active
+        color: #255784
