@@ -1,0 +1,101 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+}
+
+body {
+	background: black;
+}
+
+.container_1,
+.container_2,
+.container_3 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.time_pointer {
+	position: fixed;
+	top: 50%;
+	right: 0;
+	border: 1px solid white;
+	border-left: none;
+
+	height: 1.1rem;
+	width: 50vw;
+
+	display: flex;
+	align-items: center;
+}
+.time_pointer .time_currientdate {
+	position: absolute;
+	left: -4.9rem;
+	height: 4rem;
+	line-height: 4rem;
+	padding: 0 1.5rem;
+	border-radius: 30px;
+
+	background: linear-gradient(235deg, rgb(43, 255, 0), rgb(0, 255, 191));
+	background-clip: text;
+
+	animation: animate1 5s linear infinite;
+}
+@keyframes animate1 {
+	0%,
+	100% {
+		filter: hue-rotate(0deg);
+	}
+	50% {
+		filter: hue-rotate(360deg);
+	}
+}
+
+.circMin,
+.circHor,
+.circSec {
+	/* position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+	height: 400px;
+	width: 400px;
+}
+.circMin p {
+	color: blue;
+}
+
+.circSec {
+	height: 500px;
+	width: 500px;
+	/* background-color: red; */
+}
+.circSec p {
+	color: rgb(81, 255, 0);
+}
+
+.circHor {
+	height: 300px;
+	width: 300px;
+	/* background-color: green; */
+}
+.circHor p {
+	color: orange;
+}
+
+.clock_base {
+	position: absolute;
+	left: 50%;
+	color: white;
+	transform: translate(-50%, 0);
+	transform-origin: 0 100%;
+	writing-mode: vertical-lr;
+	text-orientation: upright;
+}

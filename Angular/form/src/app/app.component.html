@@ -1,1 +1,17 @@
-<app-templateform></app-templateform>
+<!-- <app-templateform></app-templateform> -->
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="email">email :</label>
+    <input type="text" id="email" formControlName="email" />
+
+    <div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+      <div *ngIf="email?.errors?.hasemail" class="validator">
+        Login or change another email;
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+</form>

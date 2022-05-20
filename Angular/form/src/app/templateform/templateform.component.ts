@@ -38,7 +38,8 @@ export class TemplateformComponent implements OnInit {
   }
 
   changeCountry() {
-    this.contact.country = '1';
+    this.contact.country =
+      +this.contact.country > 2 ? '1' : (+this.contact.country + 1).toString();
   }
 
   reset(contactForm: NgForm) {
