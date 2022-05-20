@@ -17,9 +17,7 @@ export class TmdbAPIService {
   constructor(private http: HttpClient) { }
 
   queryMovies(popular: boolean = false, movieName?: string) {
-    
     const endpoint = popular ? this.populars_base_url : [this.base_url, movieName].join('/')
- 
     this.http.get(endpoint).pipe(
       map((moviesObj: any) => {
         const tempMovieList: any = moviesObj.results.map((movieData: any) => {
@@ -51,7 +49,7 @@ export class TmdbAPIService {
     ).subscribe()
   }
   
-  getPopularMovies() {
-
+  getMovieTrailer(id: string) {
+    this.queryMovies(false, )
   }
 }
