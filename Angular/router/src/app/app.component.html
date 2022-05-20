@@ -1,0 +1,12 @@
+<div>
+  <button [routerLink]="['home']">home</button>
+  <button [routerLink]="['contact']">contact</button>
+  <button [routerLink]="['product']">product</button>
+</div>
+<!-- <div
+    class="container"
+    [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''"
+  > -->
+<div class="container">
+  <router-outlet #o="outlet"></router-outlet>
+</div>
