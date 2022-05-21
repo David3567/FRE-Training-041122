@@ -11,6 +11,7 @@ import { RegisterComponent } from './register-page/register-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 import { MovieCardComponent } from './movie-list/movie-card/movie-card.component'
 import { MatInputModule } from '@angular/material/input';
@@ -20,26 +21,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
+import { NavHeaderBarComponent } from './nav-header-bar/nav-header-bar.component';
+import { NavSidebarComponent } from './nav-sidebar/nav-sidebar.component';
+import { NavLoggedInHeaderComponent } from './nav-logged-in-header/nav-logged-in-header.component';
+
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { NavHeaderBarComponent } from './nav-header-bar/nav-header-bar.component';
-import { NavSidebarComponent } from './nav-sidebar/nav-sidebar.component';
 import { MatListModule } from '@angular/material/list';
-import { NavLoggedInHeaderComponent } from './nav-logged-in-header/nav-logged-in-header.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'navheader', component: NavHeaderBarComponent},
   {path: 'movielist', component: MovieListComponent},
   {path: 'moviecard', component: MovieCardComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: NotFoundComponent}
 ];
 
@@ -73,7 +76,9 @@ const routes: Routes = [
     MatFormFieldModule,
     MatSelectModule,
     MatStepperModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    MatCheckboxModule, 
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
