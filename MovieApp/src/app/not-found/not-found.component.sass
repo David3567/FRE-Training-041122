@@ -1,27 +1,22 @@
-$font-stack: Helvetica, sans-serif
-$background-color: rgba(95, 95, 95, 0.5)
+@import "../../styles"
 
-$cyan-accent-color: rgb(43,227,252)
-$purple-accent-color: rgb(194,99,253)
-$pink-accent-color: rgb(255,107,178)
-$main-bg-color: rgb(0, 0, 0)
+*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  color: whitesmoke
+  background-color: $main-bg-color
+  overflow: hidden
+
 $imgpath: url("../../assets/neon-sign-404.jpg")
 
 @mixin backgroundShorthand($imgpath,$position: center ,$repeat: no-repeat)
-    background: transparent url(#{$imgpath}) $repeat $position
-    background-size: 50%
-    //-webkit-filter: grayscale(50%)
-    //filter: grayscale(50%)
- 
-*
-  margin: 0
-  padding: 0
+  background: transparent url(#{$imgpath}) $repeat $position
+  background-size: 50%
 
 body
   @include backgroundShorthand('../../assets/neon-sign-404.jpg')
-
-  font: $font-stack
-  font-size: 25px
+  
   height: 100vh
   width: 100%
   overflow-x: hidden
