@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
 /*~~~~~~~~~ Angular Material Modules ~~~~~~~~~*/
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -52,7 +54,8 @@ import { MoviesItemComponent } from './movies/movies-lists/movies-item/movies-it
     FlexLayoutModule,
     AppRoutingModule,
     HttpClientModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    ReactiveFormsModule,
   ],
   exports: [HeaderComponent],
   providers: [],
