@@ -43,6 +43,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSignIn() {
-    console.log(this.loginForm.get('password'));
+    console.log(this.loginForm.value);
   }
 }

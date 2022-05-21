@@ -6,7 +6,7 @@
 >
   <h2>Sign In</h2>
   <form [formGroup]="loginForm" (ngSubmit)="onSignIn()">
-    <div>
+    <div class="form-group">
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput placeholder="pat@example.com" formControlName="email" />
@@ -16,18 +16,18 @@
           >Please enter a valid email</mat-error
         >
         <mat-error
-          *ngIf="!email?.errors?.['minlength'] && (email?.dirty || email?.touched)"
+          *ngIf="email?.errors?.['minlength'] && (email?.dirty || email?.touched)"
         >
           Min Length is 7 characters</mat-error
         >
         <mat-error
-          *ngIf="!email?.errors?.['maxlength'] && (email?.dirty || email?.touched)"
+          *ngIf="email?.errors?.['maxlength'] && (email?.dirty || email?.touched)"
         >
           Max Length is 50 characters</mat-error
         >
       </div>
     </div>
-    <div>
+    <div class="form-group">
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
         <input
