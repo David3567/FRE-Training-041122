@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   // isLogged to be changed manually until authentification implementation
-  isLogged: boolean = false;
+  isLogged: boolean = true;
   navItems: Navigation[] = [
     { text: 'TV Shows', path: 'tvshows' },
     { text: 'Movies', path: 'movies' },

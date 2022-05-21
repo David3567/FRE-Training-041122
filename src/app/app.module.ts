@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 /*~~~~~~~~~ Components ~~~~~~~~~*/
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
@@ -51,6 +52,7 @@ import { MoviesItemComponent } from './movies/movies-lists/movies-item/movies-it
     FlexLayoutModule,
     AppRoutingModule,
     HttpClientModule,
+    YouTubePlayerModule
   ],
   exports: [HeaderComponent],
   providers: [],

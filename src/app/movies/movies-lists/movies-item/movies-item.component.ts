@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { DataStorageService } from 'src/app/shared/data-storage-service';
 import { Movie } from '../../movies.model';
 import { MoviesService } from '../../movies.service';
@@ -11,16 +12,18 @@ import { MoviesService } from '../../movies.service';
 export class MoviesItemComponent implements OnInit {
   @Input() movie!: Movie;
 
+
   constructor(
     private dataStorageService: DataStorageService,
     private movieService: MoviesService,
+    
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   onClick(id: number) {
-    // console.log('click');
     this.dataStorageService.getMoiveDetail(id);
-    this.movieService.componentChangeSub.next('movieDetail');
   }
 }

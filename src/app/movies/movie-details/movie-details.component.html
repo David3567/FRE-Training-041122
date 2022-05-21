@@ -1,14 +1,37 @@
-<mat-card class="card" [ngStyle]="{'background-image': 'url(' + movieDetail.image + ')'}">
-    <mat-card-content class="card-content">
-        <h1>{{movieDetail.title}}</h1>
-        <br>
-        <p class="descriptions">{{movieDetail.overview}}</p>
-        <h3>{{movieDetail.genres.join(' | ')}}</h3>
-        <h3>Released {{movieDetail.releaseDate}}</h3>
-        <mat-card-actions>
-            <button mat-stroked-button color="" class="btn-detail">LIKE</button>
-            <button mat-stroked-button color="" class="btn-detail">PLAY</button>
-        </mat-card-actions>
-        <h4 class="rating">RATING: {{movieDetail.rating}}</h4>
-    </mat-card-content>
+<mat-card
+  class="card"
+  [ngStyle]="{ 'background-image': 'url(' + movieDetail.image + ')' }"
+  *ngIf="movieDetail"
+>
+  <mat-card-content class="card-content">
+    <h1>{{ movieDetail.title }}</h1>
+    <div class="yt-player" #ytplayer>
+      <div *ngIf="showTrailer">
+        <mat-icon (click)="onClosePlayer()">close</mat-icon>
+        <youtube-player
+          [videoId]="movieTrailerId"
+          suggestedQuality="hd720"
+        >
+        </youtube-player>
+      </div>
+    </div>
+
+    <br />
+    <p class="descriptions">{{ movieDetail.overview }}</p>
+    <h3>Genres: {{ movieDetail.genres.join(" | ") }}</h3>
+    <h3>Released: {{ movieDetail.releaseDate | date:'fullDate' }}</h3>
+    <mat-card-actions>
+      <button mat-stroked-button color="" class="btn-detail">LIKE</button>
+      <button
+        mat-stroked-button
+        color=""
+        class="btn-detail"
+        (click)="onPlay()"
+        *ngIf="!showTrailer"
+      >
+        PLAY
+      </button>
+    </mat-card-actions>
+    <h4 class="rating">RATING: {{ movieDetail.rating }}</h4>
+  </mat-card-content>
 </mat-card>

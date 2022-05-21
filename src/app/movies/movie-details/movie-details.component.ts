@@ -1,7 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { MoiveDetail } from '../movies.model';
+import { DataStorageService } from 'src/app/shared/data-storage-service';
+import { MoiveDetail, Trailer } from '../movies.model';
 import { MoviesService } from '../movies.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-details',
@@ -10,22 +19,57 @@ import { MoviesService } from '../movies.service';
 })
 export class MovieDetailsComponent implements OnInit, OnDestroy {
   movieDetail!: MoiveDetail;
+  movieTrailerId!: string;
+  movieDetailId!: number;
+  showTrailer: boolean = false;
 
   //subscribe and destory
   movieDetailSubs!: Subscription;
 
-  constructor(private movieService: MoviesService) {}
+  constructor(
+    private movieService: MoviesService,
+    private route: ActivatedRoute,
+    private dataStorageService: DataStorageService
+  ) {}
 
   ngOnInit(): void {
+
+    // Use params to load movie details
+    this.movieDetailId = this.route.snapshot.params['id'];
+    this.dataStorageService.getMoiveDetail(this.movieDetailId);
+
+    // Get Movie Trailer
+    this.dataStorageService
+      .getMovieTrailer(this.movieDetailId)
+      .pipe(
+        map((data) => {
+          const newResult = data.results.filter(
+            (item) => item.name === 'Trailer' || item.type === 'Trailer'
+          );
+          // Get only first trailer
+          return newResult[0];
+        })
+      )
+      .subscribe((response) => {
+        this.movieTrailerId = response.key;
+      });
+
     this.movieDetailSubs = this.movieService.movieDetailChanged.subscribe(
       (detail: MoiveDetail) => {
         this.movieDetail = detail;
       }
     );
-    this.movieDetail = this.movieService.getMovieDetail();
   }
 
   ngOnDestroy(): void {
     this.movieDetailSubs.unsubscribe();
+  }
+
+  onPlay() {
+    this.showTrailer = true;
+  }
+
+  onClosePlayer() {
+    this.showTrailer = false;
   }
 }
