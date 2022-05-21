@@ -1,57 +1,70 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { User } from '../interfaces/user.interface';
-
-const data: User[] = [
-  {
-  username:"Aaron",
-  password:"1234",
-  },
-];
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.sass']
+  styleUrls: ['./login-page.component.sass'],
 })
 export class LoginPageComponent implements OnInit {
-  datalist: User[] = [];
+  loginForm!: FormGroup;
 
-  public defaultTheme = 'false';
-  public card = data;
-
-  public selected!: boolean;
-  datas = {
-    username:"Aaron",
-    password:"1234"
+  data = {
+    username: 'Priyanka',
+    password: 'Priyanka28',
   };
 
-  @Output() logIn = new EventEmitter();
-
-  constructor() { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.loginForm = this.fb.group(
+      {
+        userName: ['', [Validators.required]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-zd$@$!%*?&].{5,}'
+            ),
+          ],
+        ],
+        rememberMe: [false, [Validators.requiredTrue]],
+      },
+      {
+        // validators: [this.logInName, this.logInPass]
+      }
+    );
+
+    this.loginForm.valueChanges.subscribe(console.log);
   }
-  
-  signUser(){
-    if(this.datas.username ==="Aaron" && this.datas.password ==="1234"){
-      this.selected = true;
-    }
-    else{
-      this.selected = false;
-    }
+
+  get userName() {
+    return this.loginForm.get('userName');
   }
 
-  handleClear(){
-    this.datas.username = ' '; 
-    this.datas.password = ' ';
-   }
+  get password() {
+    return this.loginForm.get('password');
+  }
 
-   saveValues(){
-    this.datas.username = this.datas.username; 
-    this.datas.password =  this.datas.password;
-   }
+  get rememberMe() {
+    return this.loginForm.get('rememberMe');
+  }
 
-   login(a: any){
-     this.logIn.emit();
-   }
+  logInName(group: AbstractControl): ValidationErrors | null {
+    const name = group.get('userName')?.value;
+    console.log(name !== this.data.username);
+    return name !== this.data.username ? { notMatch: true } : null;
+  }
+
+  logInPass(group: AbstractControl): ValidationErrors | null {
+    const pass = group.get('password')?.value;
+    return pass === this.data.password ? { notMatch: false } : null;
+  }
 }
