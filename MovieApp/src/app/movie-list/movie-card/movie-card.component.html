@@ -12,16 +12,17 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="movie.showDetails = !movie.showDetails">
-      <span class="material-icons" *ngIf="movie.showDetails">
-        expand_less
-      </span>
-      <span class="material-icons" *ngIf="!movie.showDetails">
-        expand_more
-      </span>
+      <div class="material-icons" *ngIf="movie.showDetails">expand_less</div>
+      <div class="material-icons" *ngIf="!movie.showDetails">expand_more</div>
       Description
     </button>
-    <button mat-button *ngIf="movie.showDetails">
-      <span class="material-icons"> help_outline </span>
+    <button
+      mat-button
+      *ngIf="movie.showDetails"
+      (click)="showDetails(movie.id)"
+      [routerLink]="['/moviedetails']"
+    >
+      <div class="material-icons">help_outline</div>
       More Info
     </button>
   </mat-card-actions>

@@ -25,4 +25,9 @@ export class MovieCardComponent implements OnInit {
     console.log(this.seeMore)
     this.seeMore = this.seeMore === false ?  true : false;
   }
+
+  showDetails(id: string) {
+    console.log(id)
+    this.movieAPI.getMovieTrailer(id)
+  }
 }
