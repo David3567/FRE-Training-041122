@@ -1,12 +1,19 @@
 <html>
   <mat-sidenav-container class="nav-container">
+    <mat-sidenav #sidenav mode="side">
+      <app-nav-sidebar></app-nav-sidebar>
+    </mat-sidenav>
+
     <mat-sidenav-content>
-      <app-nav-header-bar></app-nav-header-bar>
-      <main class="headermain">
+      <app-nav-logged-in-header
+        (sidenavToggle)="sidenav.toggle()"
+      ></app-nav-logged-in-header>
+      <main>
         <router-outlet></router-outlet>
+
+        <!-- // -->
+        <div class="formContainer">{{ moviesTrailers }}</div>
       </main>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  <!-- // -->
-  <div class="formContainer">{{ moviesTrailers }}</div>
 </html>
