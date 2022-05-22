@@ -34,6 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
@@ -42,6 +43,8 @@ const routes: Routes = [
   {path: 'navheader', component: NavHeaderBarComponent},
   {path: 'movielist', component: MovieListComponent},
   {path: 'moviecard', component: MovieCardComponent},
+  {path: 'moviedetails', component: MovieDetailsComponent},
+  {path: 'moviedetails/:id', component: MovieDetailsComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: NotFoundComponent}
 ];
@@ -59,6 +62,7 @@ const routes: Routes = [
     TextReductionPipe,
     NavLoggedInHeaderComponent,
     NotFoundComponent,
+    MovieDetailsComponent,
   ],
   imports: [
     BrowserModule,
