@@ -2,18 +2,22 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { RouterModule, Routes } from '@angular/router';
-import { ReactiveFormsModule  } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
-import { LoginPageComponent } from './login-page/login-page.component'
+
+import { SlideCardComponent } from './slide-card/slide-card.component';
+
+import { ListItemComponent } from './list-item/list-item.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterComponent } from './register-page/register-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-import { MovieCardComponent } from './movie-list/movie-card/movie-card.component'
+import { MovieCardComponent } from './movie-list/movie-card/movie-card.component';
 import { MatInputModule } from '@angular/material/input';
 import { TextReductionPipe } from './pipes/text-reduction.pipe';
 
@@ -25,9 +29,9 @@ import { NavHeaderBarComponent } from './nav-header-bar/nav-header-bar.component
 import { NavSidebarComponent } from './nav-sidebar/nav-sidebar.component';
 import { NavLoggedInHeaderComponent } from './nav-logged-in-header/nav-logged-in-header.component';
 
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -37,18 +41,17 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 
-
 const routes: Routes = [
-  {path: 'home', component: HomePageComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginPageComponent},
-  {path: 'navheader', component: NavHeaderBarComponent},
-  {path: 'movielist', component: MovieListComponent},
-  {path: 'moviecard', component: MovieCardComponent},
-  {path: 'moviedetails', component: MovieDetailsComponent},
-  {path: 'moviedetails/:id', component: MovieDetailsComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: '**', component: NotFoundComponent}
+  { path: 'home', component: HomePageComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'navheader', component: NavHeaderBarComponent },
+  { path: 'movielist', component: MovieListComponent },
+  { path: 'moviecard', component: MovieCardComponent },
+  { path: 'moviedetails', component: MovieDetailsComponent },
+  { path: 'moviedetails/:id', component: MovieDetailsComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
@@ -57,6 +60,8 @@ const routes: Routes = [
     RegisterComponent,
     HomePageComponent,
     LoginPageComponent,
+    SlideCardComponent,
+    ListItemComponent,
     NavHeaderBarComponent,
     NavSidebarComponent,
     MovieListComponent,
@@ -83,11 +88,11 @@ const routes: Routes = [
     MatSelectModule,
     MatStepperModule,
     ReactiveFormsModule,
-    MatCheckboxModule, 
+    MatCheckboxModule,
     MatButtonModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

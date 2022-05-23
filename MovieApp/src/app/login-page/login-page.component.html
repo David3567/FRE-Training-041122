@@ -43,17 +43,14 @@
       </mat-error>
       <br />
 
-      <!-- <div class="list">
+      <div class="list">
         <mat-checkbox formControlName="rememberMe" color="primary">
           Ready?
         </mat-checkbox>
       </div>
-      <br /> -->
+      <br />
       <div class="buttons">
-        <mat-checkbox formControlName="rememberMe" color="primary">
-          Ready?
-        </mat-checkbox>
-
+        
         <button
           mat-raised-button
           [disabled]="loginForm.invalid"
@@ -68,6 +65,7 @@
 
   <br />
   Status:
-    {{ loginForm.status }}
-
+  {{
+    loginForm.status
+  }}
 </html>
