@@ -65,6 +65,7 @@ export class TmdbAPIService {
       map((videosObj: any) => {
         const movieTrailer: any = videosObj.results.map((videosData: any) => {
           if (videosData.type === 'Trailer') {
+          // if (videosData.name === 'Official Trailer') {
             return {
               iso_639_1: videosData.iso_639_1,
               iso_3166_1: videosData.iso_3166_1,
