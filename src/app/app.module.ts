@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /*~~~~~~~~~ Angular Material Modules ~~~~~~~~~*/
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -15,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatChipsModule } from '@angular/material/chips';
 /*~~~~~~~~~ Components ~~~~~~~~~*/
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
@@ -51,6 +53,9 @@ import { MoviesItemComponent } from './movies/movies-lists/movies-item/movies-it
     FlexLayoutModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatChipsModule,
   ],
   exports: [HeaderComponent],
   providers: [],
