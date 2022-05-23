@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,12 +52,81 @@
           id="signIn-internal-wrapper"
           type="submit"
           value="submit"
-          [routerLink]="['/movielist']"
-          (click)="login($event)"
-        />
-      </form>
-      <pre></pre>
+=======
+<html>
+  <mat-sidenav-container class="nav-container">
+    <mat-sidenav-content>
+      <app-nav-header-bar></app-nav-header-bar>
+      <main class="headermain">
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 
+  <div class="formContainer">
+    <form [formGroup]="loginForm" validate>
+      <div class="labels">
+        <mat-label>
+          <mat-icon>account_circle</mat-icon><b> <u>SIGN IN </u></b>
+        </mat-label>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label><mat-icon>face</mat-icon><b> UserName</b></mat-label>
+        <input matInput placeholder="User Name" formControlName="userName" />
+      </mat-form-field>
+
+      <mat-error *ngIf="this.userName?.invalid && this.userName?.touched">
+        This user name is invalid
+      </mat-error>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label><mat-icon>password</mat-icon><b> Password</b></mat-label>
+        <input matInput placeholder="Password" formControlName="password" />
+      </mat-form-field>
+
+      <div class="hint">
+        <mat-hint> - At least 6 characters </mat-hint>
+        <mat-hint> - Uppercase letters </mat-hint>
+        <mat-hint> - Lowercase letters </mat-hint>
+        <mat-hint> - Numbers in the end </mat-hint>
+      </div>
+
+      <mat-error *ngIf="this.password?.invalid && this.password?.touched">
+        This password is invalid
+      </mat-error>
+      <br />
+
+      <!-- <div class="list">
+        <mat-checkbox formControlName="rememberMe" color="primary">
+          Ready?
+        </mat-checkbox>
+      </div>
+      <br /> -->
+      <div class="buttons">
+        <mat-checkbox formControlName="rememberMe" color="primary">
+          Ready?
+        </mat-checkbox>
+
+        <button
+          mat-raised-button
+          [disabled]="loginForm.invalid"
+>>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132
+          [routerLink]="['/movielist']"
+        >
+          Sign IN
+        </button>
+        <button mat-raised-button [routerLink]="['/register']">Sign UP</button>
+      </div>
+    </form>
+  </div>
+
+  <br />
+  Status:
+    {{ loginForm.status }}
+
+<<<<<<< HEAD
       <ul>
         <span></span>
         <li id="first-list-wrapper">
@@ -71,3 +141,6 @@
     </div>
   </body>
 </html>
+=======
+</html>
+>>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132

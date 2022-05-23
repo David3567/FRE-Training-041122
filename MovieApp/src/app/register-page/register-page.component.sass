@@ -6,14 +6,6 @@
   box-sizing: border-box
   color: whitesmoke
   background-color: $main-bg-color
-  overflow: hidden
-
-*
-  padding: 0
-  margin: 0
-  box-sizing: border-box
-  color: whitesmoke
-  background-color: $main-bg-color
 
 html
   height: 100vh
@@ -22,6 +14,19 @@ html
 
 img
   width: 50%
+
+.hint
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+mat-hint, mat-error
+  width: 100%
+  font-style: italic
+
+mat-error
+  color: red
 
 .formContainer
   width: 100%

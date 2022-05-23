@@ -15,6 +15,7 @@ import { RegisterComponent } from './register-page/register-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 import { MovieCardComponent } from './movie-list/movie-card/movie-card.component';
 import { MatInputModule } from '@angular/material/input';
@@ -24,17 +25,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
+<<<<<<< HEAD
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NavHeaderBarComponent } from './nav-header-bar/nav-header-bar.component';
 import { NavSidebarComponent } from './nav-sidebar/nav-sidebar.component';
-import { MatListModule } from '@angular/material/list';
+=======
+import { NavHeaderBarComponent } from './nav-header-bar/nav-header-bar.component';
+import { NavSidebarComponent } from './nav-sidebar/nav-sidebar.component';
 import { NavLoggedInHeaderComponent } from './nav-logged-in-header/nav-logged-in-header.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+>>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132
+import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
+<<<<<<< HEAD
 import { MoviePageComponent } from './movie-page/movie-page.component';
 
 const routes: Routes = [
@@ -46,6 +56,23 @@ const routes: Routes = [
   { path: 'movielist', component: MovieListComponent },
   { path: 'moviecard', component: MovieCardComponent },
   { path: '**', component: NotFoundComponent },
+=======
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+
+const routes: Routes = [
+  {path: 'home', component: HomePageComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginPageComponent},
+  {path: 'navheader', component: NavHeaderBarComponent},
+  {path: 'movielist', component: MovieListComponent},
+  {path: 'moviecard', component: MovieCardComponent},
+  {path: 'moviedetails', component: MovieDetailsComponent},
+  {path: 'moviedetails/:id', component: MovieDetailsComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '**', component: NotFoundComponent}
+>>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132
 ];
 
 @NgModule({
@@ -63,7 +90,11 @@ const routes: Routes = [
     TextReductionPipe,
     NavLoggedInHeaderComponent,
     NotFoundComponent,
+<<<<<<< HEAD
     MoviePageComponent,
+=======
+    MovieDetailsComponent,
+>>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132
   ],
   imports: [
     BrowserModule,
@@ -82,6 +113,11 @@ const routes: Routes = [
     MatSelectModule,
     MatStepperModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
+=======
+    MatCheckboxModule, 
+    MatButtonModule,
+>>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132
   ],
   providers: [],
   bootstrap: [AppComponent],
