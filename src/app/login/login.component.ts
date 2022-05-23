@@ -35,10 +35,12 @@ export class LoginComponent implements OnInit {
   }
 
   get email() {
+    //this is okay because form group is never modified
     return this.loginForm.get('email');
   }
 
   get password() {
+    //this is okay because form group is never modified
     return this.loginForm.get('password');
   }
 

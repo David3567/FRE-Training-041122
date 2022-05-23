@@ -1,53 +1,56 @@
-<div
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="onSignIn()"
   id="login-dialog"
   fxLayout="column"
   fxLayoutAlign="center center"
   fxLayoutGap="1rem"
 >
   <h2>Sign In</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onSignIn()">
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="pat@example.com" formControlName="email" />
-      </mat-form-field>
-      <div class="errors" *ngIf="email?.value.length > 0">
-        <mat-error *ngIf="!email?.valid && (email?.dirty || email?.touched)"
-          >Please enter a valid email</mat-error
-        >
-        <mat-error
-          *ngIf="email?.errors?.['minlength'] && (email?.dirty || email?.touched)"
-        >
-          Min Length is 7 characters</mat-error
-        >
-        <mat-error
-          *ngIf="email?.errors?.['maxlength'] && (email?.dirty || email?.touched)"
-        >
-          Max Length is 50 characters</mat-error
-        >
-      </div>
+
+  <div class="form-group">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input 
+        matInput placeholder="pat@example.com" 
+        formControlName="email" />
+    </mat-form-field>
+    <div class="errors" *ngIf="email?.value.length > 0">
+      <mat-error *ngIf="!email?.valid && (email?.dirty || email?.touched)"
+        >Please enter a valid email</mat-error
+      >
+      <mat-error
+        *ngIf="email?.errors?.['minlength'] && (email?.dirty || email?.touched)"
+      >
+        Min Length is 7 characters</mat-error
+      >
+      <mat-error
+        *ngIf="email?.errors?.['maxlength'] && (email?.dirty || email?.touched)"
+      >
+        Max Length is 50 characters</mat-error
+      >
     </div>
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input
-          matInput
-          placeholder="Please enter password"
-          formControlName="password"
-          type="password"
-        />
-      </mat-form-field>
-      <div class="errors" *ngIf="password?.value.length > 0">
-        <mat-error
-          *ngIf="password?.errors?.['pattern']">
-          <p>Password should have at least 8 characters</p>
-          <p>Password must contain 1 capital letter</p>
-          <p>Password must contain 1 numeric digit</p>
-          <p>Password must contain 1 special character</p>
-        </mat-error>
-      </div>
+  </div>
+  <div class="form-group">
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        placeholder="Please enter password"
+        formControlName="password"
+        type="password"
+      />
+    </mat-form-field>
+    <div class="errors" *ngIf="password?.value.length > 0">
+      <mat-error *ngIf="password?.errors?.['pattern']">
+        <p>Password should have at least 8 characters</p>
+        <p>Password must contain 1 capital letter</p>
+        <p>Password must contain 1 numeric digit</p>
+        <p>Password must contain 1 special character</p>
+      </mat-error>
     </div>
-    <button mat-raised-button type="submit">Sign In</button>
-  </form>
+  </div>
+  <button mat-raised-button type="submit">Sign In</button>
+
   <span>No account? <a routerLink="/register">Register Now</a></span>
-</div>
+</form>
