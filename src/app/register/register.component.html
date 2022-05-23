@@ -1,38 +1,83 @@
-<section class="register-body">
-    <mat-card class="register-card">
-        <h2>Register</h2>
-        <form class="register-form">
-            <mat-form-field class="register-full-width" appearance="fill">
-                <mat-label>Username</mat-label>
-                <input matInput class="register-input">
-            </mat-form-field>
-            <mat-form-field class="register-full-width" appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput type='email' class="register-input">
-            </mat-form-field>
-            <mat-form-field class="register-full-width" type="password" appearance="fill">
-                <mat-label>Password</mat-label>
-                <input matInput class="register-input">
-            </mat-form-field>
-            <mat-form-field class="register-full-width" type="password" appearance="fill">
-                <mat-label>Confirm Password</mat-label>
-                <input matInput class="register-input">
-            </mat-form-field>
-            <button mat-button disabled class="register-role" [matMenuTriggerFor]="menu">
-                Select Role . . .
-            </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item>Item 1</button>
-                <button mat-menu-item>Item 2</button>
-            </mat-menu>
-            
-            <mat-form-field class="register-full-width" appearance="fill">
-                <mat-label>API Key</mat-label>
-                <input matInput class="register-input">
-            </mat-form-field>
-            <div>
-                <button mat-raised-button class="register-full-width" color="success">Register</button>
-            </div>
-        </form>
-    </mat-card>
-</section>
+<mat-card class="register-body">
+  <!-- TODO: Registration error -->
+  <div *ngIf="errors">Input error here if there is or registration errors</div>
+  <mat-card class="register-card">
+    <h2>Register</h2>
+    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <div class="form-group">
+        <mat-form-field class="register-full-width" appearance="outline">
+          <mat-label class="register-label">Username</mat-label>
+          <input matInput class="register-input" formControlName="username" />
+        </mat-form-field>
+        <div class="errors">
+          <mat-error *ngIf="!username?.valid && (username?.touched || username?.dirty)">
+            <mat-error *ngIf="username?.errors?.['minlength']">
+              Min Length is 3 characters</mat-error>
+            <mat-error *ngIf="username?.errors?.['maxlength']">
+              Max Length is 20 characters</mat-error>
+            <mat-error *ngIf="username?.errors?.['required']">
+              Enter username!</mat-error>
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="register-full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" class="register-input" formControlName="email" />
+        </mat-form-field>
+        <mat-error class="errors" *ngIf="!email?.valid && (email?.dirty || email?.touched)">Please enter a valid email
+        </mat-error>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="register-full-width" type="password" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="showPassword ? 'text' : 'password'" class="register-input"
+            formControlName="password" />
+          <mat-icon matSuffix (click)="onShowPassword()">
+            {{showPassword?'visibility_off':'visibility'}}
+          </mat-icon>
+        </mat-form-field>
+        <div class="errors" *ngIf="password?.value.length > 0">
+          <mat-error *ngIf="password?.errors?.['pattern']">
+            <p>Password should have at least 8 characters</p>
+            <p>Password must contain 1 capital letter</p>
+            <p>Password must contain 1 numeric digit</p>
+            <p>Password must contain 1 special character</p>
+          </mat-error>
+        </div>
+      </div>
+
+      <mat-form-field class="register-full-width" appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput class="register-input" [type]="showConfirmPassword ? 'text' : 'password'"
+          formControlName="confirmPassword" />
+        <mat-icon matSuffix (click)="onShowConfirmPassword()">
+          {{showConfirmPassword?'visibility_off':'visibility'}}
+        </mat-icon>
+      </mat-form-field>
+      <mat-error class="errors" *ngIf="registerForm.errors?.['passwordNotMatched']">Password do not match!
+      </mat-error>
+      <mat-form-field appearance="outline">
+        <mat-label>Select Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let role of roles" [value]="role.value">
+            {{role.displayValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="register-full-width" appearance="outline">
+        <mat-label>API Key</mat-label>
+        <input matInput class="register-input" formControlName="apikey" />
+      </mat-form-field>
+      <div>
+        <button mat-raised-button [disabled]="!registerForm.valid" class="register-full-width" color="success"
+          type="submit">
+          Register
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</mat-card>
