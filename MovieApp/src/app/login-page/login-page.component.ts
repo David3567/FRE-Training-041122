@@ -1,14 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-<<<<<<< HEAD
-import { User } from '../interfaces/user.interface';
-
-const data: User[] = [
-  {
-    username: 'Aaron',
-    password: '1234',
-  },
-];
-=======
 import {
   FormGroup,
   FormBuilder,
@@ -16,7 +6,6 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
->>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132
 
 @Component({
   selector: 'app-login-page',
@@ -26,40 +15,6 @@ import {
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
 
-<<<<<<< HEAD
-  public selected!: boolean;
-  datas = {
-    username: 'Aaron',
-    password: '1234',
-  };
-
-  @Output() logIn = new EventEmitter();
-
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  signUser() {
-    if (this.datas.username === 'Aaron' && this.datas.password === '1234') {
-      this.selected = true;
-    } else {
-      this.selected = false;
-    }
-  }
-
-  handleClear() {
-    this.datas.username = ' ';
-    this.datas.password = ' ';
-  }
-
-  saveValues() {
-    this.datas.username = this.datas.username;
-    this.datas.password = this.datas.password;
-  }
-
-  login(a: any) {
-    this.logIn.emit();
-=======
   data = {
     username: 'Priyanka',
     password: 'Priyanka28',
@@ -111,6 +66,5 @@ export class LoginPageComponent implements OnInit {
   logInPass(group: AbstractControl): ValidationErrors | null {
     const pass = group.get('password')?.value;
     return pass === this.data.password ? { notMatch: false } : null;
->>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132
   }
 }

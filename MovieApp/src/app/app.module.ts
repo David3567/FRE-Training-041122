@@ -25,54 +25,33 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
-<<<<<<< HEAD
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { NavHeaderBarComponent } from './nav-header-bar/nav-header-bar.component';
-import { NavSidebarComponent } from './nav-sidebar/nav-sidebar.component';
-=======
 import { NavHeaderBarComponent } from './nav-header-bar/nav-header-bar.component';
 import { NavSidebarComponent } from './nav-sidebar/nav-sidebar.component';
 import { NavLoggedInHeaderComponent } from './nav-logged-in-header/nav-logged-in-header.component';
 
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
->>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
-<<<<<<< HEAD
-import { MoviePageComponent } from './movie-page/movie-page.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'navheader', component: NavHeaderBarComponent },
   { path: 'movielist', component: MovieListComponent },
   { path: 'moviecard', component: MovieCardComponent },
+  { path: 'moviedetails', component: MovieDetailsComponent },
+  { path: 'moviedetails/:id', component: MovieDetailsComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
-=======
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
-
-const routes: Routes = [
-  {path: 'home', component: HomePageComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginPageComponent},
-  {path: 'navheader', component: NavHeaderBarComponent},
-  {path: 'movielist', component: MovieListComponent},
-  {path: 'moviecard', component: MovieCardComponent},
-  {path: 'moviedetails', component: MovieDetailsComponent},
-  {path: 'moviedetails/:id', component: MovieDetailsComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: '**', component: NotFoundComponent}
->>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132
 ];
 
 @NgModule({
@@ -90,11 +69,7 @@ const routes: Routes = [
     TextReductionPipe,
     NavLoggedInHeaderComponent,
     NotFoundComponent,
-<<<<<<< HEAD
-    MoviePageComponent,
-=======
     MovieDetailsComponent,
->>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132
   ],
   imports: [
     BrowserModule,
@@ -113,11 +88,9 @@ const routes: Routes = [
     MatSelectModule,
     MatStepperModule,
     ReactiveFormsModule,
-<<<<<<< HEAD
-=======
-    MatCheckboxModule, 
+    MatCheckboxModule,
     MatButtonModule,
->>>>>>> 044f090d2fbb698c1e1b95b12b549d956de91132
+    YouTubePlayerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

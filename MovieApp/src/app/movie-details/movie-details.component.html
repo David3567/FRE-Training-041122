@@ -1,4 +1,5 @@
 <html>
+  <link rel="stylesheet" href="./movie-details.component.sass" />
   <mat-sidenav-container class="nav-container">
     <mat-sidenav #sidenav mode="side">
       <app-nav-sidebar></app-nav-sidebar>
@@ -12,7 +13,20 @@
         <router-outlet></router-outlet>
 
         <!-- // -->
-        <div class="formContainer">{{ moviesTrailers }}</div>
+        <div class="formContainer">
+          <!-- {{ moviesTrailers.iso_3166_1 }} -->
+        </div>
+        <div id="youTubePlayer-wrapper" *ngFor="let temp of moviesTrailers">
+          <youtube-player
+            [videoId]="temp.id"
+            suggestedQuality="highres"
+            [height]="600"
+            [width]="1080"
+            [startSeconds]="43"
+            [endSeconds]="60"
+          >
+          </youtube-player>
+        </div>
       </main>
     </mat-sidenav-content>
   </mat-sidenav-container>
