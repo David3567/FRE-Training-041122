@@ -89,8 +89,7 @@ const routes: Routes = [
     MatStepperModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    MatButtonModule,
-    YouTubePlayerModule,
+    YouTubePlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
