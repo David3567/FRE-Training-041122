@@ -1,13 +1,10 @@
 @import "../../styles.scss";
 
 .register-body {
-  position: fixed;
-  top: 120px;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  background: url("../../assets/images/register-bg.jpg") no-repeat center center
-    fixed;
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url(../../assets/images/register-bg.jpg);
+  background-size: cover;
 }
 
 .register-body::after {
@@ -54,9 +51,9 @@ h2 {
   font-size: 3rem;
 }
 
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-  background: #333333;
-}
+// ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+//   background: #585757;
+// }
 
 mat-label {
   color: #fff;

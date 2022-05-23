@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from './custom-validators';
+import { Role } from './register.models';
 
 @Component({
   selector: 'app-register',
@@ -7,7 +9,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  /**
+   * implement error property for backend registration errors
+   */
+  errors = null;
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
   registerForm!: FormGroup;
+  roles: Role[] = [
+    { value: 'user', displayValue: 'User' },
+    { value: 'admin', displayValue: 'Admin' },
+    { value: 'developer', displayValue: 'Developer' },
+  ];
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
@@ -21,15 +34,7 @@ export class RegisterComponent implements OnInit {
             Validators.maxLength(20),
           ],
         ],
-        email: [
-          '',
-          [
-            Validators.required,
-            Validators.email,
-            Validators.minLength(7),
-            Validators.maxLength(50),
-          ],
-        ],
+        email: ['', [Validators.required, Validators.email]],
         password: [
           '',
           [
@@ -39,9 +44,11 @@ export class RegisterComponent implements OnInit {
             ),
           ],
         ],
-        confirmpassword: ['', [Validators.required]],
-        apikey: [''],
-      }
+        confirmPassword: ['', [Validators.required]],
+        role: ['user', [Validators.required]],
+        apikey: ['', [Validators.required, Validators.pattern(/^[a-z0-9]+$/)]],
+      },
+      { validator: CustomValidators.passwordNotMatched }
     );
   }
 
@@ -63,5 +70,13 @@ export class RegisterComponent implements OnInit {
 
   onRegister() {
     console.log(this.registerForm);
+  }
+
+  onShowPassword() {
+    this.showPassword = !this.showPassword;
+  }
+
+  onShowConfirmPassword() {
+    this.showConfirmPassword = !this.showConfirmPassword;
   }
 }

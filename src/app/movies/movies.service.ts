@@ -6,13 +6,15 @@ import { MoiveDetail, Movie } from './movies.model';
 @Injectable({ providedIn: 'root' })
 export class MoviesService implements OnInit {
   //Moive list data & subject
+  movieTrailerId!: string;
   movies: Movie[] = [];
   moviesChanged = new Subject<Movie[]>();
+  movieTrailerIdChanged = new Subject<string>();
 
   //movie detail data & subject
   movieDetail!: MoiveDetail;
   movieDetailChanged = new Subject<MoiveDetail>();
-  
+
   constructor() {}
 
   ngOnInit(): void {
@@ -35,5 +37,10 @@ export class MoviesService implements OnInit {
 
   getMovieDetail() {
     return { ...this.movieDetail };
+  }
+
+  setMovieTrailerId(key: string) {
+    this.movieTrailerId = key;
+    this.movieTrailerIdChanged.next(this.movieTrailerId);
   }
 }

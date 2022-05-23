@@ -73,11 +73,21 @@ export class DataStorageService {
 
   // Get list of video associated to movie
   getMovieTrailer(id: number) {
-    return this.http.get<MovieTrailer>(
-      `https://api.themoviedb.org/3/movie/${id}/videos?`,
-        {
-          params: new HttpParams().set('api_key', this.apiKey.apiKey),
-        }
-    );
+    return this.http
+      .get<MovieTrailer>(`https://api.themoviedb.org/3/movie/${id}/videos?`, {
+        params: new HttpParams().set('api_key', this.apiKey.apiKey),
+      })
+      .pipe(
+        map((data) => {
+          const newResult = data.results.filter(
+            (item) => item.name === 'Trailer' || item.type === 'Trailer'
+          );
+          // Get only first trailer
+          return newResult[0];
+        })
+      )
+      .subscribe((response) => {
+        this.moviesService.setMovieTrailerId(response.key);
+      });
   }
 }
