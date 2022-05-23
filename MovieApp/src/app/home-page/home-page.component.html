@@ -14,7 +14,7 @@
         <h2>Watch anywhere offline</h2>
         <h3>Get started today!</h3>
         <div class="formContainer">
-          <form [formGroup]="form">
+          <form [formGroup]="form" validate>
             <div class="signupElements">
               <mat-form-field appearance="outline">
                 <mat-label><mat-icon>contact_mail</mat-icon> Email</mat-label>
@@ -31,7 +31,11 @@
               </mat-error> -->
             </div>
             <div class="signUpbtn">
-              <button mat-raised-button [routerLink]="['/register']">
+              <button
+                mat-raised-button
+                [disabled]="form.invalid"
+                [routerLink]="['/register']"
+              >
                 Sign UP
               </button>
             </div>
