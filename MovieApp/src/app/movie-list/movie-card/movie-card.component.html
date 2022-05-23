@@ -20,7 +20,7 @@
       mat-button
       *ngIf="movie.showDetails"
       (click)="showDetails(movie.id)"
-      [routerLink]="['/moviedetails']"
+      [routerLink]="['/moviedetails/' + movie.id]"
     >
       <div class="material-icons">help_outline</div>
       More Info
