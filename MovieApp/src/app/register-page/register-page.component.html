@@ -1,0 +1,149 @@
+<html>
+  <mat-sidenav-container class="nav-container">
+    <mat-sidenav-content>
+      <app-nav-header-bar></app-nav-header-bar>
+      <main class="headermain">
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- // -->
+  {{
+    registerForm.value | json
+  }}
+
+  {{
+    registerForm.status
+  }}
+  <div class="formContainer">
+    <!-- <button
+      mat-raised-button
+      (click)="isLinear = !isLinear"
+      id="toggle-linear"
+    ></button> -->
+    <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="registerForm">
+        <form [formGroup]="registerForm">
+          <ng-template matStepLabel>
+            <span>Username</span>
+          </ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input
+              matInput
+              placeholder=""
+              formControlName="username"
+              required
+            />
+          </mat-form-field>
+          <div class="buttonContainer">
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="registerForm">
+        <form [formGroup]="registerForm">
+          <ng-template matStepLabel>
+            <span>Provide an Email address</span>
+          </ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>example@mail.com</mat-label>
+            <input matInput placeholder="" formControlName="email" required />
+          </mat-form-field>
+          <div class="error">
+            <mat-error *ngIf="this.email?.invalid && this.email?.touched">
+              That does not look like an Email address
+            </mat-error>
+          </div>
+          <br />
+          <div class="buttonContainer">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="registerForm">
+        <form [formGroup]="registerForm">
+          <ng-template class="test" matStepLabel
+            ><span>Provide a secure password</span></ng-template
+          >
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              placeholder=""
+              required
+            />
+          </mat-form-field>
+          <div class="hint">
+            <mat-hint> - At least 8 characters in length </mat-hint>
+            <mat-hint> - Lowercase letters </mat-hint>
+            <mat-hint> - Uppercase letters </mat-hint>
+            <mat-hint> - Numbers </mat-hint>
+            <!-- <mat-hint> - Special characters </mat-hint> -->
+          </div>
+          <br />
+          <div class="error">
+            <mat-error *ngIf="this.password?.invalid && this.password?.touched">
+              Please enter a valid email
+            </mat-error>
+          </div>
+          <br />
+          <div class="buttonContainer">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="registerForm">
+        <form [formGroup]="registerForm">
+          <ng-template class="test" matStepLabel
+            ><span>Confirm your password</span></ng-template
+          >
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              matInput
+              formControlName="passwordConfirm"
+              placeholder=""
+              required
+            />
+          </mat-form-field>
+          <div class="hint">
+            <mat-hint> Passwords should match </mat-hint>
+          </div>
+          <br />
+          <div class="buttonContainer">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="registerForm">
+        <form [formGroup]="registerForm">
+          <ng-template class="test" matStepLabel
+            ><span>Provide an API key</span></ng-template
+          >
+          <mat-form-field appearance="outline">
+            <mat-label>API-KEY</mat-label>
+            <input matInput formControlName="apikey" placeholder="" required />
+          </mat-form-field>
+          <div class="buttonContainer">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>Submit register form</p>
+        <br />
+        <div class="buttonContainer">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button type="submit">Submit</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</html>
