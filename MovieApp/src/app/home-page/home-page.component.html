@@ -14,18 +14,18 @@
         <h2>Watch anywhere offline</h2>
         <h3>Get started today!</h3>
         <div class="formContainer">
-          <form [formGroup]="form" validate>  
+          <form [formGroup]="form">  
             <div class="signupElements">
-              <mat-form-field appearance="fill">
+              <mat-form-field appearance="outline">
                 <mat-label><mat-icon>contact_mail</mat-icon> Email</mat-label>
                 <input matInput placeholder="Your Email Address" formControlName="email" />
               </mat-form-field>
-              <mat-error *ngIf="this.email?.invalid && this.email?.touched">
+              <!-- <mat-error *ngIf="this.email?.invalid && this.email?.touched">
                 Given email is invalid!
-              </mat-error>
+              </mat-error> -->
             </div>
             <div class="signUpbtn">
-              <button mat-raised-button [disabled]="form.invalid" [routerLink]="['/register']">Sign UP</button>
+              <button mat-raised-button [routerLink]="['/register']">Sign UP</button>
             </div>
           </form>
         </div>

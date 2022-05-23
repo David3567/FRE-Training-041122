@@ -47,18 +47,26 @@ body
     text-align: center
 
 .signupElements
+  width: 100%
+  margin-top: 9%
   display: flex
   flex-direction: column
-  gap: 5px
+  justify-content: center
+  gap: 0.5em
+  background-color: transparent
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix 
+  padding: 0.4em 0px !important
+::ng-deep .mat-form-field-label-wrapper 
+  top: -1.5em
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label 
+    transform: translateY(-1.1em) scale(.75)
+    width: 133.33333%
 
 form
   display: flex
   flex-direction: row
-
-.formContainer
-  display: flex
-  justify-content: center
-  align-items: center
 
 .signUpbtn
   width: 100%
@@ -71,9 +79,9 @@ form
 
 button
   width: 100%
-  height: 2em
+  height: 2.5em
   border: 1px $cyan-accent-color solid
-  border-radius: 0.5em
+  border-radius: 0.3em
   text-align: center
   font-size: 1em
   background-color: transparent
