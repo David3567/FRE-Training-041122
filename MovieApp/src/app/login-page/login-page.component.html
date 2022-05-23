@@ -22,7 +22,7 @@
       </mat-form-field>
 
       <mat-error *ngIf="this.userName?.invalid && this.userName?.touched">
-        User Name is not right
+        This user name is invalid
       </mat-error>
       <br />
 
@@ -32,24 +32,28 @@
       </mat-form-field>
 
       <div class="hint">
-        <mat-hint> - At least 6 characters in length </mat-hint>
+        <mat-hint> - At least 6 characters </mat-hint>
         <mat-hint> - Uppercase letters </mat-hint>
         <mat-hint> - Lowercase letters </mat-hint>
         <mat-hint> - Numbers in the end </mat-hint>
       </div>
 
       <mat-error *ngIf="this.password?.invalid && this.password?.touched">
-        password is wrong
+        This password is invalid
       </mat-error>
       <br />
 
-      <div class="list">
+      <!-- <div class="list">
         <mat-checkbox formControlName="rememberMe" color="primary">
           Ready?
         </mat-checkbox>
       </div>
-      <br />
+      <br /> -->
       <div class="buttons">
+        <mat-checkbox formControlName="rememberMe" color="primary">
+          Ready?
+        </mat-checkbox>
+
         <button
           mat-raised-button
           [disabled]="loginForm.invalid"
