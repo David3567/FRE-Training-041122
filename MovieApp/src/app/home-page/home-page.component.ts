@@ -13,10 +13,12 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuild.group({
-      email: ['', [
-        Validators.required,
-        Validators.email
-      ]]
+      email: ['', 
+      // [
+      //   Validators.required,
+      //   Validators.email
+      // ]
+    ]
     });
   }
 

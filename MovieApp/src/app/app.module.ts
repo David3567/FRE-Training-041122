@@ -35,6 +35,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+
 
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
@@ -83,6 +85,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatCheckboxModule, 
     MatButtonModule,
+    YouTubePlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
