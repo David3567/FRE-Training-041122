@@ -1,7 +1,4 @@
-$cyan-accent-color: rgb(43,227,252)
-$purple-accent-color: rgb(194,99,253)
-$pink-accent-color: rgb(255,107,178)
-$main-bg-color: rgb(0, 0, 0)
+@import "../../styles"
 
 *
     margin: 0
@@ -10,7 +7,7 @@ $main-bg-color: rgb(0, 0, 0)
 $backgroundColor: rgb(0, 0, 0)
 $backgroundSignIn: #1B2532
 
-$imgpath: url("../../assets/login-button-sign.jpg")
+$imgpath: url("../../assets/welcome-neon.jpg")
 
 @mixin backgroundShorthand($imgpath,$position: right ,$repeat: no-repeat)
     background: transparent url(#{$imgpath}) $repeat $position
@@ -19,11 +16,11 @@ $imgpath: url("../../assets/login-button-sign.jpg")
     filter: grayscale(50%)
 
 html
-    overflow: hidden
-    height: 150vh
+    // overflow: hidden
+    height: 100vh
 
 body
-    @include backgroundShorthand('../../assets/login-button-sign.jpg')
+    @include backgroundShorthand('../../assets/welcome-neon.jpg')
     overflow: auto
     background-color: $backgroundColor
 
