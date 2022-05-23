@@ -1,17 +1,10 @@
-<mat-card
-  class="card"
-  [ngStyle]="{ 'background-image': 'url(' + movieDetail.image + ')' }"
-  *ngIf="movieDetail"
->
+<mat-card class="card" [ngStyle]="{ 'background-image': 'url(' + movieDetail.image + ')' }" *ngIf="movieDetail">
   <mat-card-content class="card-content">
     <h1>{{ movieDetail.title }}</h1>
     <div class="yt-player" #ytplayer>
       <div *ngIf="showTrailer">
         <mat-icon (click)="onClosePlayer()">close</mat-icon>
-        <youtube-player
-          [videoId]="movieTrailerId"
-          suggestedQuality="hd720"
-        >
+        <youtube-player [videoId]="movieTrailerId" suggestedQuality="hd720">
         </youtube-player>
       </div>
     </div>
@@ -22,13 +15,7 @@
     <h3>Released: {{ movieDetail.releaseDate | date:'fullDate' }}</h3>
     <mat-card-actions>
       <button mat-stroked-button color="" class="btn-detail">LIKE</button>
-      <button
-        mat-stroked-button
-        color=""
-        class="btn-detail"
-        (click)="onPlay()"
-        *ngIf="!showTrailer"
-      >
+      <button mat-stroked-button color="" class="btn-detail" (click)="onPlay()" *ngIf="!showTrailer">
         PLAY
       </button>
     </mat-card-actions>

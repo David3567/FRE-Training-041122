@@ -25,6 +25,7 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
 
   //subscribe and destory
   movieDetailSubs!: Subscription;
+  movieTrailerSub!: Subscription;
 
   constructor(
     private movieService: MoviesService,
@@ -33,26 +34,31 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-
     // Use params to load movie details
     this.movieDetailId = this.route.snapshot.params['id'];
     this.dataStorageService.getMoiveDetail(this.movieDetailId);
 
     // Get Movie Trailer
-    this.dataStorageService
-      .getMovieTrailer(this.movieDetailId)
-      .pipe(
-        map((data) => {
-          const newResult = data.results.filter(
-            (item) => item.name === 'Trailer' || item.type === 'Trailer'
-          );
-          // Get only first trailer
-          return newResult[0];
-        })
-      )
-      .subscribe((response) => {
-        this.movieTrailerId = response.key;
-      });
+    // this.dataStorageService
+    //   .getMovieTrailer(this.movieDetailId)
+    //   .pipe(
+    //     map((data) => {
+    //       const newResult = data.results.filter(
+    //         (item) => item.name === 'Trailer' || item.type === 'Trailer'
+    //       );
+    //       // Get only first trailer
+    //       return newResult[0];
+    //     })
+    //   )
+    //   .subscribe((response) => {
+    //     this.movieTrailerId = response.key;
+    //   });
+
+    this.movieTrailerSub = this.movieService.movieTrailerIdChanged.subscribe(
+      (movieId: string) => {
+        this.movieTrailerId = movieId;
+      }
+    );
 
     this.movieDetailSubs = this.movieService.movieDetailChanged.subscribe(
       (detail: MoiveDetail) => {
@@ -61,15 +67,17 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy(): void {
-    this.movieDetailSubs.unsubscribe();
-  }
-
   onPlay() {
+    this.dataStorageService.getMovieTrailer(this.movieDetailId);
     this.showTrailer = true;
   }
 
   onClosePlayer() {
     this.showTrailer = false;
+  }
+
+  ngOnDestroy(): void {
+    this.movieDetailSubs.unsubscribe();
+    this.movieTrailerSub.unsubscribe();
   }
 }
