@@ -16,6 +16,6 @@ export class AppComponent implements OnInit{
   shouldLogin = /(^|.)(localhost|movielist)$/.test(window.location.pathname);
 
   ngOnInit(): void {
-    console.log(this.shouldLogin);
+    // console.log(this.shouldLogin);
   }
 }

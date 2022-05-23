@@ -16,9 +16,9 @@
         <div class="formContainer">
           <!-- {{ moviesTrailers.iso_3166_1 }} -->
         </div>
-        <div id="youTubePlayer-wrapper" *ngFor="let temp of moviesTrailers">
+        <div id="youTubePlayer-wrapper">
           <youtube-player
-            [videoId]="temp.id"
+            [videoId]="moviesTrailers[0].key"
             suggestedQuality="highres"
             [height]="600"
             [width]="1080"
