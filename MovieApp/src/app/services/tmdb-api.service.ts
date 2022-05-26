@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class TmdbAPIService {
   private base_url: string = `https://api.themoviedb.org/3/search/movie?api_key=${environment.API_KEY}&query=` 
   private poster_base_url: string = 'https://image.tmdb.org/t/p/original'
-  private populars_base_url: string = `https://api.themoviedb.org/3/movie/popular?api_key=${environment.API_KEY}&language=en-US&page=1`
+  private populars_base_url: string = `https://api.themoviedb.org/3/movie/popular?api_key=${environment.API_KEY}&language=en-US&page=` // add page
   
   private moviesSubj$: any = new Subject()
   private movieTrailersSubj$: any = new Subject()
@@ -19,14 +19,25 @@ export class TmdbAPIService {
   private movieTrailers: any = []
   private movieDetails: any = {}
 
+  private popularQueryPageSbj$: any = new Subject()
+  private searchQueryPageSbj$: any = new Subject()
+  
+  popularQueryPage$: any = this.popularQueryPageSbj$.asObservable()
+  searchQueryPage$: any = this.searchQueryPageSbj$.asObservable()
+
   movies$: any = this.moviesSubj$.asObservable()
   movieTrailers$: any = this.movieTrailersSubj$.asObservable()
   movieDetails$: any = this.movieDetailsSubj$.asObservable()
   
   constructor(private http: HttpClient) { }
 
-  queryMovies(popular: boolean = false, movieName?: string) {
-    const endpoint = popular ? this.populars_base_url : [this.base_url, movieName].join('/')
+  queryMovies(popular: boolean = false, pageNum: number = 1, movieName?: string, concat: boolean = false) {
+    const endpoint = popular ? [this.populars_base_url, pageNum].join('') : [this.base_url, movieName].join('/') + `&page=${pageNum}`
+    if (popular) {
+      this.popularQueryPageSbj$.next(pageNum)
+    } else {
+      this.searchQueryPageSbj$.next(pageNum)
+    }
     this.http.get(endpoint).pipe(
       map((moviesObj: any) => {
         const tempMovieList: any = moviesObj.results.map((movieData: any) => {
@@ -52,8 +63,15 @@ export class TmdbAPIService {
         return tempMovieList
       }),
       tap((movieList: any) => {
-        this.movies = [...movieList]
-        this.moviesSubj$.next(this.movies)
+        if (concat) {
+          this.movies = [...this.movies, ...movieList]
+          this.moviesSubj$.next(this.movies)
+  
+        } else {
+          this.movies = [...movieList]
+          this.moviesSubj$.next(this.movies)
+  
+        }
       })
     ).subscribe()
   }
@@ -120,5 +138,4 @@ export class TmdbAPIService {
       })
     ).subscribe()
   }
-
 }

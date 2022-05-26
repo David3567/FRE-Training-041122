@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { debounceTime, filter, fromEvent, tap } from 'rxjs';
+import { concat, debounceTime, filter, fromEvent, Subject, tap } from 'rxjs';
 import { TmdbAPIService } from '../services/tmdb-api.service';
   
 @Component({
@@ -13,11 +13,16 @@ export class MovieListComponent implements OnInit {
   value: string = '';
   movieName: string = '';
   show: boolean = true;
+  throttle = 300;
+  scrollDistance = 1;
+  scrollUpDistance = 2;
+  popularPageNum = 1
+  searchPageNum = 1
 
   constructor(private movieAPI: TmdbAPIService) { }
 
   ngOnInit(): void {
-    this.movieAPI.queryMovies(true);
+    this.movieAPI.queryMovies(true, 1);
 
     fromEvent(this.movieNameInput.nativeElement, 'keyup').pipe(
       debounceTime(500),
@@ -26,15 +31,34 @@ export class MovieListComponent implements OnInit {
         console.log(movieName);
 
         if(movieName === '') {
-          this.movieAPI.queryMovies(true);
+          this.movieAPI.queryMovies(true, 1);
           return false;
         }
         return true;
       }),
       tap(_ => {
         const movieName = this.movieNameInput.nativeElement.value;
-        this.movieAPI.queryMovies(false, movieName);
+        this.movieAPI.queryMovies(false, 1, movieName);
       })
     ).subscribe();
+  }
+
+  onScrollDown() {
+    console.log('onScrollDown')
+    console.log(this.movieNameInput.nativeElement.value)
+    if (this.movieNameInput.nativeElement.value === '') {
+      // Popular search
+      this.popularPageNum++
+      this.movieAPI.queryMovies(true, this.popularPageNum, undefined, true)
+    } else {
+      // Query search
+      this.searchPageNum++
+      this.movieAPI.queryMovies(false, this.searchPageNum, this.movieNameInput.nativeElement.value, true)
+    }
+  }
+
+  onUp() {
+    console.log('onUp')
+    console.log(this.movieNameInput.nativeElement.value)
   }
 }
