@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { filter, map, Subject, tap } from 'rxjs';
-import { environment } from '../../environments/environment'
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -67,16 +67,16 @@ export class TmdbAPIService {
           if (videosData.type === 'Trailer') {
           // if (videosData.name === 'Official Trailer') {
             return {
-              iso_639_1: videosData.iso_639_1,
-              iso_3166_1: videosData.iso_3166_1,
-              name: videosData.name,
+              // iso_639_1: videosData.iso_639_1,
+              // iso_3166_1: videosData.iso_3166_1,
+              // name: videosData.name,
               key: videosData.key,
-              site: videosData.site,
-              size: videosData.size,
-              type: videosData.type,
-              official: videosData.official,
-              published_at: videosData.published_at,
-              id: videosData.id
+              // site: videosData.site,
+              // size: videosData.size,
+              // type: videosData.type,
+              // official: videosData.official,
+              // published_at: videosData.published_at,
+              // id: videosData.id
             }
           } else {
             return null

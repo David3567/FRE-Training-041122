@@ -9,11 +9,17 @@
       <option>日本語</option>
       <option>中文</option>
     </select>
-    <mat-icon class="signIn" [routerLink]="['/login']">login</mat-icon>
-    <mat-icon class="register" [routerLink]="['/register']">
-      how_to_reg
-    </mat-icon>
+    <span title="Login">
+      <mat-icon class="signIn" [routerLink]="['/login']">login</mat-icon>
+    </span>
+    <span title="Register">
+      <mat-icon class="register" [routerLink]="['/register']">
+        how_to_reg
+      </mat-icon>
+    </span>
+    <span title="Home">
     <mat-icon class="home" [routerLink]="['/home']">home</mat-icon>
+  </span>
   </div>
 </header>
 <hr class="hr" />

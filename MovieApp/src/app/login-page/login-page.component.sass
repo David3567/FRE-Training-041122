@@ -17,12 +17,13 @@ html
   display: flex
   flex-direction: column
   margin-right: 0%
-  text-size: 1em
-  align-items: end
+  font-size: .8em
+  // align-items: center
 
-mat-hint, mat-error
-  width: 100%
+mat-hint
   font-style: italic
+  color: $purple-accent-color
+  text-shadow: 0.01em 0.01em $cyan-accent-color
 
 mat-error
   color: red
@@ -30,6 +31,15 @@ mat-error
 mat-checkbox
   border: $cyan-accent-color
   background-color: transparent
+
+.block
+  color: red
+
+.check
+  color: green
+
+.priority
+  color: $purple-accent-color
 
 .formContainer
   padding: 2%

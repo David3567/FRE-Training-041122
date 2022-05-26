@@ -5,7 +5,16 @@ import {
   Validators,
   AbstractControl,
   ValidationErrors,
+  FormGroupDirective,
+  NgForm,
 } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+export class LoginMatcher implements ErrorStateMatcher{
+  isErrorState(control: AbstractControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    return !!(control && control.invalid && (control.dirty || control.touched));
+  }
+}
 
 @Component({
   selector: 'app-login-page',
@@ -14,11 +23,7 @@ import {
 })
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
-
-  data = {
-    username: 'Priyanka',
-    password: 'Priyanka28',
-  };
+  matcher = new LoginMatcher();
 
   constructor(private fb: FormBuilder) {}
 
@@ -36,9 +41,6 @@ export class LoginPageComponent implements OnInit {
           ],
         ],
         rememberMe: [false, [Validators.requiredTrue]],
-      },
-      {
-        // validators: [this.logInName, this.logInPass]
       }
     );
 
@@ -55,16 +57,5 @@ export class LoginPageComponent implements OnInit {
 
   get rememberMe() {
     return this.loginForm.get('rememberMe');
-  }
-
-  logInName(group: AbstractControl): ValidationErrors | null {
-    const name = group.get('userName')?.value;
-    console.log(name !== this.data.username);
-    return name !== this.data.username ? { notMatch: true } : null;
-  }
-
-  logInPass(group: AbstractControl): ValidationErrors | null {
-    const pass = group.get('password')?.value;
-    return pass === this.data.password ? { notMatch: false } : null;
   }
 }
