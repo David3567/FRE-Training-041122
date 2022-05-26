@@ -1,0 +1,33 @@
+<html>
+  <link rel="stylesheet" href="./movie-details.component.sass" />
+  <mat-sidenav-container class="nav-container">
+    <mat-sidenav #sidenav mode="side">
+      <app-nav-sidebar></app-nav-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <app-nav-logged-in-header
+        (sidenavToggle)="sidenav.toggle()"
+      ></app-nav-logged-in-header>
+      <router-outlet></router-outlet>
+      <!-- // -->
+      <div class="container">
+        <div class="titleText">
+          <h1>{{ moviesDetails.title }}</h1>
+        </div>
+        <div class="youTubePlayer-wrapper">
+          <youtube-player
+            [videoId]="moviesTrailers[0].key"
+            suggestedQuality="highres"
+            [height]="600"
+            [width]="1080"
+            [startSeconds]="0"
+            [endSeconds]="0"
+          >
+          </youtube-player>
+        </div>
+      </div>
+      <div class="infoContainer">x</div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</html>

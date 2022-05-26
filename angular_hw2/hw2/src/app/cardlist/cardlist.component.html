@@ -1,0 +1,17 @@
+<section class="cardlist">
+  
+  <div class="card title">
+    <header class="header" [ngStyle]="{'color': selected}">
+      <h2>List of Cards</h2>
+    </header>
+    <ul id="cardlist_container">
+        <app-card
+        (changeColors)="changeList($event)"
+        *ngFor="let i of card"
+        [desc]="i.description"
+        [title]="i.title"
+        [btncolor]="i.btncolor"
+        ></app-card>
+    </ul>
+  </div>  
+</section>
