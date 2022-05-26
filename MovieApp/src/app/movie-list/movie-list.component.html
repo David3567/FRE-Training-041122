@@ -1,4 +1,13 @@
-<html>
+<div
+  class="mainContainer"
+  infinite-scroll
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollUpDistance]="1.5"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScrollDown()"
+  (scrolledUp)="onUp()"
+>
   <mat-sidenav-container class="nav-container">
     <mat-sidenav #sidenav mode="side">
       <app-nav-sidebar></app-nav-sidebar>
@@ -36,6 +45,7 @@
         <div class="container">
           <app-movie-card [movieName]="movieName"></app-movie-card>
         </div>
+      </main>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</html>
+</div>
