@@ -28,4 +28,3 @@ import { AuthModule } from './auth/auth.module';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-/* hello world */
