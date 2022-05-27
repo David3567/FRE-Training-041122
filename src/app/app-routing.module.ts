@@ -1,17 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { MoviesComponent } from './movies/movies.component';
-import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'movies', component: MoviesComponent },
-  { path: 'movies/:id', component: MovieDetailsComponent },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./auth/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./auth/register/register.module').then((m) => m.RegisterModule),
+  },
+  {
+    path: 'movies',
+    loadChildren: () =>
+      import('./movies/movies.module').then((m) => m.MoviesModule),
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
 ];
 
 @NgModule({
