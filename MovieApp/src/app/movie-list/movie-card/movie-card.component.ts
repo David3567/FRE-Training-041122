@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { fromEvent, tap } from 'rxjs';
+import { fromEvent, Subject, tap } from 'rxjs';
+import { IInfiniteScrollEvent } from 'ngx-infinite-scroll';
 import { TmdbAPIService } from 'src/app/services/tmdb-api.service';
 
 @Component({
@@ -10,8 +11,11 @@ import { TmdbAPIService } from 'src/app/services/tmdb-api.service';
 export class MovieCardComponent implements OnInit {
   moviesList: any = []
   @Input('movieName') movieName!: string
-  // @Input('emptyInput') emptyInput!: boolean
   seeMore: boolean = false
+  throttle = 300;
+  scrollDistance = 1;
+  scrollUpDistance = 2;
+
   constructor(private movieAPI: TmdbAPIService) { }
 
   ngOnInit(): void {
@@ -29,5 +33,14 @@ export class MovieCardComponent implements OnInit {
   showDetails(id: string) {
     console.log(id)
     this.movieAPI.getMovieTrailer(id)
+  }
+
+  onScrollDown() {
+    console.log('onScrollDown')
+    // this.movieAPI.queryMovies()
+  }
+
+  onUp() {
+    console.log('onUp')
   }
 }

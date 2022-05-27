@@ -8,60 +8,128 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class TmdbAPIService {
-  private base_url: string = `https://api.themoviedb.org/3/search/movie?api_key=${environment.API_KEY}&query=`;
-  private poster_base_url: string = 'https://image.tmdb.org/t/p/original';
-  private populars_base_url: string = `https://api.themoviedb.org/3/movie/popular?api_key=${environment.API_KEY}&language=en-US&page=1`;
+// <<<<<<< Feature_Branch/mergeConflict/Aaron/ticket_summary
+//   private base_url: string = `https://api.themoviedb.org/3/search/movie?api_key=${environment.API_KEY}&query=`;
+//   private poster_base_url: string = 'https://image.tmdb.org/t/p/original';
+//   private populars_base_url: string = `https://api.themoviedb.org/3/movie/popular?api_key=${environment.API_KEY}&language=en-US&page=1`;
+// =======
+  private base_url: string = `https://api.themoviedb.org/3/search/movie?api_key=${environment.API_KEY}&query=` 
+  private poster_base_url: string = 'https://image.tmdb.org/t/p/original'
+  private populars_base_url: string = `https://api.themoviedb.org/3/movie/popular?api_key=${environment.API_KEY}&language=en-US&page=` // add page
+  
+//   private moviesSubj$: any = new Subject()
+//   private movieTrailersSubj$: any = new Subject()
+//   private movieDetailsSubj$: any = new Subject()
+// >>>>>>> Feature_Branch/MergeConflict/First_Ticket
 
   private moviesSubj$: any = new Subject();
   private movieTrailersSubj$: any = new Subject();
   private movieDetailsSubj$: any = new Subject();
 
-  private movies: any = [];
-  private movieTrailers: any = [];
-  private movieDetails: any = {};
+// <<<<<<< Feature_Branch/mergeConflict/Aaron/ticket_summary
+//   private movies: any = [];
+//   private movieTrailers: any = [];
+//   private movieDetails: any = {};
 
-  movies$: any = this.moviesSubj$.asObservable();
-  movieTrailers$: any = this.movieTrailersSubj$.asObservable();
-  movieDetails$: any = this.movieDetailsSubj$.asObservable();
+//   movies$: any = this.moviesSubj$.asObservable();
+//   movieTrailers$: any = this.movieTrailersSubj$.asObservable();
+//   movieDetails$: any = this.movieDetailsSubj$.asObservable();
 
-  constructor(private http: HttpClient) {}
+//   constructor(private http: HttpClient) {}
 
-  queryMovies(popular: boolean = false, movieName?: string) {
-    const endpoint = popular
-      ? this.populars_base_url
-      : [this.base_url, movieName].join('/');
-    this.http
-      .get(endpoint)
-      .pipe(
-        map((moviesObj: any) => {
-          const tempMovieList: any = moviesObj.results.map((movieData: any) => {
-            return {
-              adult: movieData.adult,
-              backdrop_path: movieData.backdrop_path,
-              genre_ids: movieData.genre_ids,
-              id: movieData.id,
-              original_language: movieData.original_language,
-              original_title: movieData.original_title,
-              overview: movieData.overview,
-              popularity: movieData.popularity,
-              poster_path: movieData.poster_path,
-              poster_url: this.poster_base_url + movieData.poster_path,
-              release_date: movieData.release_date,
-              title: movieData.title,
-              video: movieData.video,
-              vote_average: movieData.vote_average,
-              vote_count: movieData.vote_count,
-              showDetails: false,
-            };
-          });
-          return tempMovieList;
-        }),
-        tap((movieList: any) => {
-          this.movies = [...movieList];
-          this.moviesSubj$.next(this.movies);
+//   queryMovies(popular: boolean = false, movieName?: string) {
+//     const endpoint = popular
+//       ? this.populars_base_url
+//       : [this.base_url, movieName].join('/');
+//     this.http
+//       .get(endpoint)
+//       .pipe(
+//         map((moviesObj: any) => {
+//           const tempMovieList: any = moviesObj.results.map((movieData: any) => {
+//             return {
+//               adult: movieData.adult,
+//               backdrop_path: movieData.backdrop_path,
+//               genre_ids: movieData.genre_ids,
+//               id: movieData.id,
+//               original_language: movieData.original_language,
+//               original_title: movieData.original_title,
+//               overview: movieData.overview,
+//               popularity: movieData.popularity,
+//               poster_path: movieData.poster_path,
+//               poster_url: this.poster_base_url + movieData.poster_path,
+//               release_date: movieData.release_date,
+//               title: movieData.title,
+//               video: movieData.video,
+//               vote_average: movieData.vote_average,
+//               vote_count: movieData.vote_count,
+//               showDetails: false,
+//             };
+//           });
+//           return tempMovieList;
+//         }),
+//         tap((movieList: any) => {
+//           this.movies = [...movieList];
+//           this.moviesSubj$.next(this.movies);
+//         })
+//       )
+//       .subscribe();
+// =======
+  private popularQueryPageSbj$: any = new Subject()
+  private searchQueryPageSbj$: any = new Subject()
+  
+  popularQueryPage$: any = this.popularQueryPageSbj$.asObservable()
+  searchQueryPage$: any = this.searchQueryPageSbj$.asObservable()
+
+  movies$: any = this.moviesSubj$.asObservable()
+  movieTrailers$: any = this.movieTrailersSubj$.asObservable()
+  movieDetails$: any = this.movieDetailsSubj$.asObservable()
+  
+  constructor(private http: HttpClient) { }
+
+  queryMovies(popular: boolean = false, pageNum: number = 1, movieName?: string, concat: boolean = false) {
+    const endpoint = popular ? [this.populars_base_url, pageNum].join('') : [this.base_url, movieName].join('/') + `&page=${pageNum}`
+    if (popular) {
+      this.popularQueryPageSbj$.next(pageNum)
+    } else {
+      this.searchQueryPageSbj$.next(pageNum)
+    }
+    this.http.get(endpoint).pipe(
+      map((moviesObj: any) => {
+        const tempMovieList: any = moviesObj.results.map((movieData: any) => {
+          return {
+            adult: movieData.adult,
+            backdrop_path: movieData.backdrop_path,
+            genre_ids: movieData.genre_ids,
+            id: movieData.id,
+            original_language: movieData.original_language,
+            original_title: movieData.original_title,
+            overview: movieData.overview,
+            popularity: movieData.popularity,
+            poster_path: movieData.poster_path,
+            poster_url: this.poster_base_url+movieData.poster_path,
+            release_date: movieData.release_date,
+            title: movieData.title,
+            video: movieData.video,
+            vote_average: movieData.vote_average,
+            vote_count: movieData.vote_count,
+            showDetails: false
+          }
         })
-      )
-      .subscribe();
+        return tempMovieList
+      }),
+      tap((movieList: any) => {
+        if (concat) {
+          this.movies = [...this.movies, ...movieList]
+          this.moviesSubj$.next(this.movies)
+  
+        } else {
+          this.movies = [...movieList]
+          this.moviesSubj$.next(this.movies)
+  
+        }
+      })
+    ).subscribe()
+
   }
 
   getMovieTrailer(id: string) {
