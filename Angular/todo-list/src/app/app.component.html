@@ -1,5 +1,9 @@
-<header class="header">implement a todo list</header>
+<header class="header">
+  implement a todo list
+  <button [routerLink]="['todolist']">todolist</button>
+  <button [routerLink]="['home']">home</button>
+</header>
 
 <main class="content">
-  <app-todolist></app-todolist>
+  <router-outlet></router-outlet>
 </main>
