@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { AngularMaterialModule } from '../shared/angular-material.module';
+import { AngularMaterialModule } from '../../shared/angular-material.module';
 
 import { LoginComponent } from './login.component';
 

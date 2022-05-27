@@ -11,6 +11,7 @@ import { AngularMaterialModule } from './shared/angular-material.module';
 /*~~~~~~~~~ Components ~~~~~~~~~*/
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -20,6 +21,7 @@ import { HeaderComponent } from './header/header.component';
     AppRoutingModule,
     HttpClientModule,
     AngularMaterialModule,
+    AuthModule,
   ],
   exports: [HeaderComponent],
   providers: [],
