@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 /*~~~~~~~~~ Angular Material Modules ~~~~~~~~~*/
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './shared/angular-material.module';
 
 /*~~~~~~~~~ Components ~~~~~~~~~*/
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { HeaderComponent } from './header/header.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    AngularMaterialModule,
   ],
   exports: [HeaderComponent],
   providers: [],
