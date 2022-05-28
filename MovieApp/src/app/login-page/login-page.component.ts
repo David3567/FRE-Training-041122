@@ -6,6 +6,7 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -14,13 +15,16 @@ import {
 })
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
-
+  registerData: any;
   data = {
     username: 'Priyanka',
     password: 'Priyanka28',
   };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {
+    const state = this.router.getCurrentNavigation()?.extras.state
+    this.registerData = state?.['formData']
+  }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group(
@@ -37,9 +41,6 @@ export class LoginPageComponent implements OnInit {
         ],
         rememberMe: [false, [Validators.requiredTrue]],
       },
-      {
-        // validators: [this.logInName, this.logInPass]
-      }
     );
 
     this.loginForm.valueChanges.subscribe(console.log);
