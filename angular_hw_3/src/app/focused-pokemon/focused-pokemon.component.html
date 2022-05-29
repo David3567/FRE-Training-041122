@@ -1,0 +1,26 @@
+<html>
+  <div class="nav-bar__f">Kanto Region</div>
+  <div class="container__f">
+    <mat-card class="poke-card__f" *ngFor="let pokemon of pokeList">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="{{
+          pokemon.url[0]?.sprites.other['official-artwork'].front_default
+        }}"
+        alt="Photo of a Shiba Inu"
+      />
+      <mat-card-title>{{ pokemon.name }}</mat-card-title>
+      <mat-card-subtitle>#{{ pokemon.url[0]?.id }}</mat-card-subtitle>
+      <mat-card-content>
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz
+        </p>
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+      <button mat-button routerLink="/home">Back</button>
+    </mat-card>
+  </div>
+</html>

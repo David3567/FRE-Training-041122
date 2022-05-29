@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "alert": "^5.0.10",
     "ngx-infinite-scroll": "^13.0.2"
   }
 }
