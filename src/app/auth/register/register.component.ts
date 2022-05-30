@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
 import { CustomValidators } from './custom-validators';
 import { Role, UserInfo } from './register.models';
 
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit {
   ];
   constructor(
     private formBuilder: FormBuilder,
-    private readonly customValidator: CustomValidators // private readonly authService: AuthService
+    private readonly customValidator: CustomValidators,
+    private readonly authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -94,5 +96,3 @@ export class RegisterComponent implements OnInit {
     this.showConfirmPassword = !this.showConfirmPassword;
   }
 }
-
-//Helloworld1!
