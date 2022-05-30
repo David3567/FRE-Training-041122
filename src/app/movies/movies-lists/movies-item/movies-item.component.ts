@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { DataStorageService } from 'src/app/shared/data-storage-service';
 import { Movie } from '../../movies.model';
-import { MoviesService } from '../../movies.service';
 
 @Component({
   selector: 'app-movies-item',
@@ -12,18 +11,16 @@ import { MoviesService } from '../../movies.service';
 export class MoviesItemComponent implements OnInit {
   @Input() movie!: Movie;
 
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  constructor(
-    private dataStorageService: DataStorageService,
-    private movieService: MoviesService,
-    
-  ) {}
-
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   onClick(id: number) {
-    this.dataStorageService.getMoiveDetail(id);
+    /**
+     * Navigating to [/moives/id] programmatically
+     * using relative route, current route is /movie,
+     * passing "id" in navigate and relative to current route is /movies/id
+     */
+    this.router.navigate([id], { relativeTo: this.route });
   }
 }

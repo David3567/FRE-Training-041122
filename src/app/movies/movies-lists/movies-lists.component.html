@@ -1,5 +1,20 @@
-<div class="movie-list center-content">
-    <div class="item" *ngFor="let info of movies">
-        <app-movies-item [movie]="info"></app-movies-item>
+<div class="main-content">
+    <carousel cellWidth="100%" [loop]="true" [autoplay]="true" [height]="400" transitionTimingFunction="ease"
+        [transitionDuration]="600" class="container">
+        <div *ngFor="let image of images" class="carousel-cell">
+            <div>
+                <div class="text">
+                    <h1>{{image.title | uppercase}}</h1>
+                </div>
+                <img src="{{image.image}}" alt="">
+            </div>
+        </div>
+    </carousel>
+    <div infinite-scroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" (scrolled)="onScrollDown()"
+        class="movie-list">
+        <div class="item" *ngFor="let info of movies">
+            <app-movies-item [movie]="info"></app-movies-item>
+        </div>
     </div>
+    <app-spinner *ngIf="showSpinner" [style]="{'text-align': 'center'}"></app-spinner>
 </div>

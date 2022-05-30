@@ -1,12 +1,16 @@
 .card {
   position: relative;
-  width: 400px;
+  width: 100%;
   background-size: cover;
   padding: 8rem 0 0;
   border-radius: 0;
   transition: transform 300ms;
   cursor: pointer;
   .card-content {
+    h1 {
+      font-size: 1rem;
+      font-weight: bold;
+    }
     padding: 0.9rem;
     visibility: hidden;
     .icons-div {
