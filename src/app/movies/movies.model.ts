@@ -5,7 +5,7 @@ export interface Movie {
   image: string;
 }
 
-export interface MoiveDetail {
+export interface MovieDetail {
   id: number;
   title: string;
   overview: string;

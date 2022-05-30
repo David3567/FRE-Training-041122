@@ -1,6 +1,8 @@
-<mat-card class="card" [ngStyle]="{'background-image': 'url(' + movie.image + ')'}" (click)="onClick(movie.id)" [routerLink]="['/movies', movie.id]">
+<mat-card class="card" [ngStyle]="{'background-image': 'url(' + movie.image + ')'}" (click)="onClick(movie.id)">
     <mat-card-content class="card-content">
-        <mat-card-title>{{movie.title}}</mat-card-title>
+        <mat-card-title>
+            <h1>{{movie.title}}</h1>
+        </mat-card-title>
         <p>{{movie.overview | slice:0:100}}...</p>
         <div class="icons-div">
             <mat-icon class="icons">favorite_border</mat-icon>
