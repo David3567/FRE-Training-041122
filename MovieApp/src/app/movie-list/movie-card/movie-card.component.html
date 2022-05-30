@@ -20,10 +20,16 @@
       mat-button
       *ngIf="movie.showDetails"
       (click)="showDetails(movie.id)"
-      [routerLink]="['/moviedetails/' + movie.id]"
     >
       <div class="material-icons">help_outline</div>
       More Info
     </button>
   </mat-card-actions>
+  <mat-card-footer>
+    <mat-progress-bar
+      *ngIf="isLoading$ | async"
+      mode="indeterminate"
+    >
+    </mat-progress-bar>
+  </mat-card-footer>
 </mat-card>

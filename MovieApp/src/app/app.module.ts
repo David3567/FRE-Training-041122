@@ -33,18 +33,21 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { TmdbAPIResolverService } from './services/tmdb-api-resolver.service';
+import { TmdbAPIService } from './services/tmdb-api.service';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'navheader', component: NavHeaderBarComponent },
-  { path: 'movielist', component: MovieListComponent },
-  { path: 'moviecard', component: MovieCardComponent },
+  { path: 'movielist', component: MovieListComponent},
+  { path: 'moviecard', component: MovieCardComponent},
   { path: 'moviedetails', component: MovieDetailsComponent },
-  { path: 'moviedetails/:id', component: MovieDetailsComponent },
+  { path: 'moviedetails/:id', component: MovieDetailsComponent, resolve: {movie : TmdbAPIResolverService} },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
@@ -85,9 +88,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatCheckboxModule,
     YouTubePlayerModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    MatProgressBarModule,
   ],
-  providers: [],
+  providers: [TmdbAPIService, TmdbAPIResolverService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

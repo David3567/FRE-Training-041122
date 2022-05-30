@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { filter, map, Subject, tap } from 'rxjs';
+import { filter, map, Observable, Subject, tap, delay } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 
@@ -75,39 +75,38 @@ export class TmdbAPIService {
       })
     ).subscribe()
   }
-  
-  getMovieTrailer(id: string) {
-    console.log('getMovieTrailer')
+
+  //Changes made for Resolver -PG
+  getTrailer(id: string){
     const movieVideosURL: string = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${environment.API_KEY}&language=en-US`
-    this.http.get(movieVideosURL).pipe(
+    return this.http.get(movieVideosURL).pipe(
       map((videosObj: any) => {
-        const movieTrailer: any = videosObj.results.map((videosData: any) => {
+      const movieTrailer: any = videosObj.results.map((videosData: any) => {
           if (videosData.type === 'Trailer') {
-          // if (videosData.name === 'Official Trailer') {
-            return {
-              // iso_639_1: videosData.iso_639_1,
-              // iso_3166_1: videosData.iso_3166_1,
-              // name: videosData.name,
+          return {
+              iso_639_1: videosData.iso_639_1,
+              iso_3166_1: videosData.iso_3166_1,
+              name: videosData.name,
               key: videosData.key,
-              // site: videosData.site,
-              // size: videosData.size,
-              // type: videosData.type,
-              // official: videosData.official,
-              // published_at: videosData.published_at,
-              // id: videosData.id
-            }
-          } else {
-            return null
+              site: videosData.site,
+              size: videosData.size,
+              type: videosData.type,
+              official: videosData.official,
+              published_at: videosData.published_at,
+              id: videosData.id
           }
-        }).filter((ele:any) => ele)
-        
-        return movieTrailer
+          } else {
+          return null
+          }
+      }).filter((ele:any) => ele)
+      
+      return movieTrailer
       }),
       tap((movieTrailer: any) => {
-        this.movieTrailers = [...movieTrailer]
-        this.movieTrailersSubj$.next(this.movieTrailers)
+      this.movieTrailers = [...movieTrailer]
+      this.movieTrailersSubj$.next(this.movieTrailers)
       })
-    ).subscribe()
+    )
   }
 
   getMovieByID(id: string) {
