@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from './custom-validators';
-import { Role } from './register.models';
+import { Role, UserInfo } from './register.models';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +21,10 @@ export class RegisterComponent implements OnInit {
     { value: 'admin', displayValue: 'Admin' },
     { value: 'developer', displayValue: 'Developer' },
   ];
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private readonly customValidator: CustomValidators // private readonly authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
@@ -34,7 +37,11 @@ export class RegisterComponent implements OnInit {
             Validators.maxLength(20),
           ],
         ],
-        email: ['', [Validators.required, Validators.email]],
+        email: [
+          '',
+          [Validators.required, Validators.email],
+          this.customValidator.email(),
+        ],
         password: [
           '',
           [
@@ -69,7 +76,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister() {
-    console.log(this.registerForm);
+    const userInfo: UserInfo = {
+      username: this.username?.value,
+      password: this.password?.value,
+      email: this.email?.value,
+      role: this.registerForm.get('role')?.value,
+      tmdbkey: this.apikey?.value,
+    };
+    // this.authService.register(userInfo);
   }
 
   onShowPassword() {
@@ -80,3 +94,5 @@ export class RegisterComponent implements OnInit {
     this.showConfirmPassword = !this.showConfirmPassword;
   }
 }
+
+//Helloworld1!
