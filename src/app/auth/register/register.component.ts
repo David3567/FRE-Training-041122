@@ -18,9 +18,9 @@ export class RegisterComponent implements OnInit {
   showConfirmPassword: boolean = false;
   registerForm!: FormGroup;
   roles: Role[] = [
-    { value: 'user', displayValue: 'User' },
-    { value: 'admin', displayValue: 'Admin' },
-    { value: 'developer', displayValue: 'Developer' },
+    { value: 'USER', displayValue: 'User' },
+    { value: 'ADMIN', displayValue: 'Admin' },
+    { value: 'DEVELOPER', displayValue: 'Developer' },
   ];
   constructor(
     private formBuilder: FormBuilder,
@@ -83,9 +83,9 @@ export class RegisterComponent implements OnInit {
       password: this.password?.value,
       email: this.email?.value,
       role: this.registerForm.get('role')?.value,
-      tmdbkey: this.apikey?.value,
+      tmdb_key: this.apikey?.value,
     };
-    // this.authService.register(userInfo);
+    this.authService.register(userInfo).subscribe(console.log);
   }
 
   onShowPassword() {

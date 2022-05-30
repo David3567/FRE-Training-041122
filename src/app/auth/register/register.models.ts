@@ -7,5 +7,5 @@ export interface UserInfo {
   password: string;
   username: string;
   role: string;
-  tmdbkey: string;
+  tmdb_key: string;
 }
