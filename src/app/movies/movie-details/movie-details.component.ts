@@ -1,16 +1,9 @@
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataStorageService } from 'src/app/shared/data-storage-service';
-import { MoiveDetail, Trailer } from '../movies.model';
+import { MovieDetail } from '../movies.model';
 import { MoviesService } from '../movies.service';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-details',
@@ -18,7 +11,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./movie-details.component.scss'],
 })
 export class MovieDetailsComponent implements OnInit, OnDestroy {
-  movieDetail!: MoiveDetail;
+  movieDetail!: MovieDetail;
   movieTrailerId!: string;
   movieDetailId!: number;
   showTrailer: boolean = false;
@@ -34,22 +27,17 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Use params to load movie details
-    this.movieDetailId = this.route.snapshot.params['id'];
-    this.dataStorageService.getMoiveDetail(this.movieDetailId);
-
-
     this.movieTrailerSub = this.movieService.movieTrailerIdChanged.subscribe(
       (movieId: string) => {
         this.movieTrailerId = movieId;
       }
     );
 
-    this.movieDetailSubs = this.movieService.movieDetailChanged.subscribe(
-      (detail: MoiveDetail) => {
-        this.movieDetail = detail;
-      }
-    );
+    //Accessing the Resolved Data
+    this.movieDetailSubs = this.route.data.subscribe((params: Params) => {
+      this.movieDetail = params['detail'];
+      this.movieDetailId = this.movieDetail.id;
+    });
   }
 
   onPlay() {

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { DataStorageService } from 'src/app/shared/data-storage-service';
 import { Movie } from '../movies.model';
 import { MoviesService } from '../movies.service';
 
@@ -9,18 +10,36 @@ import { MoviesService } from '../movies.service';
   styleUrls: ['./movies-lists.component.scss'],
 })
 export class MoviesListsComponent implements OnInit, OnDestroy {
+  showSpinner: boolean = false;
+  currentPage: number = 1;
   movies!: Movie[];
+  images: Movie[] = [];
+
   subscription!: Subscription;
-  constructor(private moviesService: MoviesService) {}
+  constructor(
+    private moviesService: MoviesService,
+    private dataStorageService: DataStorageService
+  ) {}
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.subscription = this.moviesService.moviesChanged.subscribe(
       (movies: Movie[]) => {
         this.movies = movies;
+        this.images = movies.slice(5, 10);
+        this.showSpinner = false;
       }
     );
-    this.movies = this.moviesService.getMovies();
-    // console.log(this.movies);
+  }
+
+  onScrollDown() {
+    this.showSpinner = true;
+    this.getNextPage();
+  }
+
+  getNextPage() {
+    this.currentPage++;
+    this.dataStorageService.getMovies(this.currentPage);
   }
 
   ngOnDestroy(): void {

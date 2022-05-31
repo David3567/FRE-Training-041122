@@ -1,9 +1,38 @@
 @import "../../../styles.scss";
 
-.movie-list {
-  margin-top: 5rem;
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.8rem;
+  align-items: center;
+  carousel {
+    width: 90%;
+    height: 50rem;
+  }
+  .container {
+    position: relative;
+    text-align: center;
+    color: white;
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+  }
+  .movie-list {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    width: 90%;
+    .item {
+      width: 28rem;
+    }
+  }
 }

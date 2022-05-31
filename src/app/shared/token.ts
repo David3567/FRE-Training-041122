@@ -1,3 +1,3 @@
 export class Token {
-  constructor(public apiKey = 'api-key-placeholder') {}
+  constructor(public apiKey = 'API_KEY') {}
 }
