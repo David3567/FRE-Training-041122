@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { filter, map, Subject, tap } from 'rxjs';
+import { filter, map, Observable, Subject, tap, delay } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 
@@ -76,53 +76,45 @@ export class TmdbAPIService {
 
   }
 
-  getMovieTrailer(id: string) {
-    console.log('getMovieTrailer');
-    const movieVideosURL: string = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${environment.API_KEY}&language=en-US`;
-    this.http
-      .get(movieVideosURL)
-      .pipe(
-        map((videosObj: any) => {
-          const movieTrailer: any = videosObj.results
-            .map((videosData: any) => {
-              if (videosData.type === 'Trailer') {
-                // if (videosData.name === 'Official Trailer') {
-                return {
-                  iso_639_1: videosData.iso_639_1,
-                  iso_3166_1: videosData.iso_3166_1,
-                  name: videosData.name,
-                  key: videosData.key,
-                  site: videosData.site,
-                  size: videosData.size,
-                  type: videosData.type,
-                  official: videosData.official,
-                  published_at: videosData.published_at,
-                  id: videosData.id,
-                };
-              } else {
-                return null;
-              }
-            })
-            .filter((ele: any) => ele);
-
-          return movieTrailer;
-        }),
-        tap((movieTrailer: any) => {
-          this.movieTrailers = [...movieTrailer];
-          this.movieTrailersSubj$.next(this.movieTrailers);
-        })
-      )
-      .subscribe();
+  //Changes made for Resolver
+  getTrailer(id: string){
+    const movieVideosURL: string = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${environment.API_KEY}&language=en-US`
+    return this.http.get(movieVideosURL).pipe(
+      map((videosObj: any) => {
+      const movieTrailer: any = videosObj.results.map((videosData: any) => {
+          if (videosData.type === 'Trailer') {
+          return {
+              iso_639_1: videosData.iso_639_1,
+              iso_3166_1: videosData.iso_3166_1,
+              name: videosData.name,
+              key: videosData.key,
+              site: videosData.site,
+              size: videosData.size,
+              type: videosData.type,
+              official: videosData.official,
+              published_at: videosData.published_at,
+              id: videosData.id
+          }
+          } else {
+          return null
+          }
+      }).filter((ele:any) => ele)
+      
+      return movieTrailer
+      }),
+      tap((movieTrailer: any) => {
+      this.movieTrailers = [...movieTrailer]
+      this.movieTrailersSubj$.next(this.movieTrailers)
+      })
+    )
   }
 
-  getMovieByID(id: string) {
-    console.log('getMovieByID');
-    const endpoint: string = `https://api.themoviedb.org/3/movie/${id}?api_key=${environment.API_KEY}&language=en-US`;
-    console.log(endpoint);
-    this.http
-      .get(endpoint)
-      .pipe(
+    //Changes made for Resolver
+    getMovieByID(id: string) {
+      const endpoint: string = `https://api.themoviedb.org/3/movie/${id}?api_key=${environment.API_KEY}&language=en-US`
+      return this.http.get(endpoint).pipe(
         tap((movieDetails: any) => {
+          console.log(movieDetails)
           this.movieDetails = {
             adult: movieDetails.adult,
             backdrop_path: movieDetails.backdrop_path,
@@ -139,11 +131,10 @@ export class TmdbAPIService {
             video: movieDetails.video,
             vote_average: movieDetails.vote_average,
             vote_count: movieDetails.vote_count,
-            showDetails: false,
-          };
-          this.movieDetailsSubj$.next(this.movieDetails);
+            showDetails: false
+          }
+          this.movieDetailsSubj$.next(this.movieDetails)
         })
       )
-      .subscribe();
-  }
+    }
 }
