@@ -73,9 +73,9 @@ export class DataStorageService {
             image: 'https://image.tmdb.org/t/p/w780' + response.poster_path,
           };
         }),
-        tap((movieData: MovieDetail) => {
-          // console.log(movieData);
-        })
+        // tap((movieData: MovieDetail) => {
+        //    console.log(movieData);
+        // })
       );
   }
 
