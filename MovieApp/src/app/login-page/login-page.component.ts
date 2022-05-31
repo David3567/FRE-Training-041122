@@ -21,31 +21,6 @@ export class LoginPageComponent implements OnInit {
     password: 'Priyanka28',
   };
 
-  constructor(private fb: FormBuilder, private router: Router) {
-    const state = this.router.getCurrentNavigation()?.extras.state
-    this.registerData = state?.['formData']
-  }
-
-  ngOnInit(): void {
-    this.loginForm = this.fb.group(
-      {
-        userName: ['', [Validators.required]],
-        password: [
-          '',
-          [
-            Validators.required,
-            Validators.pattern(
-              '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-zd$@$!%*?&].{5,}'
-            ),
-          ],
-        ],
-        rememberMe: [false, [Validators.requiredTrue]],
-      },
-    );
-
-    this.loginForm.valueChanges.subscribe(console.log);
-  }
-
   get userName() {
     return this.loginForm.get('userName');
   }
@@ -56,6 +31,29 @@ export class LoginPageComponent implements OnInit {
 
   get rememberMe() {
     return this.loginForm.get('rememberMe');
+  }
+
+  constructor(private fb: FormBuilder, private router: Router) {
+    const state = this.router.getCurrentNavigation()?.extras.state;
+    this.registerData = state?.['formData'];
+  }
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      userName: ['', [Validators.required]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-zd$@$!%*?&].{5,}'
+          ),
+        ],
+      ],
+      rememberMe: [false, [Validators.requiredTrue]],
+    });
+
+    this.loginForm.valueChanges.subscribe(console.log);
   }
 
   logInName(group: AbstractControl): ValidationErrors | null {
