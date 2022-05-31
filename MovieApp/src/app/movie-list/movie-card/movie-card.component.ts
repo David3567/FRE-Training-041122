@@ -28,9 +28,9 @@ export class MovieCardComponent implements OnInit {
     this.movieAPI.movies$.subscribe((movies: any) => {
       this.moviesList = [...movies]
       console.log(this.moviesList)
-    })
-    
-    //mat-card-footer => Progress bar for Resolver
+    }) 
+
+    //card-footer => Progress bar for Resolver
     this._showLoader$ = this.router.events.pipe(
       filter((e) => e instanceof ResolveStart),
       map(()=>true)
@@ -42,8 +42,7 @@ export class MovieCardComponent implements OnInit {
     );
     
     this.isLoading$ = merge(this._hideLoader$, this._showLoader$);
-
-  }
+}
 
   toggleSeeMore() {
     console.log(this.seeMore)

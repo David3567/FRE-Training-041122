@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TmdbAPIService } from '../services/tmdb-api.service';
-import { map, pipe } from 'rxjs';
 
 @Component({
   selector: 'app-movie-details',
@@ -9,23 +7,22 @@ import { map, pipe } from 'rxjs';
   styleUrls: ['./movie-details.component.sass'],
 })
 export class MovieDetailsComponent implements OnInit {
+
   moviesTrailers: any = [];
   moviesDetails: any = {};
-  constructor(private movieAPI: TmdbAPIService, private route: ActivatedRoute) {
-    console.log('movie details');
+
+  constructor(private route: ActivatedRoute) {
+
+    //Details from Resolver are rendered
     this.route.data.subscribe((trailers)=>{
-      console.log(trailers['movie'])
       this.moviesTrailers = trailers['movie'];
-      console.log(this.moviesTrailers);
     });
+
+    this.route.data.subscribe((details)=>{
+      this.moviesDetails = details['movieId'];
+     });
     
   }
 
-  ngOnInit(): void {
-
-    // this.movieAPI.movieDetails$.subscribe((details: any) => {
-    //   this.moviesDetails = details;
-    //   console.log(this.moviesDetails);
-    // });
-  }
+  ngOnInit(): void {  }
 }

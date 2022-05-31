@@ -76,7 +76,7 @@ export class TmdbAPIService {
     ).subscribe()
   }
 
-  //Changes made for Resolver -PG
+  //Changes made for Resolver
   getTrailer(id: string){
     const movieVideosURL: string = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${environment.API_KEY}&language=en-US`
     return this.http.get(movieVideosURL).pipe(
@@ -104,37 +104,38 @@ export class TmdbAPIService {
       }),
       tap((movieTrailer: any) => {
       this.movieTrailers = [...movieTrailer]
+      console.log(this.movieTrailers)
       this.movieTrailersSubj$.next(this.movieTrailers)
       })
     )
   }
 
-  getMovieByID(id: string) {
-    console.log('getMovieByID')
-    const endpoint: string = `https://api.themoviedb.org/3/movie/${id}?api_key=${environment.API_KEY}&language=en-US`
-    console.log(endpoint)
-    this.http.get(endpoint).pipe(
-      tap((movieDetails: any) => {
-        this.movieDetails = {
-          adult: movieDetails.adult,
-          backdrop_path: movieDetails.backdrop_path,
-          genre_ids: movieDetails.genre_ids,
-          id: movieDetails.id,
-          original_language: movieDetails.original_language,
-          original_title: movieDetails.original_title,
-          overview: movieDetails.overview,
-          popularity: movieDetails.popularity,
-          poster_path: movieDetails.poster_path,
-          poster_url: this.poster_base_url+movieDetails.poster_path,
-          release_date: movieDetails.release_date,
-          title: movieDetails.title,
-          video: movieDetails.video,
-          vote_average: movieDetails.vote_average,
-          vote_count: movieDetails.vote_count,
-          showDetails: false
-        }
-        this.movieDetailsSubj$.next(this.movieDetails)
-      })
-    ).subscribe()
-  }
+    //Changes made for Resolver
+    getMovieByID(id: string) {
+      const endpoint: string = `https://api.themoviedb.org/3/movie/${id}?api_key=${environment.API_KEY}&language=en-US`
+      return this.http.get(endpoint).pipe(
+        tap((movieDetails: any) => {
+          console.log(movieDetails)
+          this.movieDetails = {
+            adult: movieDetails.adult,
+            backdrop_path: movieDetails.backdrop_path,
+            genre_ids: movieDetails.genre_ids,
+            id: movieDetails.id,
+            original_language: movieDetails.original_language,
+            original_title: movieDetails.original_title,
+            overview: movieDetails.overview,
+            popularity: movieDetails.popularity,
+            poster_path: movieDetails.poster_path,
+            poster_url: this.poster_base_url+movieDetails.poster_path,
+            release_date: movieDetails.release_date,
+            title: movieDetails.title,
+            video: movieDetails.video,
+            vote_average: movieDetails.vote_average,
+            vote_count: movieDetails.vote_count,
+            showDetails: false
+          }
+          this.movieDetailsSubj$.next(this.movieDetails)
+        })
+      )
+    }
 }

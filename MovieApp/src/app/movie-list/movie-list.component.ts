@@ -48,6 +48,19 @@ export class MovieListComponent implements OnInit {
         this.movieAPI.queryMovies(false, 1, movieName);
       })
     ).subscribe();
+
+    //card-footer => Progress bar for Resolver
+    this._showLoader$ = this.router.events.pipe(
+      filter((e) => e instanceof ResolveStart),
+      map(()=>true)
+    );
+
+    this._hideLoader$ = this.router.events.pipe(
+      filter((e) => e instanceof ResolveEnd),
+      map(()=>false)
+    );
+    
+    this.isLoading$ = merge(this._hideLoader$, this._showLoader$);
   }
 
   onScrollDown() {

@@ -14,9 +14,9 @@
         <mat-label>
           <mat-icon>account_circle</mat-icon><b> <u>SIGN IN </u></b>
         </mat-label>
-      </div>
+      </div><br />
 
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label><mat-icon>face</mat-icon><b> UserName</b></mat-label>
         <input matInput placeholder="User Name" formControlName="userName" [errorStateMatcher]="matcher">
         <mat-icon matSuffix class="block" *ngIf="this.userName?.invalid && this.userName?.touched">block</mat-icon>
@@ -28,9 +28,9 @@
           This user name is invalid
         </mat-error>
       </mat-form-field>
-      <br />
+      <br /><br />
 
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label><mat-icon>password</mat-icon><b> Password</b></mat-label>
         <input matInput placeholder="Password" formControlName="password">
         <mat-icon matSuffix class="block" *ngIf="this.password?.invalid && this.password?.touched">block</mat-icon>

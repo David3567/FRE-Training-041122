@@ -18,7 +18,6 @@ html
   flex-direction: column
   margin-right: 0%
   font-size: .8em
-  // align-items: center
 
 mat-hint
   font-style: italic
@@ -108,3 +107,16 @@ button:active
 ::ng-deep .mat-checkbox .mat-checkbox-frame
   border-color: 1px $purple-accent-color solid
   box-shadow: (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color)
+
+mat-form-field
+  width: 100%
+  height: 50%
+  font-size: 0.9em
+  margin: 0
+  padding: 0
+  justify-content: center
+  align-self: center
+
+::ng-deep .mat-input-element::placeholder
+  color: white
+  opacity: 30%
