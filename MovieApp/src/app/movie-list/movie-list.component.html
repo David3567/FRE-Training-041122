@@ -17,9 +17,6 @@
       <app-nav-logged-in-header
         (sidenavToggle)="sidenav.toggle()"
       ></app-nav-logged-in-header>
-      <main>
-        <router-outlet></router-outlet>
-
         <div class="searchBar">
           <mat-form-field class="movieForm" appearance="fill">
             <mat-label>Please enter a movie name...</mat-label>
@@ -46,9 +43,24 @@
         </div>
         <div class="separator"></div>
         <div class="container">
-          <app-movie-card [movieName]="movieName"></app-movie-card>
+          <app-movie-card [movieName]="movieName">
+          </app-movie-card>
         </div>
-      </main>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
+
+<!-- 
+  <div class="swiper-container" *ngIf="isLoading$ | async">
+              Additional required wrapper
+              <div class="swiper-wrapper">
+                Slides
+                <div class="swiper-slide">Loading...</div>
+                <mat-progress-bar
+                  *ngIf="isLoading$ | async"
+                  mode="indeterminate"
+                >
+                </mat-progress-bar>
+              </div>
+            </div>
+ -->

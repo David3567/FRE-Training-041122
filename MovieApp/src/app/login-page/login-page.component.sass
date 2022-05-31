@@ -17,12 +17,12 @@ html
   display: flex
   flex-direction: column
   margin-right: 0%
-  text-size: 1em
-  align-items: end
+  font-size: .8em
 
-mat-hint, mat-error
-  width: 100%
+mat-hint
   font-style: italic
+  color: $purple-accent-color
+  text-shadow: 0.01em 0.01em $cyan-accent-color
 
 mat-error
   color: red
@@ -30,6 +30,15 @@ mat-error
 mat-checkbox
   border: $cyan-accent-color
   background-color: transparent
+
+.block
+  color: rgb(221, 96, 96)
+
+.check
+  color: green
+
+.priority
+  color: $purple-accent-color
 
 .formContainer
   padding: 2%
@@ -98,3 +107,16 @@ button:active
 ::ng-deep .mat-checkbox .mat-checkbox-frame
   border-color: 1px $purple-accent-color solid
   box-shadow: (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color)
+
+mat-form-field
+  width: 100%
+  height: 50%
+  font-size: 0.9em
+  margin: 0
+  padding: 0
+  justify-content: center
+  align-self: center
+
+::ng-deep .mat-input-element::placeholder
+  color: white
+  opacity: 30%

@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { concat, debounceTime, filter, fromEvent, Subject, tap } from 'rxjs';
+import { ResolveEnd, ResolveStart, Router } from '@angular/router';
+import { mapTo, debounceTime, filter, fromEvent, Observable, Subject, tap, merge, map } from 'rxjs';
 import { TmdbAPIService } from '../services/tmdb-api.service';
   
 @Component({
@@ -8,6 +9,11 @@ import { TmdbAPIService } from '../services/tmdb-api.service';
   styleUrls: ['./movie-list.component.sass']
 })
 export class MovieListComponent implements OnInit {
+
+  isLoading$!: Observable<boolean>;
+  private _showLoader$!: Observable<boolean>;
+  private _hideLoader$!: Observable<boolean>;
+
   @ViewChild('movieNameInput', {static: true}) movieNameInput!: ElementRef;
   moviesList: any = [];
   value: string = '';
@@ -19,7 +25,8 @@ export class MovieListComponent implements OnInit {
   popularPageNum = 1
   searchPageNum = 1
 
-  constructor(private movieAPI: TmdbAPIService) { }
+  constructor(private movieAPI: TmdbAPIService, private router: Router) {
+   }
 
   ngOnInit(): void {
     this.movieAPI.queryMovies(true, 1);
@@ -41,6 +48,19 @@ export class MovieListComponent implements OnInit {
         this.movieAPI.queryMovies(false, 1, movieName);
       })
     ).subscribe();
+
+    //card-footer => Progress bar for Resolver
+    this._showLoader$ = this.router.events.pipe(
+      filter((e) => e instanceof ResolveStart),
+      map(()=>true)
+    );
+
+    this._hideLoader$ = this.router.events.pipe(
+      filter((e) => e instanceof ResolveEnd),
+      map(()=>false)
+    );
+    
+    this.isLoading$ = merge(this._hideLoader$, this._showLoader$);
   }
 
   onScrollDown() {
