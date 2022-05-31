@@ -4,20 +4,19 @@ import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TmdbAPIService {
   private base_url: string = `https://api.themoviedb.org/3/search/movie?api_key=${environment.API_KEY}&query=` 
   private poster_base_url: string = 'https://image.tmdb.org/t/p/original'
   private populars_base_url: string = `https://api.themoviedb.org/3/movie/popular?api_key=${environment.API_KEY}&language=en-US&page=` // add page
-  
-  private moviesSubj$: any = new Subject()
-  private movieTrailersSubj$: any = new Subject()
-  private movieDetailsSubj$: any = new Subject()
+  private moviesSubj$: any = new Subject();
+  private movieTrailersSubj$: any = new Subject();
+  private movieDetailsSubj$: any = new Subject();
 
-  private movies: any = []
-  private movieTrailers: any = []
-  private movieDetails: any = {}
+  private movies: any = [];
+  private movieTrailers: any = [];
+  private movieDetails: any = {};
 
   private popularQueryPageSbj$: any = new Subject()
   private searchQueryPageSbj$: any = new Subject()
@@ -74,6 +73,7 @@ export class TmdbAPIService {
         }
       })
     ).subscribe()
+
   }
 
   //Changes made for Resolver
@@ -126,7 +126,7 @@ export class TmdbAPIService {
             overview: movieDetails.overview,
             popularity: movieDetails.popularity,
             poster_path: movieDetails.poster_path,
-            poster_url: this.poster_base_url+movieDetails.poster_path,
+            poster_url: this.poster_base_url + movieDetails.poster_path,
             release_date: movieDetails.release_date,
             title: movieDetails.title,
             video: movieDetails.video,

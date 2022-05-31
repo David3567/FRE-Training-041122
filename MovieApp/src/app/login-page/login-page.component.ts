@@ -9,6 +9,7 @@ import {
   NgForm,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 export class LoginMatcher implements ErrorStateMatcher{
   isErrorState(control: AbstractControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -24,8 +25,12 @@ export class LoginMatcher implements ErrorStateMatcher{
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
   matcher = new LoginMatcher();
+  registerData: any;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {
+    const state = this.router.getCurrentNavigation()?.extras.state
+    this.registerData = state?.['formData']
+  }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group(
