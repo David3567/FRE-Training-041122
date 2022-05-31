@@ -104,7 +104,6 @@ export class TmdbAPIService {
       }),
       tap((movieTrailer: any) => {
       this.movieTrailers = [...movieTrailer]
-      console.log(this.movieTrailers)
       this.movieTrailersSubj$.next(this.movieTrailers)
       })
     )
