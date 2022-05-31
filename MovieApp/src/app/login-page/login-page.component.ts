@@ -8,6 +8,7 @@ import {
   FormGroupDirective,
   NgForm,
 } from '@angular/forms';
+
 import { ErrorStateMatcher } from '@angular/material/core';
 
 export class LoginMatcher implements ErrorStateMatcher{
@@ -25,7 +26,10 @@ export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
   matcher = new LoginMatcher();
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {
+    const state = this.router.getCurrentNavigation()?.extras.state
+    this.registerData = state?.['formData']
+  }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group(

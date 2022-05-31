@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -9,16 +10,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HomePageComponent implements OnInit {
   form !: FormGroup;
 
-  constructor(private formBuild: FormBuilder) { }
+  constructor(private formBuild: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.form = this.formBuild.group({
-      email: ['', 
-      // [
-      //   Validators.required,
-      //   Validators.email
-      // ]
-    ]
+      email: ['']
     });
   }
 
@@ -26,4 +22,8 @@ export class HomePageComponent implements OnInit {
     return this.form.get('email')
   }
 
+  onSubmit() {
+    console.log('onSubmit')
+    this.router.navigate(['/register'], { state: { formData: this.form.value } })
+  }
 }
