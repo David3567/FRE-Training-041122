@@ -14,43 +14,54 @@
         <mat-label>
           <mat-icon>account_circle</mat-icon><b> <u>SIGN IN </u></b>
         </mat-label>
-      </div>
+      </div><br />
 
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label><mat-icon>face</mat-icon><b> UserName</b></mat-label>
-        <input matInput placeholder="User Name" formControlName="userName" />
+        <input matInput placeholder="User Name" formControlName="userName" [errorStateMatcher]="matcher">
+        <mat-icon matSuffix class="block" *ngIf="this.userName?.invalid && this.userName?.touched">block</mat-icon>
+        <mat-icon matSuffix class="check" *ngIf="this.userName?.valid">check_circle</mat-icon>
+        <mat-hint *ngIf="this.userName?.untouched && this.userName?.invalid" >
+          - User name required
+        </mat-hint>
+        <mat-error *ngIf="this.userName?.invalid && this.userName?.touched">
+          This user name is invalid
+        </mat-error>
       </mat-form-field>
+      <br /><br />
 
-      <mat-error *ngIf="this.userName?.invalid && this.userName?.touched">
-        This user name is invalid
-      </mat-error>
-      <br />
-
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label><mat-icon>password</mat-icon><b> Password</b></mat-label>
-        <input matInput placeholder="Password" formControlName="password" />
+        <input matInput placeholder="Password" formControlName="password">
+        <mat-icon matSuffix class="block" *ngIf="this.password?.invalid && this.password?.touched">block</mat-icon>
+        <mat-icon matSuffix class="check" *ngIf="this.password?.valid">check_circle</mat-icon>
+        <mat-hint *ngIf="this.password?.untouched && this.password?.invalid" >
+          - Password required
+        </mat-hint>
+        <mat-error *ngIf="this.password?.invalid && this.password?.touched">
+          This password is invalid
+        </mat-error>
       </mat-form-field>
 
       <div class="hint">
-        <mat-hint> - At least 6 characters </mat-hint>
-        <mat-hint> - Uppercase letters </mat-hint>
-        <mat-hint> - Lowercase letters </mat-hint>
-        <mat-hint> - Numbers in the end </mat-hint>
+        <mat-hint *ngIf="this.password?.touched && this.password?.invalid">- Uppercase letters <br /> 
+          - Lowercase letters </mat-hint>
+        <mat-hint *ngIf="this.password?.touched && this.password?.invalid"> - Numbers in the end <br /> 
+          - At least 6 characters
+        </mat-hint>
       </div>
-
-      <mat-error *ngIf="this.password?.invalid && this.password?.touched">
-        This password is invalid
-      </mat-error>
       <br />
 
       <div class="list">
         <mat-checkbox formControlName="rememberMe" color="primary">
           Ready?
         </mat-checkbox>
+        <mat-icon class="priority" *ngIf="this.rememberMe?.untouched && this.rememberMe?.invalid">priority_high</mat-icon>
       </div>
+      
       <br />
+      
       <div class="buttons">
-        
         <button
           mat-raised-button
           [disabled]="loginForm.invalid"
