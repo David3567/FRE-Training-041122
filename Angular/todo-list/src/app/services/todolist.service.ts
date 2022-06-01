@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { Todo } from '../interfaces/todo.interface';
 
 @Injectable({
@@ -10,22 +11,30 @@ export class TodolistService {
   private readonly baseUrl = 'https://jsonplaceholder.typicode.com';
   private readonly path = 'todos';
 
-  counter: number = 123;
+  private todolist: Todo[] = [];
+  private todolistSub$: Subject<Todo[]> = new Subject();
+  todolist$: Observable<Todo[]> = this.todolistSub$.asObservable();
 
   constructor(private readonly http: HttpClient) {}
 
   getTodos() {
     return this.http.get<Todo[]>([this.baseUrl, this.path].join('/')).pipe(
-      map((todolist) => {
-        return todolist.reverse();
+      tap((todolist) => {
+        this.todolist = todolist.reverse();
+        this.todolistSub$.next(this.todolist);
       })
     );
   }
   addTodo(todo: Todo) {
-    return this.http.post<Todo>([this.baseUrl, this.path].join('/'), todo);
+    return this.http.post<Todo>([this.baseUrl, this.path].join('/'), todo).pipe(
+      tap((todo) => {
+        this.todolist = [todo, ...this.todolist];
+        this.todolistSub$.next(this.todolist);
+      })
+    );
   }
 
-  deleteTodo(id: number) {
-    return this.http.delete([this.baseUrl, this.path, id].join('/'));
-  }
+  // deleteTodo(id: number) {
+  //   return this.http.delete([this.baseUrl, this.path, id].join('/'));
+  // }
 }

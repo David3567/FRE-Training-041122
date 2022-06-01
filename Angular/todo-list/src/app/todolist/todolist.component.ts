@@ -1,9 +1,11 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Todo } from '../interfaces/todo.interface';
 import { TodolistService } from '../services/todolist.service';
 import { Observable, fromEvent } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import * as TodoSelectors from '../ngrx/todo.selector';
+import * as TodoActions from '../ngrx/todo.action';
 
 @Component({
   selector: 'app-todolist',
@@ -11,50 +13,33 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./todolist.component.scss'],
 })
 export class TodolistComponent implements OnInit {
-  //   todolist: Todo[] = [];
-
   todolist$!: Observable<Todo[]>;
 
-  title = '';
   todo: Todo = {
     title: '',
     completed: false,
     userId: 2,
   };
-  inputbox$!: Observable<any>;
-  @ViewChild('inputTodo', { static: true }) inputTodo!: ElementRef;
 
-  constructor(private readonly todoListService: TodolistService) {}
+  // constructor(private readonly todoListService: TodolistService) {}
+  constructor(private readonly stroe: Store) {}
 
   ngOnInit(): void {
-    this.todolist$ = this.todoListService.getTodos();
+    this.todolist$ = this.stroe.select(TodoSelectors.getTodoList);
+    // this.todolist$ = this.todoListService.todolist$ as Observable<Todo[]>;
 
-    // this.todoListService.getTodos().subscribe((todolist: Todo[]) => {
-    //   this.todolist = todolist;
-    // });
-
-    // this.inputbox$ = fromEvent(this.inputTodo.nativeElement, 'keyup').pipe(
-    //   tap((evt) => {
-    //     if (evt.code === 'Enter') {
-    //       this.todoListService.addTodo(this.todo).subscribe((todo: Todo) => {
-    //         this.todolist = [todo, ...this.todolist];
-    //       });
-    //       this.todo.title = '';
-    //     }
-    //   })
-    // );
-    // this.inputbox$.subscribe();
+    this.stroe.dispatch(TodoActions.initTodolist());
+    // this.todoListService.getTodos().subscribe();
   }
 
-  //   addTodo() {
-  //     this.todoListService.addTodo(this.todo).subscribe((todo: Todo) => {
-  //       this.todolist = [todo, ...this.todolist];
-  //     });
-  //     this.todo.title = '';
-  //   }
+  onChange(event: any) {
+    // console.log(event.target.value);
+    // this.todoListService.addTodo(this.todo).subscribe();
+    // this.todo.title = '';
+  }
 
-  //   deleteTodo(id: string) {
-  //     this.todolist = this.todolist.filter((todo: any) => +todo.id !== +id);
-  //     this.todoListService.deleteTodo(+id).subscribe();
-  //   }
+  //  deleteTodo(id: string) {
+  //    this.todolist = this.todolist.filter((todo: any) => +todo.id !== +id);
+  //    this.todoListService.deleteTodo(+id).subscribe();
+  //  }
 }
