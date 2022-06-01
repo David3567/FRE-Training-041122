@@ -19,7 +19,7 @@ export class TodolistInterceptor implements HttpInterceptor {
     console.log('hello from todolist interceptor');
 
     return <any>next.handle(request).pipe(
-      tap((data) => console.log(data)),
+      // tap((data) => console.log(data)),
       catchError((err) => {
         return throwError(err);
       })

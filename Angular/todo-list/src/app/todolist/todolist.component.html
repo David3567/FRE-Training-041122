@@ -5,12 +5,13 @@
     placeholder="input your todo here..."
     [(ngModel)]="todo.title"
     #inputTodo
+    (change)="onChange($event)"
   />
 
   <ul id="todolist__container">
     <app-todo-item
-      *ngFor="let todo of todolist$ | async"
-      [item]="todo"
+      *ngFor="let todoitem of todolist$ | async"
+      [item]="todoitem"
     ></app-todo-item>
   </ul>
 </section>
