@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -10,6 +19,8 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
+import { debounceTime, fromEvent, tap, catchError, map, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export class LoginMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -26,18 +37,35 @@ export class LoginMatcher implements ErrorStateMatcher {
   styleUrls: ['./login-page.component.sass'],
 })
 export class LoginPageComponent implements OnInit {
+  @ViewChild('emailInput', { static: true }) emailInput!: ElementRef;
   loginForm!: FormGroup;
   matcher = new LoginMatcher();
   registerData: any;
+  takenEmail?: boolean;
+  get email() {
+    return this.loginForm.get('email');
+  }
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+  get rememberMe() {
+    return this.loginForm.get('rememberMe');
+  }
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private http: HttpClient
+  ) {
     const state = this.router.getCurrentNavigation()?.extras.state;
     this.registerData = state?.['formData'];
   }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      userName: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: [
         '',
         [
@@ -50,18 +78,54 @@ export class LoginPageComponent implements OnInit {
       rememberMe: [false, [Validators.requiredTrue]],
     });
 
-    this.loginForm.valueChanges.subscribe(console.log);
+    fromEvent(this.emailInput.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(500),
+        tap((_) => {
+          if (this.loginForm.value.email !== '') {
+            this.http
+              .post([environment.BACKEND_URL, 'check-email'].join('/'), {
+                email: this.loginForm.value.email,
+              })
+              .subscribe((res: any) => (this.takenEmail = res));
+          }
+        })
+      )
+      .subscribe();
   }
 
-  get userName() {
-    return this.loginForm.get('userName');
+  signIn() {
+    console.log('log in');
+    if (this.loginForm.valid && this.takenEmail) {
+      this.http
+        .post([environment.BACKEND_URL, 'signin'].join('/'), {
+          email: this.loginForm.value.email,
+          password: this.loginForm.value.password,
+        })
+        .pipe(
+          map((res: any) => {
+            return res.json();
+          }),
+          catchError((err: any) => of(err)),
+          tap((res: any) => {
+            if (res.status === 401) {
+              alert('Email/passsword does not match our records');
+            } else {
+              console.log('logged in');
+              this.router.navigate(['/movielist'], {
+                state: { formData: this.loginForm.value },
+              });
+            }
+          })
+        )
+        .subscribe();
+    }
   }
 
-  get password() {
-    return this.loginForm.get('password');
-  }
-
-  get rememberMe() {
-    return this.loginForm.get('rememberMe');
+  signUp() {
+    console.log('signUp');
+    this.router.navigate(['/movielist'], {
+      state: { formData: this.loginForm.value },
+    });
   }
 }
