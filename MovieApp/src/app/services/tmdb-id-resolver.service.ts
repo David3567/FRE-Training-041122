@@ -15,7 +15,6 @@ export class TmdbIDResolverService implements Resolve<any>{
     constructor(private router: Router, private movie: TmdbAPIService){}
 
     resolve(route: ActivatedRouteSnapshot): Observable<any> {
-
         return this.movie.getMovieByID(route.params?.["id"]);
     }
 }

@@ -16,9 +16,8 @@ export class TmdbAPIResolverService implements Resolve<any>{
 
     resolve(route: ActivatedRouteSnapshot): Observable<any> {
         console.log("Inside TmdbAPIResolverService");
-        let movieId = this.movie.getMovieByID(route.params?.["id"]);
-        let movieTrailer = this.movie.getTrailer(route.params?.["id"]);
-        let data = { movieTrailer: movieTrailer, movieId: movieId };
+        
+        // let data = { movieTrailer: movieTrailer, movieId: movieId };
         return this.movie.getTrailer(route.params?.["id"])
             .pipe(
                 delay(5000),

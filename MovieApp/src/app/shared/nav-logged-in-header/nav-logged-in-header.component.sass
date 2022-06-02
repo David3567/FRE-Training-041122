@@ -1,0 +1,86 @@
+@import "../../../styles"
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    color: whitesmoke
+    background-color: $main-bg-color
+    overflow: hidden
+
+header
+    background-color: $main-bg-color
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+.navInteractive, .fig
+    background-color: transparent
+    height: 100%
+    width: 30%
+    display: flex
+    align-items: center
+    justify-content: space-evenly
+
+img
+    height: 4em
+    background-color: transparent
+    padding-left: 2em
+
+.signIn, .register, .home, .menu
+    background-color: transparent
+    height: 1em
+    width: 1em
+    transition: 0.3s
+    border-radius: .25em
+    color: $cyan-accent-color
+    font-size: 2rem
+
+.signIn:hover, .register:hover, .home:hover, .menu:hover
+    background-color: $cyan-accent-color
+    color: $main-bg-color
+    border: 1px $cyan-accent-color
+    box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
+
+.signIn:active, .register:active, home:active, .menu:active
+    background-color: $purple-accent-color
+    color: $main-bg-color
+    border: 1px $purple-accent-color solid
+    box-shadow: ((inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color), (inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color))
+    transition: 0.1s
+
+.fig
+    margin-left: 2%
+
+.language
+    background-color: transparent
+    height: 40%
+    font-size: 1.5em
+    border: 1px $cyan-accent-color solid
+    border-radius: 5px
+    box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
+
+.language:hover
+    background-color: $cyan-accent-color
+    color: $main-bg-color
+    border: 1px $cyan-accent-color solid
+    box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
+
+.language:focus
+    background-color: $purple-accent-color
+    color: $main-bg-color
+    border: 1px $purple-accent-color solid
+    box-shadow: ((inset 0 0 0.1em $purple-accent-color, 0 0 0.1em $purple-accent-color), (inset 0 0 0.1em $purple-accent-color, 0 0 0.1em $purple-accent-color))
+    transition: 0.1s
+
+.hr
+    background-color: $pink-accent-color
+    height: 5px
+
+// mat-drawer
+//     width: 60px
+//     height: 100vh
+//     background-color: transparent
+
+// .side-icons
+//     margin-top: 200%
