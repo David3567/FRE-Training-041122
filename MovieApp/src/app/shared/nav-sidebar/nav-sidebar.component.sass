@@ -1,0 +1,47 @@
+@import "../../../styles"
+
+*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  color: whitesmoke
+  background-color: $main-bg-color
+  overflow: hidden
+
+mat-icon
+  color: $cyan-accent-color
+
+a
+  text-decoration: none
+  color: $purple-accent-color
+
+a:hover
+  background-color: $cyan-accent-color
+  color: $main-bg-color
+  border: 1px $cyan-accent-color
+  box-shadow: ((inset 0 0 0.3em $cyan-accent-color, 0 0 0.3em $cyan-accent-color), (inset 0 0 0.3em $cyan-accent-color, 0 0 0.3em $cyan-accent-color))
+
+a:active
+  background-color: $purple-accent-color
+  color: $main-bg-color
+  border: 1px $purple-accent-color solid
+  box-shadow: ((inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color), (inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color))
+  transition: 0.1s
+
+.nav-caption
+  display: inline-block
+  padding-left: 6px
+
+.logout
+  margin-bottom: 1%
+  width: 13%
+  bottom: 0%
+  position: fixed
+
+.side-content
+  margin-top: 30%
+
+.hr
+  background-color: $pink-accent-color
+  border: none
+  height: 3px
