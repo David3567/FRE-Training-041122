@@ -23,7 +23,9 @@ export class PokemonComponent implements OnInit {
   }
 
   choosePokemon(name: string) {
-    this.pokeAPI.getPokemon(true, [name]);
-    this.router.navigate(['pokemon/' + name]);
+    if (confirm(`Are you sure you want to choose ${name}?`)) {
+      this.pokeAPI.getPokemon(true, [name]);
+      this.router.navigate(['pokemon/' + name]);
+    }
   }
 }

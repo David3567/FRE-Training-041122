@@ -10,8 +10,13 @@
 html
   height: 100vh
   width: 100vw
-  font-size: 1.4em
   overflow: auto
+
+.body
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 80%
 
 .hint
   display: flex
@@ -41,11 +46,9 @@ mat-checkbox
   color: $purple-accent-color
 
 .formContainer
-  padding: 2%
+  padding: 5%
   width: fit-content
   height: max-fit-content
-  margin-left: 40%
-  margin-top: 2%
 
   display: flex
   justify-content: center
@@ -58,7 +61,7 @@ mat-checkbox
   width: 100%
   margin-left: 10%
   padding-left: 15%
-  font-size: 1em
+  font-size: 1.5em
   background-color: transparent
 
 .list
@@ -110,8 +113,8 @@ button:active
 
 mat-form-field
   width: 100%
-  height: 50%
-  font-size: 0.9em
+  height: 100%
+  font-size: 1em
   margin: 0
   padding: 0
   justify-content: center
@@ -120,3 +123,32 @@ mat-form-field
 ::ng-deep .mat-input-element::placeholder
   color: white
   opacity: 30%
+
+.invalidButton
+  width: 40%
+  height: 2em
+  border: 1px $pink-accent-color solid
+  border-radius: 0.5em
+  text-align: center
+  font-size: 1em
+  background-color: transparent
+  display: flex
+  justify-content: center
+  align-items: center
+  text-shadow: none
+  box-shadow: none
+
+.invalidButton:hover
+  box-shadow: none
+  background-color: transparent
+  box-shadow: none
+  border: 1px $pink-accent-color solid
+  text-shadow: none
+  color: white
+
+.label
+  display: flex
+  justify-content: center
+
+mat-icon
+  vertical-align: middle
