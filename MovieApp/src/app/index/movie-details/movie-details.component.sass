@@ -15,7 +15,11 @@ h1
     text-align: center
     font-size: 3rem
     width: 100%
-    text-shadow: 0.03em 0.03em $cyan-accent-color
+    text-shadow: 0.03em 0.03em $purple-accent-color
+
+h6
+    color: $purple-accent-color
+    text-align: center
 
 mat-sidenav-container, mat-sidenav-content, mat-sidenav
     height: 100%
@@ -31,35 +35,67 @@ app-nav-logged-in-header
     top: 0
     z-index: 1000
 
+mat-icon 
+    color: $cyan-accent-color
+
 .container
-    // height: 70%
     margin-top: 5%
+    padding: 0
     display: flex
     flex-direction: column
     justify-content: space-evenly
     align-items: center
+    box-shadow: (inset 0 0 0.5em $purple-accent-color, 0 0 0.25em $purple-accent-color)
 
 .titleText
     margin: 3em
-
-in-bg-color
-    overflow: hidden
-
-.youTubePlayer-wrapper
-    display: flex
-    justify-content: center
     align-items: center
-    border: 5px solild blue
-    align-content: center
 
 .infoContainer
-    width: 80%
+    width: 70%
     height: 20em
     margin: 1.5em auto
     padding: 3em
 
     border: 1px $purple-accent-color solid
-    border-radius: 0.25em
+    border-radius: 0.5em
     box-shadow: (inset 0 0 0.5em $purple-accent-color, 0 0 0.25em $purple-accent-color)
     transition: 0.3s
     margin-bottom: 100px
+
+    display: flex
+    flex-direction: row
+    background-color: transparent
+
+label
+    color: $pink-accent-color
+    text-shadow: 0.03em 0.03em $purple-accent-color
+
+ul
+    list-style-type: none
+
+img
+    border: 1px $purple-accent-color dotted
+
+.icon
+    background-color: transparent
+    height: 1em
+    width: 1em
+    transition: 0.3s
+    border-radius: .25em
+    color: $pink-accent-color
+    font-size: 2rem
+    float: right
+
+.icon:hover
+    background-color: $pink-accent-color
+    color: $main-bg-color
+    border: 1px $pink-accent-color
+    box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $pink-accent-color), (inset 0 0 0.1em $pink-accent-color, 0 0 0.1em $pink-accent-color))
+
+.icon:active
+    background-color: $purple-accent-color
+    color: $main-bg-color
+    border: 1px $purple-accent-color solid
+    box-shadow: ((inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color), (inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color))
+    transition: 0.1s
