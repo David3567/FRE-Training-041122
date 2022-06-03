@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { debounceTime, fromEvent, tap } from 'rxjs';
+import { AuthLocalStorageService } from 'src/app/services/auth-local-storage.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -48,7 +49,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private auth: AuthLocalStorageService
   ) {
     const state = this.router.getCurrentNavigation()?.extras.state;
     this.emailData = state?.['formData'].email;
@@ -109,31 +111,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('onSubmit');
-    if (
-      this.registerForm.valid &&
-      confirm('Are you sure you want to submit?')
-    ) {
-      // "username": "test",
-      // "password": "Test1234",
-      // "email": "test@test.com",
-      // "role": "USER",
-      // "tmdb_key": "3bb1313f68bf6cb7d09bc39c38dd4b0c"
-      this.http
-        .post([this.Backend_URL, 'signup'].join('/'), {
-          username: this.registerForm.value.username,
-          password: this.registerForm.value.password,
-          email: this.registerForm.value.email,
-          role: this.registerForm.value.role,
-          tmdb_key: this.registerForm.value.tmdb_key,
-        })
-        .subscribe((res: any) => {
-          console.log(res);
-          this.router.navigate(['/login'], {
-            state: { formData: this.registerForm.value },
-          });
-        });
-    }
+    console.log('Sign up');
+    console.log(this.registerForm.value);
+    this.auth.signUpAuth(this.registerForm.value).subscribe(console.log);
   }
 
   alertIncomplete() {

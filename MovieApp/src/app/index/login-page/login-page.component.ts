@@ -20,6 +20,8 @@ import {
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { debounceTime, fromEvent, tap, catchError, map, of } from 'rxjs';
+import { User } from 'src/app/interfaces/user.interface';
+import { AuthLocalStorageService } from 'src/app/services/auth-local-storage.service';
 import { environment } from 'src/environments/environment';
 
 export class LoginMatcher implements ErrorStateMatcher {
@@ -57,7 +59,8 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private auth: AuthLocalStorageService
   ) {
     const state = this.router.getCurrentNavigation()?.extras.state;
     this.registerData = state?.['formData'];
@@ -92,34 +95,19 @@ export class LoginPageComponent implements OnInit {
         })
       )
       .subscribe();
+
+    this.auth.user$?.subscribe((userData) => {
+      console.log('userData: ', userData);
+    });
   }
 
   signIn() {
     console.log('log in');
-    if (this.loginForm.valid && this.takenEmail) {
-      this.http
-        .post([environment.BACKEND_URL, 'signin'].join('/'), {
-          email: this.loginForm.value.email,
-          password: this.loginForm.value.password,
-        })
-        .pipe(
-          map((res: any) => {
-            return res.json();
-          }),
-          catchError((err: any) => of(err)),
-          tap((res: any) => {
-            if (res.status === 401) {
-              alert('Email/passsword does not match our records');
-            } else {
-              console.log('logged in');
-              this.router.navigate(['/movielist'], {
-                state: { formData: this.loginForm.value },
-              });
-            }
-          })
-        )
-        .subscribe();
-    }
+    const loginData: User = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+    };
+    this.auth.loginAuth(loginData).subscribe(console.log);
   }
 
   signUp() {
