@@ -1,5 +1,4 @@
 <html>
-  <link rel="stylesheet" href="./movie-details.component.sass" />
   <mat-sidenav-container class="nav-container">
     <mat-sidenav #sidenav mode="side">
       <app-nav-sidebar></app-nav-sidebar>
@@ -9,23 +8,87 @@
       <app-nav-logged-in-header
         (sidenavToggle)="sidenav.toggle()"
       ></app-nav-logged-in-header>
+
       <div class="container">
         <div class="titleText">
-          <h1>{{ moviesDetails.title }}</h1>
+          <h1>
+            <u> {{ moviesDetails.title }} </u>
+          </h1>
+          <h6>{{ moviesDetails.tagline }}</h6>
         </div>
-        <div class="youTubePlayer-wrapper">
-          <youtube-player
-            [videoId]="moviesTrailers[0].key"
-            suggestedQuality="highres"
-            [height]="600"
-            [width]="1080"
-            [startSeconds]="0"
-            [endSeconds]="0"
-          >
-          </youtube-player>
-        </div>
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let trailer of moviesTrailers">
+            <div class="youTubePlayer-wrapper" >
+              <youtube-player
+                [videoId]="trailer.key"
+                suggestedQuality="highres"
+                [height]="600"
+                [width]="800"
+                [startSeconds]="0"
+                [endSeconds]="0"
+              >
+              </youtube-player>
+            </div>
+            <div class="infoContainer">
+              <div class="thumbnail">
+                <img [src]="movieImg" width="150px" height="200px" />
+              </div>
+              <ul>
+                <li>
+                  <div class="info">
+                    <label>Rating: </label>
+                    <span
+                      *ngFor="let i of array"
+                      [innerHtml]="i <= moviesDetails.vote_average ? starf : star"
+                      style="color: yellow"
+                    >
+                    </span>
+                  </div>
+                </li>
+                <li *ngIf="moviesDetails.genres?.length">
+                  <label>Genre: </label>
+                  <span *ngFor="let n of moviesDetails.genres">
+                    {{ n.name }}
+                  </span>
+                </li>
+                <li>
+                  <label>Status: </label>
+                  {{ moviesDetails.status }}
+                </li>
+                <li>
+                  <label>Language: </label>
+                  {{ moviesDetails.original_language }}
+                </li>
+                <li>
+                  <label>Minutes: </label>
+                  {{ moviesDetails.runtime }}
+                </li>
+                <li>
+                  <label>Language: </label>
+                  {{ moviesDetails.original_language }}
+                </li>
+                <li>
+                  <label>Minutes: </label>
+                  {{ moviesDetails.runtime }}
+                </li>
+                <li>
+                  <label>Released Date: </label>
+                  {{ moviesDetails.release_date }}
+                </li>
+                <li>
+                  <label>Web-Page: </label>
+                  <a href="{{ moviesDetails.homepage }}">{{
+                    moviesDetails.homepage
+                  }}</a>
+                </li>
+                <li>
+                  <mat-icon class="icon" [routerLink]="['/movielist']">assignment_return</mat-icon>
+                </li>
+              </ul>
+            </div>
+          </ng-template>
+        </ngb-carousel>
       </div>
-      <div class="infoContainer">x</div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </html>
