@@ -1,31 +1,30 @@
 <mat-nav-list>
   <div class="side-content">
-  <a mat-list-item routerLink="#" (click)="onSidenavClose()">
-    <mat-icon>favorite</mat-icon> <span class="nav-caption">Favotites</span>
-  </a>
-  <a mat-list-item routerLink="#" (click)="onSidenavClose()">
-    <mat-icon>watch_later</mat-icon>
-    <span class="nav-caption">Watch Later</span>
-  </a>
-  <a mat-list-item routerLink="#" (click)="onSidenavClose()">
-    <mat-icon>download</mat-icon>
-    <span class="nav-caption">Downloads</span>
-  </a>
-  <a mat-list-item routerLink="#" (click)="onSidenavClose()">
-    <mat-icon>broadcast_on_home</mat-icon>
-    <span class="nav-caption">Broadcast</span>
-  </a>
- 
-  <div class="logout">
-    <hr class="hr"/>
-    <a mat-list-item routerLink="#" (click)="onSidenavClose()">
-      <mat-icon>manage_accounts</mat-icon>
-      <span class="nav-caption">Settings</span>
+    <a mat-list-item routerLink="#">
+      <mat-icon>favorite</mat-icon> <span class="nav-caption">Favorites</span>
     </a>
-    <a mat-list-item routerLink="/home" (click)="onSidenavClose()">
-    <mat-icon [routerLink]="['/home']">logout</mat-icon
-    ><span class="nav-caption">Log Out</span>
-  </a>
-  </div>
+    <a mat-list-item routerLink="#">
+      <mat-icon>watch_later</mat-icon>
+      <span class="nav-caption">Watch Later</span>
+    </a>
+    <a mat-list-item routerLink="#">
+      <mat-icon>download</mat-icon>
+      <span class="nav-caption">Downloads</span>
+    </a>
+    <a mat-list-item routerLink="#">
+      <mat-icon>broadcast_on_home</mat-icon>
+      <span class="nav-caption">Broadcast</span>
+    </a>
+
+    <div class="logout">
+      <hr class="hr" />
+      <a mat-list-item routerLink="#">
+        <mat-icon>manage_accounts</mat-icon>
+        <span class="nav-caption">Settings</span>
+      </a>
+      <a mat-list-item (click)="logout()">
+        <mat-icon>logout</mat-icon><span class="nav-caption">Log Out</span>
+      </a>
+    </div>
   </div>
 </mat-nav-list>
