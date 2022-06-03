@@ -2,38 +2,36 @@
   <mat-sidenav-container class="nav-container">
     <mat-sidenav-content>
       <app-nav-header-bar>
-      <main>
-        <router-outlet></router-outlet>
-      </main>
-    </app-nav-header-bar>
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+      </app-nav-header-bar>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  <body>
-    <div class="headContainer">
-      <div class="headText">
-        <h1>Find every movie and series trending at the moment</h1>
-        <h2>Watch anywhere offline</h2>
-        <h3>Get started today!</h3>
-        <div class="formContainer">
-          <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="signupElements">
-              <mat-form-field appearance="outline">
-                <mat-label><mat-icon>contact_mail</mat-icon> Email</mat-label>
-                <div class="inputboxcontainer">
-                  <input
-                    matInput
-                    placeholder="Your Email Address"
-                    formControlName="email"
-                  />
-                </div>
-              </mat-form-field>
-            </div>
-            <div class="signUpbtn">
-              <button mat-raised-button type="submit">Sign UP</button>
-            </div>
-          </form>
-        </div>
+  <div class="headContainer">
+    <div class="headText">
+      <h1>Find every movie and series trending at the moment</h1>
+      <h2>Watch anywhere offline</h2>
+      <h3>Get started today!</h3>
+      <div class="formContainer">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="signupElements">
+            <mat-form-field appearance="outline">
+              <mat-label><mat-icon>contact_mail</mat-icon> Email</mat-label>
+              <div class="inputboxcontainer">
+                <input
+                  matInput
+                  placeholder="Your Email Address"
+                  formControlName="email"
+                />
+              </div>
+            </mat-form-field>
+          </div>
+          <div class="signUpbtn">
+            <button mat-raised-button type="submit">Sign UP</button>
+          </div>
+        </form>
       </div>
     </div>
-  </body>
+  </div>
 </html>
