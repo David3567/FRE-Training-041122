@@ -12,12 +12,10 @@ export class TmdbAPIService {
   private populars_base_url: string = `https://api.themoviedb.org/3/movie/popular?api_key=${environment.API_KEY}&language=en-US&page=` // add page
   private moviesSubj$: any = new Subject();
   private movieTrailersSubj$: any = new Subject();
-  private movieDetailsSubj$: any = new Subject();
 
   private movies: any = [];
   private movieTrailers: any = [];
-  private movieDetails: any = {};
-
+ 
   private popularQueryPageSbj$: any = new Subject()
   private searchQueryPageSbj$: any = new Subject()
   
@@ -26,7 +24,8 @@ export class TmdbAPIService {
 
   movies$: any = this.moviesSubj$.asObservable()
   movieTrailers$: any = this.movieTrailersSubj$.asObservable()
-  movieDetails$: any = this.movieDetailsSubj$.asObservable()
+ 
+  movieImg!: any;
   
   constructor(private http: HttpClient) { }
 
@@ -82,24 +81,17 @@ export class TmdbAPIService {
     return this.http.get(movieVideosURL).pipe(
       map((videosObj: any) => {
       const movieTrailer: any = videosObj.results.map((videosData: any) => {
+        
           if (videosData.type === 'Trailer') {
           return {
-              iso_639_1: videosData.iso_639_1,
-              iso_3166_1: videosData.iso_3166_1,
-              name: videosData.name,
               key: videosData.key,
-              site: videosData.site,
-              size: videosData.size,
-              type: videosData.type,
-              official: videosData.official,
-              published_at: videosData.published_at,
               id: videosData.id
           }
           } else {
           return null
           }
       }).filter((ele:any) => ele)
-      
+      console.log(movieTrailer)
       return movieTrailer
       }),
       tap((movieTrailer: any) => {
@@ -112,29 +104,10 @@ export class TmdbAPIService {
     //Changes made for Resolver
     getMovieByID(id: string) {
       const endpoint: string = `https://api.themoviedb.org/3/movie/${id}?api_key=${environment.API_KEY}&language=en-US`
-      return this.http.get(endpoint).pipe(
-        tap((movieDetails: any) => {
-          console.log(movieDetails)
-          this.movieDetails = {
-            adult: movieDetails.adult,
-            backdrop_path: movieDetails.backdrop_path,
-            genre_ids: movieDetails.genre_ids,
-            id: movieDetails.id,
-            original_language: movieDetails.original_language,
-            original_title: movieDetails.original_title,
-            overview: movieDetails.overview,
-            popularity: movieDetails.popularity,
-            poster_path: movieDetails.poster_path,
-            poster_url: this.poster_base_url + movieDetails.poster_path,
-            release_date: movieDetails.release_date,
-            title: movieDetails.title,
-            video: movieDetails.video,
-            vote_average: movieDetails.vote_average,
-            vote_count: movieDetails.vote_count,
-            showDetails: false
-          }
-          this.movieDetailsSubj$.next(this.movieDetails)
-        })
-      )
+      return this.http.get(endpoint)
+    }
+
+    getMovieImage(path: string): string {
+      return [this.poster_base_url, path].join('')
     }
 }

@@ -21,6 +21,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -63,6 +64,7 @@ import { RouterModule } from '@angular/router';
     YouTubePlayerModule,
     InfiniteScrollModule,
     MatProgressBarModule,
+    NgbModule,
   ]
 })
 

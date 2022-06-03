@@ -15,6 +15,7 @@ import { AuthLocalStorageService } from './services/auth-local-storage.service';
 import { appInitializer } from './app.initializer';
 
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
+    NgbModule,
   ],
   providers: [
     {
