@@ -16,9 +16,9 @@
           </h1>
           <h6>{{ moviesDetails.tagline }}</h6>
         </div>
-        <ngb-carousel>
+        <ngb-carousel *ngIf="moviesTrailers.length !== 0">
           <ng-template ngbSlide *ngFor="let trailer of moviesTrailers">
-            <div class="youTubePlayer-wrapper" >
+            <div class="youTubePlayer-wrapper">
               <youtube-player
                 [videoId]="trailer.key"
                 suggestedQuality="highres"
@@ -31,7 +31,15 @@
             </div>
             <div class="infoContainer">
               <div class="thumbnail">
-                <img [src]="movieImg" width="150px" height="200px" />
+                <img
+                  [src]="
+                    movieImg === 'https://image.tmdb.org/t/p/originalnull'
+                      ? 'https://c8.alamy.com/comp/T9YH1X/blank-missing-poster-template-ready-to-print-T9YH1X.jpg'
+                      : movieImg
+                  "
+                  width="150px"
+                  height="200px"
+                />
               </div>
               <ul>
                 <li>
@@ -39,7 +47,9 @@
                     <label>Rating: </label>
                     <span
                       *ngFor="let i of array"
-                      [innerHtml]="i <= moviesDetails.vote_average ? starf : star"
+                      [innerHtml]="
+                        i <= moviesDetails.vote_average ? starf : star
+                      "
                       style="color: yellow"
                     >
                     </span>
@@ -82,12 +92,28 @@
                   }}</a>
                 </li>
                 <li>
-                  <mat-icon class="icon" [routerLink]="['/movielist']">assignment_return</mat-icon>
+                  <mat-icon class="icon" [routerLink]="['/movielist']"
+                    >assignment_return</mat-icon
+                  >
                 </li>
               </ul>
             </div>
           </ng-template>
         </ngb-carousel>
+        <div class="notfound" *ngIf="moviesTrailers.length === 0">
+          {{ notFound }}
+          <img
+            *ngIf="moviesTrailers.length === 0"
+            src="https://c8.alamy.com/comp/T9YH1X/blank-missing-poster-template-ready-to-print-T9YH1X.jpg"
+            width="150px"
+            height="200px"
+          />
+          <br />
+          <mat-icon class="icon" [routerLink]="['/movielist']"
+            >assignment_return</mat-icon
+          >
+          <br />
+        </div>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

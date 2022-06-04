@@ -15,8 +15,10 @@ export class MovieDetailsComponent implements OnInit {
   star = '&star;';
   starf = '&starf;';
   array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  notFound = 'Page not Found!!';
 
   constructor(private route: ActivatedRoute, private movie: TmdbAPIService) {
+
     //Details from Resolver are rendered
     this.route.data.subscribe((trailers) => {
       this.moviesTrailers = trailers['movie'];
@@ -24,7 +26,6 @@ export class MovieDetailsComponent implements OnInit {
 
     this.route.data.subscribe((details) => {
       this.moviesDetails = details['movieId'];
-      console.log(this.moviesDetails.id);
     });
   }
 

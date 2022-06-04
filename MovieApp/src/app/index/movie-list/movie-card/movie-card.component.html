@@ -1,5 +1,12 @@
 <mat-card class="example-card" *ngFor="let movie of moviesList">
-  <img mat-card-image src="{{ movie.poster_url }}" alt="Photo of a Shiba Inu" />
+  <img
+    mat-card-image
+    src="{{
+      movie.poster_url === 'https://image.tmdb.org/t/p/originalnull'
+        ? 'https://c8.alamy.com/comp/T9YH1X/blank-missing-poster-template-ready-to-print-T9YH1X.jpg'
+        : movie.poster_url
+    }}"
+  />
   <mat-card-header>
     <mat-card-title>{{ movie.title }}</mat-card-title>
     <mat-card-subtitle>{{ movie.original_title }}</mat-card-subtitle>
@@ -21,7 +28,7 @@
       *ngIf="movie.showDetails"
       (click)="showDetails(movie.id)"
     >
-      <div class="material-icons">help_outline</div>
+    <div class="material-icons">help_outline</div>
       More Info
     </button>
   </mat-card-actions>
