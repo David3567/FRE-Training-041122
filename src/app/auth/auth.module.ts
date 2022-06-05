@@ -4,23 +4,21 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../shared/angular-material.module';
-import { AuthComponent } from './auth.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: AuthComponent },
-  { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
-  declarations: [RegisterComponent, LoginComponent, AuthComponent],
+  declarations: [RegisterComponent, LoginComponent],
   imports: [
-    RouterModule.forChild(routes),
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,
+    RouterModule.forChild(routes),
   ],
-  exports: [RegisterComponent, LoginComponent, AuthComponent],
+  exports: [RegisterComponent, LoginComponent],
 })
 export class AuthModule {}
