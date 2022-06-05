@@ -1,4 +1,7 @@
 import { Component,EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Router } from '@angular/router';
+import { concat } from 'rxjs-compat/operator/concat';
+import { AuthLocalStorageService } from 'src/app/services/auth-local-storage.service';
 
 @Component({
   selector: 'app-nav-logged-in-header',
@@ -8,21 +11,31 @@ import { Component,EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class NavLoggedInHeaderComponent implements OnInit {
 
   @Output() public sidenavToggle = new EventEmitter();
-  
-  constructor() { }
+  isLogin!: boolean;
+  username = '';
+  welcome = ('Welcome ' + this.username + ' !! ');
+
+  constructor(private readonly authService: AuthLocalStorageService, private readonly router: Router) { }
 
   ngOnInit(): void {
+    const { JWToken, username } = this.authService.userValue;
+    
+    if (JWToken && username) {
+      this.isLogin = true;
+      this.username = username;
+      this.welcome = ('Welcome ' + this.username + '!! ');
+    } else {
+      this.isLogin = false;
+    }
   }
 
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();
   }
 
-  refreshPage() {
-    let win = (window as any);
-      if(win.location.pathname === '/movielist' ) {
-          win.location.reload();
-          win.location.pathname = '/movielist';
-      }
-   }
+  logOut(){
+    this.authService.logoutAuth();
+    this.isLogin = false;
+    this.username = '';
+  }
 }

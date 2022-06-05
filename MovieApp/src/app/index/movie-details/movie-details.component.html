@@ -42,6 +42,20 @@
                 />
               </div>
               <ul>
+                <mat-chip-list
+                  class="example-chip"
+                  cdkDropListOrientation="horizontal" 
+                  *ngIf="moviesDetails.genres?.length"
+                >
+                <label>Genre: </label>
+                  <mat-chip
+                    class="example-box"
+                    *ngFor="let n of moviesDetails.genres"
+                  >
+                  {{ n.name }}
+                  </mat-chip>
+                </mat-chip-list>
+                <br />
                 <li>
                   <div class="info">
                     <label>Rating: </label>
@@ -55,23 +69,9 @@
                     </span>
                   </div>
                 </li>
-                <li *ngIf="moviesDetails.genres?.length">
-                  <label>Genre: </label>
-                  <span *ngFor="let n of moviesDetails.genres">
-                    {{ n.name }}
-                  </span>
-                </li>
                 <li>
                   <label>Status: </label>
                   {{ moviesDetails.status }}
-                </li>
-                <li>
-                  <label>Language: </label>
-                  {{ moviesDetails.original_language }}
-                </li>
-                <li>
-                  <label>Minutes: </label>
-                  {{ moviesDetails.runtime }}
                 </li>
                 <li>
                   <label>Language: </label>

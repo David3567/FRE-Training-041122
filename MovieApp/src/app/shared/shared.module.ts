@@ -20,6 +20,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatStepperModule } from '@angular/material/stepper';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MatChipsModule } from '@angular/material/chips';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -65,6 +66,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     InfiniteScrollModule,
     MatProgressBarModule,
     NgbModule,
+    MatChipsModule,
   ]
 })
 

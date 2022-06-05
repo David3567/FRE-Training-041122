@@ -1,25 +1,21 @@
 <header class="topBar">
-    <!-- <mat-drawer #drawer mode="side" opened>
-      <div class="side-icons">
-        <mat-icon class="menu">manage_accounts</mat-icon>
-        <mat-icon class="menu">search</mat-icon>
-        <mat-icon class="menu">group</mat-icon>
-      </div>
-    </mat-drawer> -->
-    <div class="fig">
-      <mat-icon class="menu" (click)="onToggleSidenav()" >menu_open</mat-icon>
-      <img src="../../assets/coollogo_com.png" alt="" />
-    </div>
-    <div class="navInteractive">
-      <select class="language">
-        <option selected="selected">EN</option>
-        <option>SPAN</option>
-        <option>日本語</option>
-        <option>中文</option>
-      </select>
-      <mat-icon class="home" >light_mode</mat-icon>
-      <mat-icon  class="register">switch_account</mat-icon>
-      <mat-icon class="signIn">face</mat-icon>
-    </div>
-  </header>
-  <hr class="hr" />
+  <div class="fig">
+    <mat-icon class="menu" (click)="onToggleSidenav()">menu_open</mat-icon>
+    <img src="../../assets/coollogo_com.png" />
+  </div>
+  <div class="navInteractive" *ngIf="isLogin">
+    <span class="welcome"> {{ welcome }} </span>
+    <select class="language">
+      <option selected="selected">EN</option>
+      <option>SPAN</option>
+      <option>日本語</option>
+      <option>中文</option>
+    </select>
+    <mat-icon class="home">light_mode</mat-icon>
+    <mat-icon class="register">switch_account</mat-icon>
+    <span title="Click to Logout">
+      <mat-icon class="signIn" (click)="logOut()">face</mat-icon>
+    </span>
+  </div>
+</header>
+<hr class="hr" />

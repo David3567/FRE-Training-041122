@@ -8,14 +8,6 @@ import { SharedModule } from '../shared.module';
   ],
   imports: [
     SharedModule,
-    // CommonModule,
-    // RouterModule.forChild([
-    //   {
-    //     path: '',
-    //     component: NavLoggedInHeaderComponent
-    // }
-    // ]),
-
   ],
   exports: [
     NavLoggedInHeaderComponent
