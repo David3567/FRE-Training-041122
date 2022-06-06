@@ -15,9 +15,13 @@
       <mat-icon>broadcast_on_home</mat-icon>
       <span class="nav-caption">Broadcast</span>
     </a>
+    <a mat-list-item [routerLink]="['/movielist']">
+      <mat-icon>featured_play_list</mat-icon>
+      <span class="nav-caption">Feature Movies</span>
+    </a>
 
     <div class="logout">
-      <hr class="hr" />
+      <div class="hr"> </div>
       <a mat-list-item routerLink="#">
         <mat-icon>manage_accounts</mat-icon>
         <span class="nav-caption">Settings</span>

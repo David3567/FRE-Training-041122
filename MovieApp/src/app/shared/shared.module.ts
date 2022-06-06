@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavHeaderBarComponent } from 'src/app/shared/nav-header-bar/nav-header-bar.component';
-import { NavLoggedInHeaderComponent } from 'src/app/shared/nav-logged-in-header/nav-logged-in-header.component';
 import { NavSidebarComponent } from 'src/app/shared/nav-sidebar/nav-sidebar.component';
 import { TextReductionPipe } from 'src/app/pipes/text-reduction.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +19,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatStepperModule } from '@angular/material/stepper';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MatChipsModule } from '@angular/material/chips';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -35,14 +35,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   declarations: [
     NavHeaderBarComponent,
-    NavLoggedInHeaderComponent,
     NavSidebarComponent,
     TextReductionPipe,
   ],
   exports: [
     CommonModule,
     NavHeaderBarComponent,
-    NavLoggedInHeaderComponent,
     NavSidebarComponent,
     TextReductionPipe,
     RouterModule,
@@ -65,6 +63,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     InfiniteScrollModule,
     MatProgressBarModule,
     NgbModule,
+    MatChipsModule,
   ]
 })
 
