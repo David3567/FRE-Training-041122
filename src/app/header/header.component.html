@@ -20,7 +20,11 @@
   </div>
 
   <div class="btn-container">
-    <button *ngIf="isLogged === false" mat-raised-button routerLink="/login">
+    <button
+      *ngIf="isLogged === false"
+      mat-raised-button
+      routerLink="/auth/login"
+    >
       Sign In
     </button>
   </div>
