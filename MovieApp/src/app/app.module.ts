@@ -10,12 +10,13 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthLocalStorageService } from './services/auth-local-storage.service';
 import { appInitializer } from './app.initializer';
 
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthLocalInterceptor } from './interceptors/auth-local.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +35,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       useFactory: appInitializer,
       multi: true,
       deps: [AuthLocalStorageService],
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthLocalInterceptor,
+      multi: true,
     },
     TmdbAPIService,
     TmdbAPIResolverService,

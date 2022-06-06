@@ -43,7 +43,7 @@ export class MoviedatailsGuard
     } else if (JWToken) {
       // shoud redirect to role upgrade screen
       console.log('upgrade your subscription');
-      this.router.navigate(['/']);
+      this.router.navigate(['/userupgrade']);
       return false;
     } else {
       this.router.navigate(['/login'], {
