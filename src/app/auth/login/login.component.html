@@ -38,16 +38,17 @@
         />
       </mat-form-field>
       <div class="errors" *ngIf="password?.value.length > 0">
-        <mat-error
-          *ngIf="password?.errors?.['pattern']">
-          <p>Enter at least 8 characters</p>
+        <mat-error *ngIf="password?.errors?.['pattern']">
+          <p>Enter at least 6 characters</p>
           <p>Must contain 1 capital letter</p>
           <p>Must contain 1 numeric digit</p>
           <p>Must contain 1 special character</p>
         </mat-error>
       </div>
     </div>
-    <button mat-raised-button type="submit">Sign In</button>
+    <button mat-raised-button type="submit" [disabled]="loginForm.invalid">
+      Sign In
+    </button>
   </form>
   <span>No account? <a routerLink="/register">Register Now</a></span>
 </div>

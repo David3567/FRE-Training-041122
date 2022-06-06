@@ -3,20 +3,29 @@
   <div *ngIf="errors">Input error here if there is or registration errors</div>
   <mat-card class="register-card">
     <h2>Register</h2>
-    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <form
+      class="register-form"
+      [formGroup]="registerForm"
+      (ngSubmit)="onRegister()"
+    >
       <div class="form-group">
         <mat-form-field class="register-full-width" appearance="outline">
           <mat-label class="register-label">Username</mat-label>
           <input matInput class="register-input" formControlName="username" />
         </mat-form-field>
         <div class="errors">
-          <mat-error *ngIf="!username?.valid && (username?.touched || username?.dirty)">
+          <mat-error
+            *ngIf="!username?.valid && (username?.touched || username?.dirty)"
+          >
             <mat-error *ngIf="username?.errors?.['minlength']">
-              Min Length is 3 characters</mat-error>
+              Min Length is 3 characters</mat-error
+            >
             <mat-error *ngIf="username?.errors?.['maxlength']">
-              Max Length is 20 characters</mat-error>
+              Max Length is 20 characters</mat-error
+            >
             <mat-error *ngIf="username?.errors?.['required']">
-              Enter username!</mat-error>
+              Enter username!</mat-error
+            >
           </mat-error>
         </div>
       </div>
@@ -24,19 +33,44 @@
       <div class="form-group">
         <mat-form-field class="register-full-width" appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput type="email" class="register-input" formControlName="email" />
+          <input
+            matInput
+            type="email"
+            class="register-input"
+            formControlName="email"
+          />
         </mat-form-field>
-        <mat-error class="errors" *ngIf="!email?.valid && (email?.dirty || email?.touched)">Please enter a valid email
+        <mat-error
+          class="errors"
+          *ngIf="!email?.valid && (email?.dirty || email?.touched) && !email?.pending && !email?.errors?.['taken']"
+          >Please enter a valid email
         </mat-error>
+        <mat-error class="errors" *ngIf="email?.errors?.['taken']"
+          >{{ email?.value }} is taken
+        </mat-error>
+
+        <div *ngIf="email?.valid">{{ email?.value }} is available</div>
+
+        <div *ngIf="email?.pending">
+          ..Checking availability of {{ email?.value }}
+        </div>
       </div>
 
       <div class="form-group">
-        <mat-form-field class="register-full-width" type="password" appearance="outline">
+        <mat-form-field
+          class="register-full-width"
+          type="password"
+          appearance="outline"
+        >
           <mat-label>Password</mat-label>
-          <input matInput [type]="showPassword ? 'text' : 'password'" class="register-input"
-            formControlName="password" />
+          <input
+            matInput
+            [type]="showPassword ? 'text' : 'password'"
+            class="register-input"
+            formControlName="password"
+          />
           <mat-icon matSuffix (click)="onShowPassword()">
-            {{showPassword?'visibility_off':'visibility'}}
+            {{ showPassword ? "visibility_off" : "visibility" }}
           </mat-icon>
         </mat-form-field>
         <div class="errors" *ngIf="password?.value.length > 0">
@@ -51,19 +85,26 @@
 
       <mat-form-field class="register-full-width" appearance="outline">
         <mat-label>Confirm Password</mat-label>
-        <input matInput class="register-input" [type]="showConfirmPassword ? 'text' : 'password'"
-          formControlName="confirmPassword" />
+        <input
+          matInput
+          class="register-input"
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          formControlName="confirmPassword"
+        />
         <mat-icon matSuffix (click)="onShowConfirmPassword()">
-          {{showConfirmPassword?'visibility_off':'visibility'}}
+          {{ showConfirmPassword ? "visibility_off" : "visibility" }}
         </mat-icon>
       </mat-form-field>
-      <mat-error class="errors" *ngIf="registerForm.errors?.['passwordNotMatched']">Password do not match!
+      <mat-error
+        class="errors"
+        *ngIf="registerForm.errors?.['passwordNotMatched']"
+        >Password do not match!
       </mat-error>
       <mat-form-field appearance="outline">
         <mat-label>Select Role</mat-label>
         <mat-select formControlName="role">
           <mat-option *ngFor="let role of roles" [value]="role.value">
-            {{role.displayValue}}
+            {{ role.displayValue }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -73,8 +114,13 @@
         <input matInput class="register-input" formControlName="apikey" />
       </mat-form-field>
       <div>
-        <button mat-raised-button [disabled]="!registerForm.valid" class="register-full-width" color="success"
-          type="submit">
+        <button
+          mat-raised-button
+          [disabled]="!registerForm.valid"
+          class="register-full-width"
+          color="success"
+          type="submit"
+        >
           Register
         </button>
       </div>

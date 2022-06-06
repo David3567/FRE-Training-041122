@@ -1,5 +1,5 @@
 /*~~~~~~~~~ Modules ~~~~~~~~~*/
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,6 +12,8 @@ import { AngularMaterialModule } from './shared/angular-material.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 
+export const AUTHSERVER = new InjectionToken<string>('');
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
@@ -22,7 +24,10 @@ import { HeaderComponent } from './header/header.component';
     AngularMaterialModule,
   ],
   exports: [HeaderComponent],
-  providers: [],
+  providers: [
+    // authserver path;
+    { provide: AUTHSERVER, useValue: 'http://localhost:4231' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
