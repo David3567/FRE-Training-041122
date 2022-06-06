@@ -14,7 +14,7 @@
           <h1>
             <u> {{ moviesDetails.title }} </u>
           </h1>
-          <h6>{{ moviesDetails.tagline }}</h6>
+          <h5>{{ moviesDetails.tagline }}</h5>
         </div>
         <ngb-carousel *ngIf="moviesTrailers.length !== 0">
           <ng-template ngbSlide *ngFor="let trailer of moviesTrailers">

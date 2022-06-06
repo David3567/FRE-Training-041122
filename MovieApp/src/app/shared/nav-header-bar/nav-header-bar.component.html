@@ -1,6 +1,8 @@
 <header class="topBar">
   <div class="fig">
-    <mat-icon class="menu" *ngIf="isLogin" (click)="onToggleSidenav()">menu_open</mat-icon>
+    <mat-icon class="menu" *ngIf="isLogin" (click)="onToggleSidenav()"
+      >menu_open</mat-icon
+    >
     <img src="../../assets/coollogo_com.png" [routerLink]="['/home']" />
   </div>
   <div class="navInteractive" *ngIf="!isLogin">
@@ -24,12 +26,6 @@
   </div>
   <div class="navInteractive" *ngIf="isLogin">
     <span class="welcome"> {{ welcome }} </span>
-    <select class="language">
-      <option selected="selected">EN</option>
-      <option>SPAN</option>
-      <option>日本語</option>
-      <option>中文</option>
-    </select>
     <mat-icon class="home">light_mode</mat-icon>
     <mat-icon class="register">switch_account</mat-icon>
     <span title="Click to Logout">
@@ -38,4 +34,11 @@
   </div>
 </header>
 
-<hr class="hr" />
+<div class="hr"></div>
+
+<!-- <select class="language">
+      <option selected="selected">EN</option>
+      <option>SPAN</option>
+      <option>日本語</option>
+      <option>中文</option>
+    </select> -->
