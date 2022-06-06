@@ -14,10 +14,10 @@ header
     align-items: center
     justify-content: space-between
 
-.navInteractive
+.navInteractive, .fig
     background-color: transparent
     height: 100%
-    width: 30%
+    width: 40%
     display: flex
     align-items: center
     justify-content: space-evenly
@@ -27,7 +27,12 @@ img
     background-color: transparent
     padding-left: 2em
 
-.signIn, .register, .home
+.welcome
+    font-size: 1.6rem
+    color: complement(lightgreen)
+    text-shadow: 0.04em 0.04em $purple-accent-color
+
+.signIn, .register, .home, .menu
     background-color: transparent
     height: 1em
     width: 1em
@@ -36,23 +41,26 @@ img
     color: $cyan-accent-color
     font-size: 2rem
 
-.signIn:hover, .register:hover, .home:hover
+.signIn:hover, .register:hover, .home:hover, .menu:hover
     background-color: $cyan-accent-color
     color: $main-bg-color
     border: 1px $cyan-accent-color
     box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
 
-.signIn:active, .register:active, home:active
+.signIn:active, .register:active, home:active, .menu:active
     background-color: $purple-accent-color
     color: $main-bg-color
     border: 1px $purple-accent-color solid
     box-shadow: ((inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color), (inset 0 0 0.3em $purple-accent-color, 0 0 0.3em $purple-accent-color))
     transition: 0.1s
 
+.fig
+    margin-left: 2%
+
 .language
     background-color: transparent
     height: 40%
-    font-size: 1.2em
+    font-size: 1.5em
     border: 1px $cyan-accent-color solid
     border-radius: 5px
     box-shadow: ((inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color), (inset 0 0 0.1em $cyan-accent-color, 0 0 0.1em $cyan-accent-color))
@@ -72,4 +80,4 @@ img
 
 .hr
     background-color: $pink-accent-color
-    height: 5px
+    height: 1em

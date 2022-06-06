@@ -1,8 +1,9 @@
 <header class="topBar">
   <div class="fig">
-    <img src="../../assets/coollogo_com.png" alt="" [routerLink]="['/home']" />
+    <mat-icon class="menu" *ngIf="isLogin" (click)="onToggleSidenav()">menu_open</mat-icon>
+    <img src="../../assets/coollogo_com.png" [routerLink]="['/home']" />
   </div>
-  <div class="navInteractive">
+  <div class="navInteractive" *ngIf="!isLogin">
     <select class="language">
       <option selected="selected">EN</option>
       <option>ES</option>
@@ -21,5 +22,20 @@
       <mat-icon class="home" [routerLink]="['/home']">home</mat-icon>
     </span>
   </div>
+  <div class="navInteractive" *ngIf="isLogin">
+    <span class="welcome"> {{ welcome }} </span>
+    <select class="language">
+      <option selected="selected">EN</option>
+      <option>SPAN</option>
+      <option>日本語</option>
+      <option>中文</option>
+    </select>
+    <mat-icon class="home">light_mode</mat-icon>
+    <mat-icon class="register">switch_account</mat-icon>
+    <span title="Click to Logout">
+      <mat-icon class="signIn" (click)="logOut()">face</mat-icon>
+    </span>
+  </div>
 </header>
+
 <hr class="hr" />
