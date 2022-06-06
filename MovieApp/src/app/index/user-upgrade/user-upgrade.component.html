@@ -1,0 +1,109 @@
+<html>
+  <mat-sidenav-container class="nav-container">
+    <mat-sidenav-content>
+      <app-nav-header-bar>
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+      </app-nav-header-bar>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <body>
+    <div class="headContainer">
+      <div class="headText">
+        <h1>Find every movie and series trending at the moment</h1>
+        <div class="formContainer">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="perks">
+              <th mat-header-cell *matHeaderCellDef>Perks</th>
+              <td mat-cell *matCellDef="let element">{{ element.perk }}</td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="userCheck">
+              <th mat-header-cell *matHeaderCellDef>User</th>
+              <td mat-cell *matCellDef="let element">
+                <div class="innerContainer">
+                  <button
+                    *ngIf="element.userCheck === 'User'"
+                    (click)="switchrole('USER')"
+                  >
+                    User
+                  </button>
+                  <span
+                    [ngStyle]="
+                      element.userCheck === '\u2713'
+                        ? { color: 'green', 'text-shadow': '0 0 1em green' }
+                        : { color: 'red', 'text-shadow': '0 0 1em red' }
+                    "
+                    *ngIf="!(element.userCheck === 'User')"
+                  >
+                    {{ element.userCheck }}
+                  </span>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="superuserCheck">
+              <th mat-header-cell *matHeaderCellDef>Superuser</th>
+              position
+              <td mat-cell *matCellDef="let element">
+                <div class="innerContainer">
+                  <button
+                    *ngIf="element.superuserCheck === 'Superuser'"
+                    (click)="switchrole('SUPERUSER')"
+                  >
+                    Superuser
+                  </button>
+                  <span
+                    [ngStyle]="
+                      element.superuserCheck === '\u2713'
+                        ? { color: 'green', 'text-shadow': '0 0 1em green' }
+                        : { color: 'red', 'text-shadow': '0 0 1em red' }
+                    "
+                    *ngIf="!(element.superuserCheck === 'Superuser')"
+                  >
+                    {{ element.superuserCheck }}
+                  </span>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="adminCheck">
+              <th mat-header-cell *matHeaderCellDef>Admin</th>
+              <td mat-cell *matCellDef="let element">
+                <div class="innerContainer">
+                  <button
+                    *ngIf="element.adminCheck === 'Admin'"
+                    (click)="switchrole('ADMIN')"
+                  >
+                    Admin
+                  </button>
+                  <span
+                    [ngStyle]="
+                      element.adminCheck === '\u2713'
+                        ? { color: 'green', 'text-shadow': '0 0 1em green' }
+                        : { color: 'red', 'text-shadow': '0 0 1em red' }
+                    "
+                    *ngIf="!(element.adminCheck === 'Admin')"
+                  >
+                    {{ element.adminCheck }}
+                  </span>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

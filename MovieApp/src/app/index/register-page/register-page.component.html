@@ -9,12 +9,6 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
   <!-- // -->
-  {{
-    this.tmdb_key?.valid
-  }}
-  {{
-    this.tmdb_key?.value
-  }}
   <div class="formContainer">
     <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
       <mat-step [stepControl]="registerForm">

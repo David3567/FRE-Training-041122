@@ -1,0 +1,102 @@
+@import '../../../styles'
+
+@mixin webp-backgroundGradient($img)
+    background-size: cover
+    background-repeat: no-repeat
+    background-image: linear-gradient(to bottom,rgba(black, 0.5) 10%,rgba(black, 1) 70%), url("#{$img}")
+    filter: grayscale(20%)
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    color: whitesmoke
+
+html
+    height: 100vh
+    width: 100vw
+    font-size: 1.4em
+    overflow: auto
+
+body
+    height: 100vh
+    @include webp-backgroundGradient("../../../assets/MoviesBanner.jpg")
+    width: 100%
+    align-items: center
+    background-color: $main-bg-color
+
+.headContainer
+    height: 70%
+    background-repeat: no-repeat
+    display: flex
+    align-items: center
+    justify-content: center
+
+.headText
+    height: 20%
+    width: 100%
+    text-align: center
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-evenly
+
+    & h1
+        width: 80%
+        text-align: center
+        text-shadow: 0 0 0.1em $cyan-accent-color
+
+table
+    background-color: transparent
+    width: 100%
+
+.mat-column-perks
+    width: 61%
+    font-size: 1.2em
+    text-shadow: 0 0 0.1em $purple-accent-color
+
+.mat-column-userCheck, .mat-column-superuserCheck, .mat-column-adminCheck
+    width: 13%
+    text-align: center
+    font-size: 1.2em
+    text-shadow: 0 0 0.5em $pink-accent-color
+
+.innerContainer
+    display: flex
+    justify-content: center
+    align-items: center
+
+button
+    padding: 0 .5em
+    align-self: center
+    border: 1px $purple-accent-color solid
+    border-radius: 0.3em
+    text-align: center
+    font-size: 1em
+    background-color: transparent
+    display: flex
+    justify-content: center
+    align-items: center
+    text-shadow: 0 0 0.25em $purple-accent-color
+    box-shadow: (inset 0 0 0.5em $purple-accent-color, 0 0 0.25em $purple-accent-color)
+    transition: 0.3s
+
+button:hover
+    background-color: $purple-accent-color
+    color: $main-bg-color
+    border: 1px $purple-accent-color solid
+    box-shadow: ((inset 0 0 0.5em $purple-accent-color, 0 0 0.35em $purple-accent-color), (inset 0 0 0.5em $purple-accent-color, 0 0 0.45em $purple-accent-color))
+
+button:active
+    background-color: $purple-accent-color
+    color: $main-bg-color
+    border: 1px $purple-accent-color solid
+    box-shadow: ((inset 0 0 0.5em $purple-accent-color, 0 0 0.55em $purple-accent-color), (inset 0 0 0.5em $purple-accent-color, 0 0 0.65em $purple-accent-color))
+    transition: 0.1s
+
+.formContainer
+    width: 80%
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center

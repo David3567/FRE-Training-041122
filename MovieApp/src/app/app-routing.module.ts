@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MovieDetailsComponent } from './index/movie-details/movie-details.component';
 import { TmdbAPIResolverService } from './services/tmdb-api-resolver.service';
 import { TmdbAPIService } from './services/tmdb-api.service';
 import { TmdbIDResolverService } from './services/tmdb-id-resolver.service';
@@ -41,6 +40,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./index/movie-details/movie-details.module').then(
         (m) => m.MovieDetailsModule
+      ),
+  },
+
+  {
+    path: 'userupgrade',
+    loadChildren: () =>
+      import('./index/user-upgrade/user-upgrade.module').then(
+        (m) => m.userUpgradeModule
       ),
   },
 
