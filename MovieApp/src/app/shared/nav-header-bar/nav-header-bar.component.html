@@ -26,8 +26,14 @@
   </div>
   <div class="navInteractive" *ngIf="isLogin">
     <span class="welcome"> {{ welcome }} </span>
-    <mat-icon class="home">light_mode</mat-icon>
-    <mat-icon class="register">switch_account</mat-icon>
+    <span title="Mode">
+      <mat-icon class="home">light_mode</mat-icon>
+    </span>
+    <span title="Featured Movies">
+      <mat-icon class="register" [routerLink]="['/movielist']"
+        >featured_play_list</mat-icon
+      >
+    </span>
     <span title="Click to Logout">
       <mat-icon class="signIn" (click)="logOut()">face</mat-icon>
     </span>
@@ -35,10 +41,3 @@
 </header>
 
 <div class="hr"></div>
-
-<!-- <select class="language">
-      <option selected="selected">EN</option>
-      <option>SPAN</option>
-      <option>日本語</option>
-      <option>中文</option>
-    </select> -->

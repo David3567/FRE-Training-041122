@@ -23,7 +23,7 @@ export class NavHeaderBarComponent implements OnInit {
     if (JWToken && username) {
       this.isLogin = true;
       this.username = username;
-      this.welcome = ('Welcome ' + this.username + '!! ');
+      this.welcome = ('Welcome ' + this.username.toUpperCase() + '!! ');
     } else {
       this.isLogin = false;
     }
