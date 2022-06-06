@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -9,8 +10,9 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-
+  error = null;
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService
   ) {}
@@ -49,8 +51,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSignIn() {
-    this.authService
-      .login(this.loginForm.value)
-      .subscribe((data) => console.log(data));
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (data) => this.router.navigate(['/movies']),
+      error: (error) => (this.error = error),
+    });
   }
 }

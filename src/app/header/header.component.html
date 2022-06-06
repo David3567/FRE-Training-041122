@@ -1,26 +1,29 @@
 <header class="center-content">
   <div class="right-grp">
-    <a routerLink=""
-      ><img src="../assets/images/logo.png" alt="Antraflix Logo" class="logo"
-    /></a>
+    <a routerLink=""><img src="../assets/images/logo.png" alt="Antraflix Logo" class="logo" /></a>
 
-    <nav *ngIf="isLogged === true">
+    <nav *ngIf="isLoggedIn === true">
       <div class="loggedNav">
         <ul class="nav-items">
           <li class="nav-item" *ngFor="let navItem of navItems">
             <a [routerLink]="[navItem.path]">{{ navItem.text }}</a>
           </li>
         </ul>
-        <div class="profil">
-          <p>Welcome back, <span>Jon</span></p>
-          <img src="../../assets/images/avatar.jpg" alt="pic" />
+        <div class="right-elements">
+          <div *ngIf="isLoggedIn" class="profil">
+            <span class="username">{{username}}</span>
+            <img src="../../assets/images/avatar.jpg" alt="pic" />
+          </div>
+          <div class="logout">
+            <mat-icon class="icons" (click)="onLogout()">exit_to_app</mat-icon>
+          </div>
         </div>
       </div>
     </nav>
   </div>
 
   <div class="btn-container">
-    <button *ngIf="isLogged === false" mat-raised-button routerLink="/login">
+    <button *ngIf="isLoggedIn === false" mat-raised-button routerLink="/login">
       Sign In
     </button>
   </div>

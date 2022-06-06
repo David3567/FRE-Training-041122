@@ -1,7 +1,16 @@
 @import "../../../styles.scss";
 
+.alert {
+  width: 50%;
+  padding: 0.5rem 5rem;
+  background-color: #db202c;
+  margin: auto;
+  h4 {
+    text-align: center;
+  }
+}
 #login-dialog {
-  padding-top: 200px;
+  margin-top: 8rem;
 }
 #login-dialog > * {
   width: auto;
@@ -20,4 +29,7 @@ form {
 
 .errors p {
   margin: 0;
+}
+.center {
+  text-align: center;
 }

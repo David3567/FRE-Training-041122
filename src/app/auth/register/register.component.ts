@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CustomValidators } from './custom-validators';
 import { Role, UserInfo } from './register.models';
@@ -10,10 +11,7 @@ import { Role, UserInfo } from './register.models';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  /**
-   * implement error property for backend registration errors
-   */
-  errors = null;
+  isLoading = false;
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
   registerForm!: FormGroup;
@@ -22,7 +20,9 @@ export class RegisterComponent implements OnInit {
     { value: 'SUPERUSER', displayValue: 'Superuser' },
     { value: 'DEVELOPER', displayValue: 'Developer' },
   ];
+
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private readonly customValidator: CustomValidators,
     private readonly authService: AuthService
@@ -35,8 +35,8 @@ export class RegisterComponent implements OnInit {
           '',
           [
             Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(20),
+            Validators.minLength(4),
+            Validators.maxLength(10),
           ],
         ],
         email: [
@@ -48,8 +48,10 @@ export class RegisterComponent implements OnInit {
           '',
           [
             Validators.required,
+            Validators.minLength(4),
+            Validators.maxLength(10),
             Validators.pattern(
-              '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+              '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{3,}$'
             ),
           ],
         ],
@@ -85,7 +87,17 @@ export class RegisterComponent implements OnInit {
       role: this.registerForm.get('role')?.value,
       tmdb_key: this.apikey?.value,
     };
-    this.authService.register(userInfo).subscribe(console.log);
+    this.isLoading = true;
+
+    this.authService.register(userInfo).subscribe({
+      next: (data) => {
+        this.router.navigate(['/movies']), (this.isLoading = false);
+      },
+      error: (error) => {
+        console.log(error);
+        this.isLoading = false;
+      },
+    });
   }
 
   onShowPassword() {
