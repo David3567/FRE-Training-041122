@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { SseService } from './services/sse.service';
 
 @Component({
@@ -6,12 +7,19 @@ import { SseService } from './services/sse.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  url = 'http://localhost:4231';
+export class AppComponent implements OnInit, OnDestroy {
+  url = 'http://localhost:4231/sse';
+  sseStream!: Subscription;
 
   constructor(private readonly sseService: SseService) {}
 
   ngOnInit(): void {
-    this.sseService.getServerSendEvent(this.url).subscribe(console.log);
+    this.sseStream = this.sseService
+      .getServerSendEvent(this.url)
+      .subscribe(console.log);
+  }
+
+  ngOnDestroy(): void {
+    this.sseStream.unsubscribe();
   }
 }
