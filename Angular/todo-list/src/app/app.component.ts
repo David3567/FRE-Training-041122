@@ -11,12 +11,14 @@ export class AppComponent implements OnInit, OnDestroy {
   url = 'http://localhost:4231/sse';
   sseStream!: Subscription;
 
-  constructor(private readonly sseService: SseService) {}
+  title = 'todo-list';
+
+  constructor() {}
 
   ngOnInit(): void {
-    this.sseStream = this.sseService
-      .getServerSendEvent(this.url)
-      .subscribe(console.log);
+    // this.sseStream = this.sseService
+    //   .getServerSendEvent(this.url)
+    //   .subscribe(console.log);
   }
 
   ngOnDestroy(): void {

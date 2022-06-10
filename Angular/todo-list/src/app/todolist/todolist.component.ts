@@ -21,14 +21,16 @@ export class TodolistComponent implements OnInit {
     userId: 2,
   };
 
-  constructor(private readonly stroe: Store) {}
+  constructor(private readonly todolistService: TodolistService) {}
 
   ngOnInit(): void {
-    this.todolist$ = this.stroe.select(TodoSelectors.getTodoList);
-    this.stroe.dispatch(TodoActions.loadTodolist());
+    this.todolist$ = this.todolistService.todolist$;
+    this.todolistService.getTodos().subscribe();
+    // this.todolist$ = this.stroe.select(TodoSelectors.getTodoList);
+    // this.stroe.dispatch(TodoActions.loadTodolist());
   }
 
   onChange(event: any) {
-    this.stroe.dispatch(TodoActions.addTodolist({ todo: this.todo }));
+    // this.stroe.dispatch(TodoActions.addTodolist({ todo: this.todo }));
   }
 }
