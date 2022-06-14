@@ -103,8 +103,8 @@ export class AuthLocalStorageService {
       tmdb_key: userData.tmdb_key,
     };
 
-    console.log(this.userRegister);
-
+    console.log('Register:',this.userRegister);
+    
     return this.http
       .post<{ accessToken: string }>(
         [environment.BACKEND_URL, 'signup'].join('/'),
