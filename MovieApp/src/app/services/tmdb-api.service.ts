@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { filter, map, Observable, Subject, tap, delay } from 'rxjs';
-import { environment } from '../../environments/environment';
+// import { environment } from '';
 import { Injectable } from '@angular/core';
+import { AuthLocalStorageService } from 'src/app/services/auth-local-storage.service';
+import { AnimationTriggerNames } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TmdbAPIService {
-  private base_url: string = `https://api.themoviedb.org/3/search/movie?api_key=${environment.API_KEY}&query=` 
+
   private poster_base_url: string = 'https://image.tmdb.org/t/p/original'
-  private populars_base_url: string = `https://api.themoviedb.org/3/movie/popular?api_key=${environment.API_KEY}&language=en-US&page=` // add page
   private moviesSubj$: any = new Subject();
   private movieTrailersSubj$: any = new Subject();
 
@@ -26,16 +27,22 @@ export class TmdbAPIService {
   movieTrailers$: any = this.movieTrailersSubj$.asObservable()
  
   movieImg!: any;
-  
-  constructor(private http: HttpClient) { }
 
-  queryMovies(popular: boolean = false, pageNum: number = 1, movieName?: string, concat: boolean = false) {
-    const endpoint = popular ? [this.populars_base_url, pageNum].join('') : [this.base_url, movieName].join('/') + `&page=${pageNum}`
+  constructor(private http: HttpClient) {
+  }
+  
+  queryMovies(popular: boolean = false, pageNum: number = 1, api?: any, movieName?: string, concat: boolean = false) {
+    const base = `https://api.themoviedb.org/3/search/movie?api_key=`+api+`&query=` 
+    const populars_url = `https://api.themoviedb.org/3/movie/popular?api_key=`+api+`&language=en-US&page=` //add [age]
+    console.log(populars_url);
+
+    const endpoint = popular ? [populars_url, pageNum].join('') : [base, movieName].join('/') + `&page=${pageNum}`
     if (popular) {
       this.popularQueryPageSbj$.next(pageNum)
     } else {
       this.searchQueryPageSbj$.next(pageNum)
     }
+
     this.http.get(endpoint).pipe(
       map((moviesObj: any) => {
         const tempMovieList: any = moviesObj.results.map((movieData: any) => {
@@ -76,8 +83,8 @@ export class TmdbAPIService {
   }
 
   //Changes made for Resolver
-  getTrailer(id: string){
-    const movieVideosURL: string = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${environment.API_KEY}&language=en-US`
+  getTrailer(id: string, api: any){
+    const movieVideosURL: string = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=`+api+`&language=en-US`
     return this.http.get(movieVideosURL).pipe(
       map((videosObj: any) => {
       const movieTrailer: any = videosObj.results.map((videosData: any) => {
@@ -102,8 +109,8 @@ export class TmdbAPIService {
   }
 
     //Changes made for Resolver
-    getMovieByID(id: string) {
-      const endpoint: string = `https://api.themoviedb.org/3/movie/${id}?api_key=${environment.API_KEY}&language=en-US`
+    getMovieByID(id: string, api: any) {
+      const endpoint: string = `https://api.themoviedb.org/3/movie/${id}?api_key=`+api+`&language=en-US`
       return this.http.get(endpoint)
     }
 

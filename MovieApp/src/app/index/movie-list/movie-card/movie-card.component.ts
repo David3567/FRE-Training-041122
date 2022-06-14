@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { TmdbAPIService } from 'src/app/services/tmdb-api.service';
 import { ResolveEnd, ResolveStart, Router } from '@angular/router';
 import { filter, Observable, merge, map } from 'rxjs';
+import { AuthLocalStorageService } from 'src/app/services/auth-local-storage.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -19,12 +20,20 @@ export class MovieCardComponent implements OnInit {
   throttle = 300;
   scrollDistance = 1;
   scrollUpDistance = 2;
+  api: string = '';
 
-  constructor(private movieAPI: TmdbAPIService, private router: Router ) { 
+  constructor(private movieAPI: TmdbAPIService, private router: Router, private readonly authService: AuthLocalStorageService ) { 
     
   }
 
   ngOnInit(): void {
+    const {JWToken, username, tmdb_key} = this.authService.userValue;
+
+        if(JWToken && username && tmdb_key){
+            this.api = tmdb_key;
+            console.log('MovieCardapi:',this.api);
+        }
+        
     this.movieAPI.movies$.subscribe((movies: any) => {
       this.moviesList = [...movies]
       console.log(this.moviesList)
@@ -50,7 +59,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   showDetails(id: string) {
-    this.movieAPI.getTrailer(id)
+    this.movieAPI.getTrailer(id, this.api)
     this.router.navigate(["moviedetails/"+ id])
   }
 
