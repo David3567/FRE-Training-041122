@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavHeaderBarComponent } from 'src/app/shared/nav-header-bar/nav-header-bar.component';
-import { NavSidebarComponent } from 'src/app/shared/nav-sidebar/nav-sidebar.component';
+import { NavHeaderBarModule } from 'src/app/navigation/nav-header-bar/nav-header-bar.module';
+import { NavSidebarModule } from 'src/app/navigation/nav-sidebar/nav-sidebar.module';
 import { TextReductionPipe } from 'src/app/pipes/text-reduction.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -34,17 +34,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatListModule,
   ],
   declarations: [
-    NavHeaderBarComponent,
-    NavSidebarComponent,
+    // NavHeaderBarComponent,
+    // NavSidebarComponent,
     TextReductionPipe,
   ],
   exports: [
     CommonModule,
-    NavHeaderBarComponent,
-    NavSidebarComponent,
+    // NavHeaderBarComponent,
+    // NavSidebarComponent,
     TextReductionPipe,
     RouterModule,
 
+    NavHeaderBarModule,
+    NavSidebarModule,
     FormsModule,
     MatCardModule,
     MatIconModule,

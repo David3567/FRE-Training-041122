@@ -22,12 +22,11 @@ import { AuthLocalInterceptor } from './interceptors/auth-local.interceptor';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    SharedModule,
     CommonModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    SharedModule,
-    NgbModule,
   ],
   providers: [
     {
