@@ -1,0 +1,16 @@
+<div>
+  <input type="text" [(ngModel)]="newtodo.title" />
+  <button (click)="addTask()">Add</button>
+</div>
+
+<div>{{ counter }} remaining out of {{ tasks.length }} tasks</div>
+
+<ul #container>
+  <li
+    *ngFor="let task of tasks"
+    (click)="updateIsComplete(task)"
+    [ngClass]="{ 'is-done': task.isComplete }"
+  >
+    {{ task.title }}
+  </li>
+</ul>
