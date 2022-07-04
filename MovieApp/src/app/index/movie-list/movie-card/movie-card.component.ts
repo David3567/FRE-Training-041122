@@ -3,6 +3,7 @@ import { TmdbAPIService } from 'src/app/services/tmdb-api.service';
 import { ResolveEnd, ResolveStart, Router } from '@angular/router';
 import { filter, Observable, merge, map } from 'rxjs';
 
+
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
