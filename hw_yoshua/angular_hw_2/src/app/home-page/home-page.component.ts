@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { debounceTime, filter, fromEvent, map, mergeMap, switchMap, tap } from 'rxjs';
 import { BookAPIService } from '../services/book-api.service'
-
+/**
+ * 
+ */
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
